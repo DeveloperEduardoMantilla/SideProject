@@ -1,7 +1,18 @@
-import { Box } from "@mui/material";
+import Slider from "./Slider.jsx";
+import Aboutme from "./Aboutme.jsx";
+import Campers from "./Campers.jsx";
+import Contact from "./Contact.jsx";
+import SuccessStories from "./SuccessStories.jsx";
 
 export default function Home() {
   return (
-    <Box sx={{minHeight:"80vh", display:"flex", justifyContent:"center", alignItems:"center"}}>Home</Box>
+    <>
+      <Slider />
+      <Aboutme />
+      <Campers />
+      <SuccessStories/>
+      <Contact/>
+    </>
+   
   )
 }
