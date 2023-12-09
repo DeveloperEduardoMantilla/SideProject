@@ -25,21 +25,26 @@ export default function Header() {
     },
     {
       title: "Quienes Somos",
-      path: "/login",
+      path: "#",
       icon: <LoginIcon />,
     },
     {
       title: "Campers",
-      path: "/login",
+      path: "#",
       icon: <LoginIcon />,
     },
     {
       title: "Casos de Exito",
-      path: "/login",
+      path: "#",
       icon: <LoginIcon />,
     },
     {
       title: "Contactenos",
+      path: "#",
+      icon: <LoginIcon />,
+    },
+    {
+      title: "Admin",
       path: "/login",
       icon: <LoginIcon />,
     }
