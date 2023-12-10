@@ -24,7 +24,7 @@ export default function CarouselMui() {
   ];
 
   return (
-    <Carousel sx={{ width: "100%", height: "60vh" }}>
+    <Carousel sx={{ width: "100%", maxHeight: "60vh" }}>
       {items.map((item, i) => (
         <ItemsCarousel
           key={i}
