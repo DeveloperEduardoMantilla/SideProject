@@ -22,7 +22,7 @@ export default function Header() {
     color: "white",
     boxShadow: "none",
     position: "relative",
-    transition: "all ease-in-out .5s"
+    transition: "all ease-in-out .5s",
   });
 
   const handleScroll = () => {
@@ -34,7 +34,7 @@ export default function Header() {
         color: "black",
         boxShadow: "20px 2px 5px #515A5A",
         position: "fixed",
-        transition: "all ease-in-out .5s"
+        transition: "all ease-in-out .5s",
       });
     } else {
       setStyleHeader({
@@ -102,8 +102,14 @@ export default function Header() {
               </IconButton>
               <Typography
                 variant="h5"
-               
-                sx={{ flexGrow: 1, fontWeight:"800", letterSpacing:"-1px",  background: "-webkit-linear-gradient(#000087, #2CAAFF)",WebkitBackgroundClip: "text", color: "transparent",}}
+                sx={{
+                  flexGrow: 1,
+                  fontWeight: "800",
+                  letterSpacing: "-1px",
+                  background: "-webkit-linear-gradient(#000087, #2CAAFF)",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                }}
               >
                 CampusLands Cv
               </Typography>
@@ -116,12 +122,12 @@ export default function Header() {
                     to={item.path}
                     sx={{
                       borderRadius: "0px",
-                      color:"black",
+                      color: "black",
                       borderBottom: "0px solid gray",
                       fontWeight: "400",
                       fontSize: "14px",
                       textTransform: "capitalize",
-                      letterSpacing:"1px",
+                      letterSpacing: "1px",
                       "&:hover": {
                         borderBottom: "2px solid gray",
                       },

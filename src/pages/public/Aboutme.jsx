@@ -13,7 +13,7 @@ export default function Aboutme() {
           <Typography sx={{fontSize:"20px"}}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae dolor, voluptatum reiciendis nulla ex voluptatibus quis debitis! Accusamus laboriosam possimus iure beatae incidunt, odio obcaecati repellat natus enim quasi fugiat!</Typography>
           </Box>
           <Box sx={{width:"40%"}}>
-              <img  src={photo} width="100%" style={{borderRadius:"10px", boxShadow:"5px 5px 15px gray", height:"100%", objectFit:"cover", objectPosition:"top"}}/>
+              <img  src={photo} width="100%" style={{boxShadow:"5px 5px 15px gray", height:"100%", objectFit:"cover", objectPosition:"top"}}/>
           </Box>
         </Box>
       </Container>

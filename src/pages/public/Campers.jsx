@@ -17,7 +17,7 @@ export default function Campers() {
         >
           Campers
         </Typography>
-        <Box sx={{ display: "flex", flexWrap: "wrap",  }}>
+        <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent:"space-between"  }}>
           <Camper />
           <Camper />
           <Camper />
