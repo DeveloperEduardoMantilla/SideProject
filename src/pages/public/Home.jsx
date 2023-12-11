@@ -5,16 +5,19 @@ import Contact from "./Contact.jsx";
 import SuccessStories from "./SuccessStories.jsx";
 import Adress from "./Adress.jsx";
 import Footer from "../../components/Footer.jsx";
+import { Box } from "@mui/material";
 export default function Home() {
   return (
     <>
-      <HomeImg />
-      <Aboutme />
-      <Campers />
-      <SuccessStories/>
-      <Contact/>
-      <Adress/>
-      <Footer/>
+      <Box sx={{overflow:"hidden"}}>
+        <HomeImg />
+        <Aboutme />
+        <Campers />
+        <SuccessStories/>
+        <Contact/>
+        <Adress/>
+        <Footer/>
+      </Box>
     </>
    
   )

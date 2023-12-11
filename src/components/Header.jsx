@@ -104,14 +104,14 @@ export default function Header() {
                 variant="h5"
                 sx={{
                   flexGrow: 1,
-                  fontWeight: "800",
+                  fontWeight: "600",
                   letterSpacing: "-1px",
                   background: "-webkit-linear-gradient(#000087, #2CAAFF)",
                   WebkitBackgroundClip: "text",
-                  color: "transparent",
+                  color: "#2A4B9B",
                 }}
               >
-                CampusLands Cv
+                Campers
               </Typography>
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
                 {navLinks.map((item) => (
