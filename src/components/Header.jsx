@@ -14,6 +14,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import { NavLink } from "react-router-dom";
 import HeaderListDrawer from "../components/HeaderListDrawer.jsx";
 import { useEffect, useState } from "react";
+import logoImage from "../assets/Img/logo.png";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -104,14 +105,10 @@ export default function Header() {
                 variant="h5"
                 sx={{
                   flexGrow: 1,
-                  fontWeight: "600",
-                  letterSpacing: "-1px",
-                  background: "-webkit-linear-gradient(#000087, #2CAAFF)",
-                  WebkitBackgroundClip: "text",
-                  color: "#2A4B9B",
+                  height: "80px",
                 }}
               >
-                Campers
+                <img src={logoImage} alt="Logo de la Empresa" style={{ height: "100%", width: "auto" }} />
               </Typography>
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
                 {navLinks.map((item) => (
@@ -122,14 +119,14 @@ export default function Header() {
                     to={item.path}
                     sx={{
                       borderRadius: "0px",
-                      color: "black",
+                      color: "#333",
                       borderBottom: "0px solid gray",
-                      fontWeight: "400",
-                      fontSize: "14px",
+                      fontWeight: "500",
+                      fontSize: "16px",
                       textTransform: "capitalize",
-                      letterSpacing: "1px",
+                      letterSpacing: "0px",
                       "&:hover": {
-                        borderBottom: "2px solid gray",
+                        borderBottom: "2px solid #333",
                       },
                     }}
                   >

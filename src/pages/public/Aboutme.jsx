@@ -23,7 +23,7 @@ export default function Aboutme() {
           </Box>
         </Box>
       </Container>
-      <img src={figura} width="200px" style={{position:"absolute", top:"370px", left:"-150px"}} />
+      <img src={figura} width="200px" style={{position:"absolute", top:"200px", left:"-150px"}} />
       <img src={figura} width="200px" style={{position:"absolute", top:"10px", right:"-150px"}} />
     </Box>
   );
