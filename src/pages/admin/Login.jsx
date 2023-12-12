@@ -1,115 +1,132 @@
-// import "../../assets/css/Login.css";
-// import "../../assets/js/Login.js";
+import { useState } from "react";
+
+import { Box, Button, TextField, Typography, IconButton, InputAdornment } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+
+import photo from "../../assets/Img/Astronauta.png";
 
 export default function Login() {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
   return (
     <>
-      <div
-        className="container"
-        id="container"
+      <Box
+        sx={{
+          width: "100%",
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
-        <div className="form-container sign-up-container">
-          <form action="#">
-            <h1>Create Account</h1>
-            <div className="social-container">
-              <a
-                href="#"
-                className="social"
-              >
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a
-                href="#"
-                className="social"
-              >
-                <i className="fab fa-google-plus-g"></i>
-              </a>
-              <a
-                href="#"
-                className="social"
-              >
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-            <span>or use your email for registration</span>
-            <input
-              type="text"
-              placeholder="Name"
+        <Box
+          sx={{
+            display: "flex",
+            height: "500px",
+            boxShadow: "-3px 5px 10px #ccc",
+          }}
+        >
+          <Box
+            sx={{
+              width: "400px",
+              padding: "30px 60px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography
+              variant="h3"
+              sx={{ textAlign: "center", fontWeight: "700", color:"#333" }}
+            >
+              Bienvendios
+            </Typography>
+            <Typography
+              variant="h6"
+              sx={{
+                textAlign: "center",
+                fontWeight: "400",
+                fontSize: "16px",
+                margin: "20px 0",
+                color:"#333"
+              }}
+            >
+              Panel administrador de CampusLands
+            </Typography>
+            <form
+              action=""
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <TextField
+                id="standard-basic"
+                label="Usuario"
+                variant="standard"
+              />
+              <TextField
+                id="standard-basic"
+                variant="standard"
+                label="Contraseña"
+                type={showPassword ? "text" : "password"}
+                sx={{ marginTop: "15px" }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={handleTogglePassword} edge="end">
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              <Box sx={{display:"flex", margin:"40px 0px" }}>
+                <Button
+                  variant="contained"
+                  sx={{
+                    width: "130px",
+                    background: "#2A4B9B",
+                    margin:"0 10px",
+                    "&:hover": {
+                      background: "#1F3874",
+                    },
+                  }}
+                >
+                  Go For It
+                </Button>
+                <Button
+                  variant="contained"
+                  href="/"
+                  sx={{
+                    width: "130px",
+                    background: "#FED641",
+                    margin:"0 10px",
+                    "&:hover": {
+                      background: "#F9C919",
+                    },
+                  }}
+                >
+                  Registrate
+                </Button>
+              </Box>
+            </form>
+          </Box>
+          <Box sx={{ width: "450px", height: "100%", background: "#2A4B9B" }}>
+            <img
+              src={photo}
+              alt=""
+              style={{ width: "100%", objectFit: "cover", height: "100%" }}
             />
-            <input
-              type="email"
-              placeholder="Email"
-            />
-            <input
-              type="password"
-              placeholder="Password"
-            />
-            <button>Sign Up</button>
-          </form>
-        </div>
-        <div className="form-container sign-in-container">
-          <form action="#">
-            <h1>Sign in</h1>
-            <div className="social-container">
-              <a
-                href="#"
-                className="social"
-              >
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a
-                href="#"
-                className="social"
-              >
-                <i className="fab fa-google-plus-g"></i>
-              </a>
-              <a
-                href="#"
-                className="social"
-              >
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-            <span>or use your account</span>
-            <input
-              type="email"
-              placeholder="Email"
-            />
-            <input
-              type="password"
-              placeholder="Password"
-            />
-            <a href="#">Forgot your password?</a>
-            <button>Sign In</button>
-          </form>
-        </div>
-        <div className="overlay-container">
-          <div className="overlay">
-            <div className="overlay-panel overlay-left">
-              <h1>Welcome Back!</h1>
-              <p>
-                To keep connected with us please login with your personal info
-              </p>
-              <button
-                className="ghost"
-                id="signIn"
-              >
-                Sign In
-              </button>
-            </div>
-            <div className="overlay-panel overlay-right">
-              <h1>Hello, Friend!</h1>
-              <p>Enter your personal details and start journey with us</p>
-              <button
-                className="ghost"
-                id="signUp"
-              >
-                Sign Up
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+          </Box>
+        </Box>
+      </Box>
     </>
   );
 }

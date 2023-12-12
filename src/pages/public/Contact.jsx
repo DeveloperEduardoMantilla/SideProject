@@ -3,7 +3,7 @@ import photo from "../../assets/Img/Img26.jpg";
 
 export default function Contact() {
   return (
-    <Box sx={{ background: "#2A4B9B", width: "100%", minHeight: "400px" }}>
+    <Box id="contact" sx={{ background: "#2A4B9B", width: "100%", minHeight: "400px" }}>
       <Container sx={{ display: "flex", alignItems: "center" }}>
         <Box sx={{ width: "600px" }}>
           <img

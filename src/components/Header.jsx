@@ -77,7 +77,7 @@ export default function Header() {
     },
     {
       title: "Contactenos",
-      path: "#contact",
+      path: "contact",
       icon: <LoginIcon />,
     },
     {
