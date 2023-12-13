@@ -14,37 +14,36 @@ import HomeIcon from "@mui/icons-material/Home";
 import { NavLink } from "react-router-dom";
 import HeaderListDrawer from "../components/HeaderListDrawer.jsx";
 import { useEffect, useState } from "react";
-import logoImage from "../assets/Img/logo.png";
+import logoNegro from "../assets/Img/logo.png";
+import logoBlanco from "../assets/Img/logoBlanco.png";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [styleHeader, setStyleHeader] = useState({
-    background: "transparent",
-    color: "white",
+  const [logo, setLogo] = useState(logoBlanco);
+  const headerStyle = {
+    background:"transparent",
+    color: "#fff",
     boxShadow: "none",
-    position: "relative",
+    position: "fixed",
     transition: "all ease-in-out .5s",
-  });
+  };
+  const [styleHeader, setStyleHeader] = useState(headerStyle);
 
   const handleScroll = () => {
     const currentPosition = window.scrollY;
 
-    if (currentPosition > 200) {
+    if (currentPosition > 20) {
+      setLogo(logoNegro);
       setStyleHeader({
+        color: "#333",
         background: "#fff",
-        color: "black",
         boxShadow: "20px 2px 5px #515A5A",
         position: "fixed",
         transition: "all ease-in-out .5s",
       });
-    } else {
-      setStyleHeader({
-        background: "transparent",
-        color: "white",
-        position: "relative",
-        transition: "all ease-in-out .5s",
-        boxShadow: "none",
-      });
+    } else if (currentPosition > 0) {
+      setLogo(logoBlanco);
+      setStyleHeader(headerStyle);
     }
   };
 
@@ -105,10 +104,14 @@ export default function Header() {
                 variant="h5"
                 sx={{
                   flexGrow: 1,
-                  height: "80px",
+                  height: {xs:"70px",md:"80px"},
                 }}
               >
-                <img src={logoImage} alt="Logo de la Empresa" style={{ height: "100%", width: "auto" }} />
+                <img
+                  src={logo}
+                  alt="Logo de la Empresa"
+                  style={{ height: "100%", width: "auto" }}
+                />
               </Typography>
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
                 {navLinks.map((item) => (
@@ -119,14 +122,14 @@ export default function Header() {
                     to={item.path}
                     sx={{
                       borderRadius: "0px",
-                      color: "#333",
                       borderBottom: "0px solid gray",
-                      fontWeight: "500",
+                      fontWeight: "400",
                       fontSize: "16px",
                       textTransform: "capitalize",
                       letterSpacing: "0px",
                       "&:hover": {
-                        borderBottom: "2px solid #333",
+                        borderBottom: "2px solid #ECA401",
+                        background:"transparent"
                       },
                     }}
                   >

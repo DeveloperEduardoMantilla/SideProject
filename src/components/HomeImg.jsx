@@ -1,12 +1,13 @@
 import { Box, Button, Typography } from "@mui/material";
-import imgHome from "../assets/Img/Slider.png";
+import imgHome from "../assets/Img/img33.jpg";
+import '../assets/css/Home.css';
 export default function HomeImg() {
   return (
     <>
-      <Box sx={{ width: "100%", position: "relative", height: "50vh" }}>
+      <Box id="homeImg" sx={{ width: "100%", position: "relative", height: {xs:"60vh",sm:"60vh", lg:"60vh"} }}>
         <Box
           sx={{
-            background: "rgba(46, 64, 83,0.4)",
+            background: "rgba(46, 64, 83,0.3)",
             width: "100%",
             minHeight: "100%",
             position: "absolute",
@@ -19,7 +20,7 @@ export default function HomeImg() {
             width: "100%",
             objectFit: "cover",
             maxWidth: "100%",
-            height: "50vh",
+            height: "100%",
             objectPosition: "top",
           }}
         />
@@ -41,7 +42,7 @@ export default function HomeImg() {
             sx={{
               color: "white",
               fontWeight: "800",
-              fontSize: "60px",
+              fontSize: {xs:"40px", md:"55px"},
             }}
           >
             CampusLands
@@ -50,9 +51,13 @@ export default function HomeImg() {
             variant="h6"
             sx={{
               color: "white",
-              fontSize: "20px",
+              background:"rgba(46, 64, 83,0.5)",
+              padding:"30px",
+              marginTop:"10px",
+              fontSize: {xs:"17px", md:"20px"},
               fontWeight: "300",
-              marginTop: "40px",
+              maxWidth:"830px",
+              textAlign:"center"
             }}
           >
             Transformamos futuros a través de la educación. Garantizamos

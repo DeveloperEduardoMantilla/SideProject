@@ -1,0 +1,12 @@
+@media(min-width:700px) and (max-width: 1200px){
+    #homeImg{
+        height: 70vh;
+    }
+}
+
+@media(min-width:1200px) and (max-width: 1500px){
+    #homeImg{
+        height: 80vh;
+    }
+}
+

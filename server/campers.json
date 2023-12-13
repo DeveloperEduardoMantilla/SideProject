@@ -1,0 +1,54 @@
+{
+  "campers": [
+    {
+      "nombre": "Juan Pérez Gómez",
+      "nivelIngles": "Avanzado",
+      "skills": ["HTML", "CSS", "JavaScript", "React", "Node.js"]
+    },
+    {
+      "nombre": "Ana García Martínez",
+      "nivelIngles": "Intermedio",
+      "skills": ["HTML", "CSS", "Bootstrap", "Python", "Django"]
+    },
+    {
+      "nombre": "Carlos López Sánchez",
+      "nivelIngles": "Principiante",
+      "skills": ["Java", "Spring Boot", "Thymeleaf", "MySQL"]
+    },
+    {
+      "nombre": "María Rodríguez Fernández",
+      "nivelIngles": "Avanzado",
+      "skills": ["HTML", "CSS", "JavaScript", "Vue.js", "Firebase"]
+    },
+    {
+      "nombre": "Pedro Martín Pérez",
+      "nivelIngles": "Intermedio",
+      "skills": ["HTML", "CSS", "React", "Express.js", "MongoDB"]
+    },
+    {
+      "nombre": "Laura Sánchez Rodríguez",
+      "nivelIngles": "Principiante",
+      "skills": ["Java", "Css", "Vue", "PostgreSQL"]
+    },
+    {
+      "nombre": "Gabriel Gómez Martínez",
+      "nivelIngles": "Avanzado",
+      "skills": ["HTML", "CSS", "JavaScript", "Angular", "Node.js"]
+    },
+    {
+      "nombre": "Elena Pérez Sánchez",
+      "nivelIngles": "Intermedio",
+      "skills": ["HTML", "CSS", "Bootstrap", "Ruby", "Rails"]
+    },
+    {
+      "nombre": "Miguel Martín Gómez",
+      "nivelIngles": "Principiante",
+      "skills": ["Java", "React", "css", "mysql"]
+    },
+    {
+      "nombre": "Sofía Fernández Martínez",
+      "nivelIngles": "Avanzado",
+      "skills": ["HTML", "CSS", "JavaScript", "React", "Express.js"]
+    }
+  ]
+}
