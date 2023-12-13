@@ -1,69 +1,63 @@
-.camper-card{
-    overflow: hidden;
+.camper_card{
+    width: 250px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     flex-wrap: wrap;
+    margin: 10px 10px 0 0;
+    overflow: hidden;
+    background-color: #fff;
+}
+.camper_card .camper_img{
+    width: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #E9E9E9;
-    margin: 20px 10px 0 0;
-    max-width: 400px;
-    min-width: 300px;
-    padding:10px 5px;
-    z-index: 2;
+    padding: 30px 0;
 }
-.camper-img{
-    width: 90px;
-    overflow: hidden;
+.camper_img img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.camper_data{
+    width: 100%;
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
-}
-
-.camper-img img{
-    height: 80px;
-    width: 80px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-.camper-data{
-    padding: 0px 10px;
-    width: 270px;
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;;
 }
-.conta-skills{
-    display: flex;
-    flex-direction: column;
+.caja_informacion{
+    position:relative;
+    top: -20px;
+    background-color: #fff;
+    box-shadow: 0px 5px 15px #ccc;
+    padding: 10px 5px;
+    width: 230px;
+    text-align: center;
 }
-.camper-data .name{
-    font-size: 22px;
-    font-weight: 500;
-    color: #2E3136;
-}
-
-.camper-data .nivelIngles{
-    padding-top: 10px;
-    font-size: 15px;
+.caja_informacion .name{
     font-weight: 600;
-    color: #2E3136;
+    font-size: 18px;
 }
-.camper-data .skills{
-    font-size: 15px;
-    font-weight: 400;
-    color: #2E3136;
+.caja_habilidades{
+    width: 80%;
 }
-.camper-data .view-camper{
-    margin-top: 5px;
-    width: 10px;
+.caja_habilidades .nivel_Ingles{
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
 }
-
+.caja_Skills{
+    display: flex;
+    flex-wrap: wrap;
+}
 .skillsCamper{
-    color: #fff;
-    padding: 5px;
-    border-radius: 10px;
-    font-size: 10px;
-    margin-left:5px;
+    margin: 0 5px 5px 0;
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-size: 11px;
 }

@@ -1,0 +1,22 @@
+{
+    "status": 200,
+    "message": [
+      {
+        "id": 1,
+        "foto": "https://example.com/foto.jpg",
+        "nombre": "Juan Pérez García",
+        "idEnfoque": 2,
+        "palabrasClave": "[\"clave1\", \"clave2\", \"clave3\"]",
+        "acercaDeMi": "Soy un desarrollador de software con 5 años de experiencia. Estoy interesado en trabajar en proyectos de desarrollo web y móvil.",
+        "skills": "[\"habilidad1\", \"nivel1\", \"habilidad2\"]",
+        "idUsuario": 1,
+        "idioma": "Español",
+        "nivelIdioma": "Nativo",
+        "estado": 1,
+        "accesoEditar": 1,
+        "github": "https://github.com/juanperezgarcia",
+        "linkedin": "https://linkedin.com/in/juanperezgarcia",
+        "info_usuario": "{\"usuario\": \"usuario1\", \"fechaRegistro\": \"2023-12-13 13:34:00\", \"rol\": \"usuario\", \"genero\": \"masculino\", \"estado\": 1, \"telefono\": \"3123456789\", \"correo\": \"usuario1@example.com\", \"ciudad\": \"Floridablanca\"}"
+      }
+    ]
+  }
