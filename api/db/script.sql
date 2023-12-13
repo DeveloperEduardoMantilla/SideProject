@@ -12,10 +12,15 @@ CREATE TABLE `usuario`(
     `correo` TEXT NOT NULL,
     `ciudad` TEXT NOT NULL
 );
+CREATE TABLE enfoque(
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(60) NOT NULL
+);
 CREATE TABLE `cv`(
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `foto` TEXT NOT NULL,
     `nombre` VARCHAR(70) NOT NULL,
+    `idEnfoque` INT NOT NULL,
     `palabrasClave` JSON NOT NULL,
     `acercaDeMi` TEXT NOT NULL,
     `skills` JSON NOT NULL,
@@ -26,7 +31,8 @@ CREATE TABLE `cv`(
     `accesoEditar` BOOLEAN NOT NULL,
     `github` TEXT NOT NULL,
     `linkedin` TEXT NOT NULL,
-    CONSTRAINT `cv_idusuario_foreign` FOREIGN KEY(`idUsuario`) REFERENCES `usuario`(`id`) ON UPDATE CASCADE ON DELETE CASCADE
+    CONSTRAINT `cv_idusuario_foreign` FOREIGN KEY(`idUsuario`) REFERENCES `usuario`(`id`) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT `cv_idEnfoque_foreign` FOREIGN KEY(`idEnfoque`) REFERENCES `enfoque`(`id`) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE `experiencia`(
@@ -55,12 +61,24 @@ CREATE TABLE `softSkills`(
     CONSTRAINT `softskills_idcv_foreign` FOREIGN KEY(`idCv`) REFERENCES `cv`(`id`) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-INSERT INTO usuario (usuario, password, rol, genero, estado, telefono, correo, ciudad)
-VALUES ('usuario1', 'password1', 'admin', 'masculino', 1, '3123456789', 'usuario1@example.com', 'Floridablanca'),
-       ('usuario2', 'password2', 'usuario', 'femenino', 1, '3102345678', 'usuario2@example.com', 'Bucaramanga');
+CREATE TABLE contacto(
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(60) NOT NULL,
+  telefono VARCHAR(13) NOT NULL,
+  empresa VARCHAR(60) NOT NULL,
+  correo VARCHAR(80) NOT NULL,
+  descripcion VARCHAR(300) NOT NULL
+);
 
-INSERT INTO cv (foto, nombre, palabrasClave, acercaDeMi, skills, idUsuario, idioma, nivelIdioma, estado, accesoEditar, github, linkedin)
-VALUES ('https://example.com/foto.jpg', 'Juan Pérez García',JSON_ARRAY('clave1', 'clave2', 'clave3'), 'Soy un desarrollador de software con 5 años de experiencia. Estoy interesado en trabajar en proyectos de desarrollo web y móvil.',JSON_ARRAY('habilidad1', 'nivel1', 'habilidad2'), 2, 'Español', 'Nativo', true, true, 'https://github.com/juanperezgarcia', 'https://linkedin.com/in/juanperezgarcia');
+INSERT INTO usuario (usuario, password, rol, genero, estado, telefono, correo, ciudad)
+VALUES ('usuario1', 'password1', 'usuario', 'masculino', true, '3123456789', 'usuario1@example.com', 'Floridablanca'),
+       ('usuario2', 'password2', 'usuario', 'femenino', true, '3102345678', 'usuario2@example.com', 'Bucaramanga'),
+       ('villafrades', '123', 'admin', 'masculino', true, '3238884307', 'villafrades@gmail.com', 'Bucaramanga' );
+
+INSERT INTO enfoque (nombre) VALUES ("Desarrollador Full-stack"),("Desarrollador Backend");
+
+INSERT INTO cv (foto, nombre, idEnfoque, palabrasClave, acercaDeMi, skills, idUsuario, idioma, nivelIdioma, estado, accesoEditar, github, linkedin)
+VALUES ('https://example.com/foto.jpg', 'Juan Pérez García', 2,JSON_ARRAY('clave1', 'clave2', 'clave3'), 'Soy un desarrollador de software con 5 años de experiencia. Estoy interesado en trabajar en proyectos de desarrollo web y móvil.',JSON_ARRAY('habilidad1', 'nivel1', 'habilidad2'), 1, 'Español', 'Nativo', true, true, 'https://github.com/juanperezgarcia', 'https://linkedin.com/in/juanperezgarcia');
 
 INSERT INTO experiencia (cargo, empresa, descripcionLogros, fecha, idCv)
 VALUES ('Desarrollador Web', 'Empresa X', 'Desarrollé la página web de la empresa, utilizando HTML, CSS y JavaScript.', '2023-01-01', 2);
@@ -69,7 +87,7 @@ INSERT INTO experiencia (cargo, empresa, descripcionLogros, fecha, idCv)
 VALUES ('Diseñador Gráfico', 'Empresa Y', 'Diseñé el logo y la identidad visual de la empresa.', '2022-02-02', 2);
 
 INSERT INTO educacion (titulo, institucion, fecha, tipo, idCv)
-VALUES ('Licenciatura en Informática', 'Universidad X', '2023-01-01', 1, 1),
+VALUES ('Licenciatura en Informática', 'Universidad X', '2023-01-01', 1, 2),
 ('Diplomado en Diseño Gráfico', 'Instituto Y', '2022-02-02', 2, 2);
 
 INSERT INTO softSkills (compentencia, idCv)
