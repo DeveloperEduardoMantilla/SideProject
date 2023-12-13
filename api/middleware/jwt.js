@@ -1,8 +1,9 @@
 import { SignJWT, jwtVerify } from "jose";
 import { myConexion } from "../db/conexion.js";
-import "dotenv/config";
-
+import { loadEnv } from "vite";
 const database = await myConexion();
+
+const env = loadEnv("development", process.cwd(), "VITE")
 
 const generateToken =  async(req,res,next) =>{
     let keys = Object.keys(req.body);
@@ -25,7 +26,7 @@ const generateToken =  async(req,res,next) =>{
             .setProtectedHeader({alg:'HS256', typ:'JWT'})
             .setIssuedAt()
             .setExpirationTime('3h')
-            .sign(encoder.encode(process.env.JWT_PRIVATE_KEY))
+            .sign(encoder.encode(env.VITE_JWT_PRIVATE_KEY))
     
             req.data = {status: 200, token: jwtConstructor};
             next()
@@ -42,7 +43,7 @@ const verifyToken = () => async (req, res, next) => {
         const encoder = new TextEncoder();
         req.data = await jwtVerify(
           authorization,
-          encoder.encode(process.env.JWT_PRIVATE_KEY)
+          encoder.encode(env.VITE_JWT_PRIVATE_KEY)
         );
         next();
       } catch (error) {

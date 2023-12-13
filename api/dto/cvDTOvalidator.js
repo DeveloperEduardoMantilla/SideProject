@@ -3,7 +3,7 @@ import { check, body } from "express-validator";
 export const validateCvPost = [
     body()
     .custom((value, { req }) => {
-        const permitidas = ['foto', 'nombre', 'palabrasClave','acercaDeMi', 'skills', 'idioma', 'nivelIdioma','github', 'linkedin']; // Lista de propiedades permitidas
+        const permitidas = ['foto', 'nombre','idEnfoque', 'palabrasClave','acercaDeMi', 'skills', 'idioma', 'nivelIdioma','github', 'linkedin']; // Lista de propiedades permitidas
   
         // Verificar si hay propiedades no permitidas en el cuerpo
         const propiedadesNoPermitidas = Object.keys(req.body).filter(prop => !permitidas.includes(prop));
@@ -24,6 +24,10 @@ export const validateCvPost = [
         .notEmpty().withMessage("la propiedad 'nombre' es obligatoria")
         .isLength({min:3, max:60}).withMessage("la 'nombre' debe tener maximo 60 cracteres")
         .isString().withMessage("la propiedad 'nombre' debe ser un string"),
+
+    check("idEnfoque")
+        .notEmpty().withMessage("la propiedad 'idEnfoque' es obligatoria")
+        .isInt().withMessage("la propiedad 'idEnfoque' debe ser tipo INT"),
     
     check("palabrasClave")
         .notEmpty().withMessage("la propiedad 'palabrasClave' es obligatoria")
@@ -62,7 +66,7 @@ export const validateCvPost = [
 export const validateCvUpdate = [
     body()
     .custom((value, { req }) => {
-        const permitidas = ['foto', 'nombre', 'palabrasClave','acercaDeMi', 'skills', 'idioma', 'nivelIdioma','github', 'linkedin']; // Lista de propiedades permitidas
+        const permitidas = ['foto', 'nombre','idEnfoque', 'palabrasClave','acercaDeMi', 'skills', 'idioma', 'nivelIdioma','github', 'linkedin']; // Lista de propiedades permitidas
   
         // Verificar si hay propiedades no permitidas en el cuerpo
         const propiedadesNoPermitidas = Object.keys(req.body).filter(prop => !permitidas.includes(prop));
@@ -84,6 +88,10 @@ export const validateCvUpdate = [
         .optional()
         .isLength({min:3, max:60}).withMessage("la 'nombre' debe tener maximo 60 cracteres")
         .isString().withMessage("la propiedad 'nombre' debe ser un string"),
+    
+    check("idEnfoque")
+      .optional()
+      .isInt().withMessage("la propiedad 'idEnfoque' debe ser tipo INT"),
     
     check("palabrasClave")
         .optional()
