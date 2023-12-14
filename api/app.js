@@ -6,10 +6,12 @@ import appEducacion from "./routers/educacion.js";
 import appContactar from "./routers/contactar.js";
 import { generateToken, verifyToken } from "./middleware/jwt.js"
 import { limitRequest } from "./middleware/limit_request.js";
+import cors from "cors"
 import { loadEnv } from "vite";
 
 const appExpress = express();
 appExpress.use(express.json());
+appExpress.use(cors())
 appExpress.use(limitRequest())
 
 appExpress.all("/login", generateToken, (req, res) => {

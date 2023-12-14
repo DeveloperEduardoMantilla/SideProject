@@ -32,7 +32,7 @@ export const validateEducacionPost = [
 
     check("tipo")
         .notEmpty().withMessage("la propiedad 'tipo' es obligatoria")
-        .isInt().withMessage("la propiedad 'tipo' debe ser tipo INT"),
+        .isString().withMessage("la propiedad 'tipo' debe ser tipo string"),
     
     check("idCv")
         .optional()
@@ -71,7 +71,7 @@ export const validateEducacionUpdate = [
 
     check("tipo")
         .optional()
-        .isInt().withMessage("la propiedad 'tipo' debe ser tipo INT")
+        .isString().withMessage("la propiedad 'tipo' debe ser tipo string"),
 ]
 
 export const validateEducacionQuerys = [
