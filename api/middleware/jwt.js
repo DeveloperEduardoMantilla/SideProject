@@ -5,6 +5,7 @@ const database = await myConexion();
 
 const env = loadEnv("development", process.cwd(), "VITE")
 
+
 const generateToken =  async(req,res,next) =>{
     let keys = Object.keys(req.body);
     if(keys.length == 0) return res.status(400).send({status:400, message:"Data no enviada"})

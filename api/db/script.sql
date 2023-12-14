@@ -59,7 +59,7 @@ CREATE TABLE
         `titulo` TEXT NOT NULL,
         `institucion` TEXT NOT NULL,
         `fecha` TEXT NOT NULL,
-        `tipo` INT NOT NULL,
+        `tipo` VARCHAR(40) NOT NULL,
         `idCv` INT NOT NULL,
         CONSTRAINT `educacion_idcv_foreign` FOREIGN KEY(`idCv`) REFERENCES `cv`(`id`) ON UPDATE CASCADE ON DELETE CASCADE
     );
@@ -120,6 +120,34 @@ VALUES (
         '3238884307',
         'villafrades@gmail.com',
         'Bucaramanga'
+    ),
+    (
+        'felipe',
+        '123',
+        'usuario',
+        'masculino',
+        true,
+        '3123456789',
+        'usuario1@example.com',
+        'Floridablanca'
+    ), (
+        'juan',
+        '123',
+        'usuario',
+        'femenino',
+        true,
+        '3102345678',
+        'usuario2@example.com',
+        'Bucaramanga'
+    ), (
+        'pedro',
+        '123',
+        'usuario',
+        'masculino',
+        true,
+        '3238884307',
+        'villafrades@gmail.com',
+        'Bucaramanga'
     );
 
 INSERT INTO enfoque (nombre)
@@ -159,6 +187,82 @@ VALUES (
         true,
         'https://github.com/juanperezgarcia',
         'https://linkedin.com/in/juanperezgarcia'
+    ),
+    (
+        'https://example.com/foto.jpg',
+        'Felipe Guzman',
+        2,
+        JSON_ARRAY('clave1', 'clave2', 'clave3'),
+        'Soy un desarrollador de software con 5 años de experiencia. Estoy interesado en trabajar en proyectos de desarrollo web y móvil.',
+        JSON_ARRAY(
+            'habilidad1',
+            'nivel1',
+            'habilidad2'
+        ),
+        4,
+        'Español',
+        'Nativo',
+        true,
+        true,
+        'https://github.com/juanperezgarcia',
+        'https://linkedin.com/in/juanperezgarcia'
+    ),
+    (
+        'https://example.com/foto.jpg',
+        'Carmelo García',
+        2,
+        JSON_ARRAY('clave1', 'clave2', 'clave3'),
+        'Soy un desarrollador de software con 5 años de experiencia. Estoy interesado en trabajar en proyectos de desarrollo web y móvil.',
+        JSON_ARRAY(
+            'habilidad1',
+            'nivel1',
+            'habilidad2'
+        ),
+        2,
+        'Español',
+        'Nativo',
+        true,
+        true,
+        'https://github.com/juanperezgarcia',
+        'https://linkedin.com/in/juanperezgarcia'
+    ),
+    (
+        'https://example.com/foto.jpg',
+        'Juan mantilla',
+        2,
+        JSON_ARRAY('clave1', 'clave2', 'clave3'),
+        'Soy un desarrollador de software con 5 años de experiencia. Estoy interesado en trabajar en proyectos de desarrollo web y móvil.',
+        JSON_ARRAY(
+            'habilidad1',
+            'nivel1',
+            'habilidad2'
+        ),
+        5,
+        'Español',
+        'Nativo',
+        true,
+        true,
+        'https://github.com/juanperezgarcia',
+        'https://linkedin.com/in/juanperezgarcia'
+    ),
+    (
+        'https://example.com/foto.jpg',
+        'Pedro Matajira',
+        2,
+        JSON_ARRAY('clave1', 'clave2', 'clave3'),
+        'Soy un desarrollador de software con 5 años de experiencia. Estoy interesado en trabajar en proyectos de desarrollo web y móvil.',
+        JSON_ARRAY(
+            'habilidad1',
+            'nivel1',
+            'habilidad2'
+        ),
+        6,
+        'Español',
+        'Nativo',
+        false,
+        true,
+        'https://github.com/juanperezgarcia',
+        'https://linkedin.com/in/juanperezgarcia'
     );
 
 INSERT INTO
@@ -174,7 +278,35 @@ VALUES (
         'Empresa X',
         'Desarrollé la página web de la empresa, utilizando HTML, CSS y JavaScript.',
         '2023-01-01',
-        1
+        3
+    ),
+    (
+        'Desarrollador Web',
+        'Empresa X',
+        'Desarrollé la página web de la empresa, utilizando HTML, CSS y JavaScript.',
+        '2023-01-01',
+        2
+    ),
+    (
+        'Desarrollador Web',
+        'Empresa X',
+        'Desarrollé la página web de la empresa, utilizando HTML, CSS y JavaScript.',
+        '2023-01-01',
+        4
+    ),
+    (
+        'Desarrollador Web',
+        'Empresa X',
+        'Desarrollé la página web de la empresa, utilizando HTML, CSS y JavaScript.',
+        '2023-01-01',
+        4
+    ),
+    (
+        'Desarrollador Web',
+        'Empresa X',
+        'Desarrollé la página web de la empresa, utilizando HTML, CSS y JavaScript.',
+        '2023-01-01',
+        5
     );
 
 INSERT INTO
@@ -191,6 +323,20 @@ VALUES (
         'Diseñé el logo y la identidad visual de la empresa.',
         '2022-02-02',
         1
+    ),
+    (
+        'Diseñador Gráfico',
+        'Empresa Y',
+        'Diseñé el logo y la identidad visual de la empresa.',
+        '2022-02-02',
+        5
+    ),
+    (
+        'Diseñador Gráfico',
+        'Empresa Y',
+        'Diseñé el logo y la identidad visual de la empresa.',
+        '2022-02-02',
+        2
     );
 
 INSERT INTO
@@ -205,18 +351,48 @@ VALUES (
         'Licenciatura en Informática',
         'Universidad X',
         '2023-01-01',
-        1,
+        "Bachillerato",
         1
     ), (
         'Diplomado en Diseño Gráfico',
         'Instituto Y',
         '1022-02-02',
-        2,
+        "Bachillerato",
+        2
+    ),
+    (
+        'Licenciatura en Informática',
+        'Universidad X',
+        '2023-01-01',
+        "Bachillerato",
+        4
+    ), (
+        'Diplomado en Diseño Gráfico',
+        'Instituto Y',
+        '1022-02-02',
+        "Bachillerato",
         1
+    ),
+    (
+        'Licenciatura en Informática',
+        'Universidad X',
+        '2023-01-01',
+        "Bachillerato",
+        3
+    ), (
+        'Diplomado en Diseño Gráfico',
+        'Instituto Y',
+        '1022-02-02',
+        "Bachillerato",
+        2
     );
 
 INSERT INTO
     softSkills (compentencia, idCv)
-VALUES ('Comunicación', 1), ('Trabajo en equipo', 1);
+VALUES ('Comunicación', 1),
+ ('Trabajo en equipo', 2),
+ ('Comunicación', 2),
+ ('Trabajo en equipo', 3),
+ ('Comunicación', 4),
+ ('Trabajo en equipo', 1);
 
-SELECT cv.id AS idCv, JSON_ARRAYAGG(JSON_OBJECT( 'id', edu.id, 'titulo', edu.titulo, 'institucion', edu.institucion, 'fecha', edu.fecha, 'tipo', edu.tipo)) AS educaciones FROM educacion edu INNER JOIN cv ON edu.idCv = cv.id GROUP BY cv.id

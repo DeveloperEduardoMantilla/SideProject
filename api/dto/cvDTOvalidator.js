@@ -66,7 +66,7 @@ export const validateCvPost = [
 export const validateCvUpdate = [
     body()
     .custom((value, { req }) => {
-        const permitidas = ['foto', 'nombre','idEnfoque', 'palabrasClave','acercaDeMi', 'skills', 'idioma', 'nivelIdioma','github', 'linkedin']; // Lista de propiedades permitidas
+        const permitidas = ['foto', 'nombre','idEnfoque', 'palabrasClave','acercaDeMi', 'skills', 'idioma', 'nivelIdioma','github', 'linkedin','estado', 'accesoEditar']; // Lista de propiedades permitidas
   
         // Verificar si hay propiedades no permitidas en el cuerpo
         const propiedadesNoPermitidas = Object.keys(req.body).filter(prop => !permitidas.includes(prop));
@@ -124,8 +124,18 @@ export const validateCvUpdate = [
     
     check("linkedin")
         .optional()
-        .isString().withMessage("la propiedad 'linkedin' debe ser un string")
+        .isString().withMessage("la propiedad 'linkedin' debe ser un string"),
+
+    check("estado")
+        .optional()
+        .isInt().withMessage("la propiedad 'estado' debe ser tipo INT"),
+
+    check("accesoEditar")
+        .optional()
+        .isInt().withMessage("la propiedad 'accesoEditar' debe ser tipo INT")
 ]
+
+
 
 export const validateCvQuerys = [
     check("id")

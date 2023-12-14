@@ -98,5 +98,10 @@ export const validateUsuarioUpdate = [
 export const validateUsuarioQuerys = [
     check("id")
         .optional()
-        .isInt().withMessage("el param/query 'id' debe ser tipo INT")
+        .isInt().withMessage("el param/query 'id' debe ser tipo INT"),
+
+    check("estado")
+        .optional()
+        .isInt().withMessage("la propiedad 'estado' debe ser tipo INT")
+
 ]
