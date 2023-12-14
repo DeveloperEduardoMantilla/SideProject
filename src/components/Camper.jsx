@@ -3,11 +3,15 @@
 import { Box, Typography } from "@mui/material";
 import photo from "../assets/Img/Avatar.png";
 import avatarMujer from "../assets/Img/AvatarMujer.png";
+import { useEffect } from "react";
 
 export default function Camper(props) {
   const { data, color } = props;
 
-  const skillsToShow = data.skills.slice(0, 5);
+  useEffect(()=>{
+    console.log(data);
+  })
+  // const skillsToShow = data.skills.slice(0, 5);
   return (
     <Box className="camper_card">
       <Box
@@ -56,7 +60,7 @@ export default function Camper(props) {
             className="skills"
           >
             <Box className="caja_Skills">
-              {skillsToShow.map((item, index) => (
+              {/* {skillsToShow.map((item, index) => (
                 <span
                   key={index}
                   style={{ background: "#ccc" }}
@@ -64,7 +68,7 @@ export default function Camper(props) {
                 >
                   {item}
                 </span>
-              ))}
+              ))} */}
             </Box>
           </Typography>
         </Box>

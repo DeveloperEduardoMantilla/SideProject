@@ -14,7 +14,7 @@ import fondoCampers from "../../assets/Img/fondoCampers.svg";
 import "../../assets/css/Camper.css";
 
 export default function Campers() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [tecnologia, setTecnologia] = useState(1);
   const [ruta, setRuta] = useState(5);
   const [ingles, setIngles] = useState(9);
@@ -22,9 +22,12 @@ export default function Campers() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("../../../server/campers.json");
-        const dataRes = await response.json();
-        setData(dataRes.campers);
+        const campers = await fetch("http://127.17.0.97:5017/cv");
+        const dataCampers = await campers.json();
+
+        // const response = await fetch("../../../server/campers.json");
+        // const dataRes = await response.json();
+        setData(dataCampers.message);
       } catch (e) {
         console.log("Error => ", e);
       }
@@ -132,7 +135,7 @@ export default function Campers() {
                 <Camper
                   data={item}
                   key={index}
-                  color={item.genero=="Masculino"?"#2A4B9B":"#6C3483"}
+                  color={item.info_usuario.genero=="Masculino"?"#2A4B9B":"#6C3483"}
                 />
               ))
             ) : (
