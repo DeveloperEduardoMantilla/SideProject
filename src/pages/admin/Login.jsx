@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Link } from 'react-router-dom';
 import { Box, Button, TextField, Typography, IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
@@ -90,6 +90,8 @@ export default function Login() {
               <Box sx={{display:"flex", margin:"40px 0px" }}>
                 <Button
                   variant="contained"
+                  component={Link}
+                  to="/dashboard"
                   sx={{
                     width: "130px",
                     background: "#2A4B9B",
@@ -103,7 +105,8 @@ export default function Login() {
                 </Button>
                 <Button
                   variant="contained"
-                  href="/"
+                  component={Link}
+                  to="/"
                   sx={{
                     width: "130px",
                     background: "#FED641",

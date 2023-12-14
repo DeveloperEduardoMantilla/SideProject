@@ -127,10 +127,11 @@ export default function Campers() {
           </Box>
           <Box sx={{ display: "flex", flexWrap: "wrap" }}>
             {data ? (
-              data.map((item) => (
+              
+              data.map((item, index) => (
                 <Camper
                   data={item}
-                  key={item.nombre}
+                  key={index}
                   color={item.genero=="Masculino"?"#2A4B9B":"#6C3483"}
                 />
               ))
