@@ -2,7 +2,8 @@ import { BrowserRouter , Routes, Route } from "react-router-dom";
 import Home from "../pages/public/Home.jsx";
 import Login from "../pages/admin/Login.jsx";
 import { CssBaseline } from "@mui/material";
-import Pruebas from "../pages/admin/Pruebas.jsx";
+import Registred from "../pages/admin/Registred.jsx";
+import DashboardTest from "../pages/admin/DashboardTest.jsx";
 
 export default function Router() {
   return (
@@ -12,7 +13,8 @@ export default function Router() {
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/login" element={<Login/>}/>
-            <Route path="/dashboard" element={<Pruebas />}/>
+            <Route path="/registred" element={<Registred/>}/>
+            <Route path="/dashboard" element={<DashboardTest />}/>
         </Routes>
     </BrowserRouter>
     </>

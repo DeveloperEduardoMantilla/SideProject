@@ -19,7 +19,7 @@ export default function Camper(props) {
         sx={{ background: color }}
       >
         {
-          (data.genero ==="Masculino") ?  <img
+          (JSON.parse(data.info_usuario).genero ==="masculino") ?  <img
           src={photo}
           alt=""
           className="camper_Img"
@@ -43,7 +43,7 @@ export default function Camper(props) {
             variant=""
             className="nivelIngles"
           >
-            Developer BackEnd
+            {JSON.parse(data.enfoque).nombre}
           </Typography>
         </Box>
 
@@ -52,7 +52,7 @@ export default function Camper(props) {
             variant=""
             className="nivel_Ingles"
           >
-            Nivel Ingles: {data.nivelIngles}
+            Nivel {data.idioma} : {data.nivelIdioma}
           </Typography>
 
           <Typography
@@ -60,7 +60,7 @@ export default function Camper(props) {
             className="skills"
           >
             <Box className="caja_Skills">
-              {/* {skillsToShow.map((item, index) => (
+              {JSON.parse(data.skills).map((item, index) => (
                 <span
                   key={index}
                   style={{ background: "#ccc" }}
@@ -68,7 +68,7 @@ export default function Camper(props) {
                 >
                   {item}
                 </span>
-              ))} */}
+              ))}
             </Box>
           </Typography>
         </Box>

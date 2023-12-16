@@ -26,16 +26,17 @@ export default function SuccessStories() {
         Empresas de todo el país ya trabajan con nosotros para crecer a gran
         escala ¡Inspírate con sus casos de éxito!
       </Typography>
-      <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+      <Box sx={{ display: "flex", flexWrap: "wrap"}}>
         <SuccessStorie />
         <SuccessStorie />
         <SuccessStorie />
         <SuccessStorie />
       </Box>
       <img
+        className="figura"
         src={figura}
         width="200px"
-        style={{ position: "absolute",  right: "-130px" }}
+        style={{ position: "absolute",  right: "-130px"}}
       />
     </Box>
   );

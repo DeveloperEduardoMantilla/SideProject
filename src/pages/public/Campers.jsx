@@ -1,3 +1,5 @@
+import * as React from "react";
+
 import {
   Box,
   Container,
@@ -19,6 +21,7 @@ export default function Campers() {
   const [ruta, setRuta] = useState(5);
   const [ingles, setIngles] = useState(9);
 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -39,25 +42,16 @@ export default function Campers() {
     setTecnologia(event.target.value);
   };
   const handleChangeRuta = (event) => {
-    setIngles(event.target.value);
+    setRuta(event.target.value);
+    document.getElementById("navbar").style.zIndex = 3;
   };
   const handleChangeIngles = (event) => {
-    setRuta(event.target.value);
+    setIngles(event.target.value);
+    document.getElementById("navbar").style.zIndex = 3;
   };
   return (
     <>
-      <Box
-      sx={{position:"relative", padding:"60px 0 120px 0"}}
-      // sx={{
-      //   backgroundImage: `url(${fondoCampers})`,
-      //   backgroundSize: "cover",
-      //   backgroundPosition: "center",
-      //   backgroundRepeat:"no-repeat",
-      //   backgroundAttachment:"local",
-      //   position:"relative",
-      //   padding:"30px 0"
-      // }}
-      >
+      <Box sx={{ position: "relative", padding: "60px 0 120px 0" }}>
         <Container>
           <Typography
             sx={{
@@ -69,18 +63,12 @@ export default function Campers() {
           >
             Campers
           </Typography>
-          <Box>
+          <Box sx={{display:"flex", flexWrap:"wrap"}}>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              sx={{
-                marginRight: "20px",
-                fontSize: "14px",
-                width: { xs: "100%", md: "300px" },
-                padding: "0",
-                color: "#fff",
-              }}
               value={tecnologia}
+              sx={{width:{xs:"100%", sm:"30%"}}}
               label="Age"
               onChange={handleChangeTecnologia}
             >
@@ -89,18 +77,12 @@ export default function Campers() {
               <MenuItem value={3}>React</MenuItem>
               <MenuItem value={4}>Java</MenuItem>
             </Select>
+
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              sx={{
-                fontSize: "14px",
-                width: { xs: "100%", md: "300px" },
-                margin: { xs: "15px 0", sm: "0" },
-                marginRight: { sm: "20px" },
-                padding: "0",
-                color: "#fff",
-              }}
               value={ruta}
+              sx={{width:{xs:"100%", sm:"30%"},margin:{xs:"10px 0", sm:"0px 10px"}}}
               label="Age"
               onChange={handleChangeRuta}
             >
@@ -109,16 +91,12 @@ export default function Campers() {
               <MenuItem value={7}>Developer FullStack</MenuItem>
               <MenuItem value={8}>Develope FrontEnd</MenuItem>
             </Select>
+
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              sx={{
-                fontSize: "14px",
-                width: { xs: "100%", md: "300px" },
-                padding: "0",
-                color: "#fff",
-              }}
               value={ingles}
+              sx={{width:{xs:"100%", sm:"30%"}}}
               label="Age"
               onChange={handleChangeIngles}
             >
@@ -129,13 +107,18 @@ export default function Campers() {
             </Select>
           </Box>
           <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-            {data ? (
-              
+        
+            {
+            data ? (
               data.map((item, index) => (
                 <Camper
                   data={item}
                   key={index}
-                  color={item.info_usuario.genero=="Masculino"?"#2A4B9B":"#6C3483"}
+                  color={
+                    JSON.parse(item.info_usuario).genero === "masculino"
+                      ? "#2A4B9B"
+                      : "#6C3483"
+                  }
                 />
               ))
             ) : (
@@ -144,39 +127,38 @@ export default function Campers() {
           </Box>
         </Container>
         <img
+          className="figura"
           src={figura}
           style={{
             position: "absolute",
             top: "30%",
-            bottom:"0px",
-            right:"90px",
+            bottom: "0px",
+            right: "10px",
             zIndex: "1",
-            width:"100px"
-            
+            width: "100px",
           }}
         />
         <img
+          className="figura"
           src={figura}
           style={{
             position: "absolute",
             top: "50%",
-            bottom:"90px",
-            left:"90px",
+            bottom: "90px",
+            left: "-60px",
             zIndex: "1",
-            width:"100px"
-            
+            width: "100px",
           }}
         />
         <img
+          className="figura"
           src={figura}
           style={{
             position: "absolute",
             top: "90%",
-            bottom:"0px",
-            right:"250px",
-            zIndex: "1",
-            width:"100px"
-            
+            bottom: "0px",
+            right: "-50px",
+            width: "100px"
           }}
         />
       </Box>

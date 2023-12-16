@@ -1,6 +1,13 @@
 import { useState } from "react";
-import { Link } from 'react-router-dom';
-import { Box, Button, TextField, Typography, IconButton, InputAdornment } from "@mui/material";
+import { Link } from "react-router-dom";
+import {
+  Box,
+  Button,
+  TextField,
+  Typography,
+  IconButton,
+  InputAdornment,
+} from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 import photo from "../../assets/Img/Astronauta.png";
@@ -11,6 +18,7 @@ export default function Login() {
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
+
   return (
     <>
       <Box
@@ -31,6 +39,7 @@ export default function Login() {
         >
           <Box
             sx={{
+              
               width: "400px",
               padding: "30px 60px",
               display: "flex",
@@ -41,7 +50,7 @@ export default function Login() {
           >
             <Typography
               variant="h3"
-              sx={{ textAlign: "center", fontWeight: "700", color:"#333" }}
+              sx={{ textAlign: "center", fontWeight: "700", color: "#34495E" }}
             >
               Bienvendios
             </Typography>
@@ -52,20 +61,12 @@ export default function Login() {
                 fontWeight: "400",
                 fontSize: "16px",
                 margin: "20px 0",
-                color:"#333"
+                color: "#333",
               }}
             >
               Panel administrador de CampusLands
             </Typography>
-            <form
-              action=""
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+            <form>
               <TextField
                 id="standard-basic"
                 label="Usuario"
@@ -80,14 +81,17 @@ export default function Login() {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <IconButton onClick={handleTogglePassword} edge="end">
+                      <IconButton
+                        onClick={handleTogglePassword}
+                        edge="end"
+                      >
                         {showPassword ? <Visibility /> : <VisibilityOff />}
                       </IconButton>
                     </InputAdornment>
                   ),
                 }}
               />
-              <Box sx={{display:"flex", margin:"40px 0px" }}>
+              <Box sx={{ display: "flex", margin: "40px 0px" }}>
                 <Button
                   variant="contained"
                   component={Link}
@@ -95,7 +99,7 @@ export default function Login() {
                   sx={{
                     width: "130px",
                     background: "#2A4B9B",
-                    margin:"0 10px",
+                    margin: "0 10px",
                     "&:hover": {
                       background: "#1F3874",
                     },
@@ -106,11 +110,11 @@ export default function Login() {
                 <Button
                   variant="contained"
                   component={Link}
-                  to="/"
+                  to="/registred"
                   sx={{
                     width: "130px",
                     background: "#FED641",
-                    margin:"0 10px",
+                    margin: "0 10px",
                     "&:hover": {
                       background: "#F9C919",
                     },
@@ -119,9 +123,18 @@ export default function Login() {
                   Registrate
                 </Button>
               </Box>
-            </form>
+            </form> 
           </Box>
-          <Box sx={{ width: "450px", height: "100%", background: "#2A4B9B" }}>
+          <Box
+            sx={{
+              width: "450px",
+              height: "100%",
+              background: "#2A4B9B",
+              position: "relative",
+              transition: "transform 0.3s ease-in-out",
+              
+            }}
+          >
             <img
               src={photo}
               alt=""
