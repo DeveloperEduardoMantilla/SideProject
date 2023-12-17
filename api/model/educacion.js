@@ -17,6 +17,19 @@ export class educacionModel{
     static async getId(id){
         return new Promise((resolve,reject)=>{
             database.query(
+                "SELECT * FROM educacion WHERE id = ?",
+                [id],
+                (err,data)=>{
+                    if(err) return resolve({status:400, message: err.message})
+                    return resolve({status:200, message:data})
+                }
+            )
+        })
+    }
+
+    static async getCvId(id){
+        return new Promise((resolve,reject)=>{
+            database.query(
                 "SELECT cv.id AS idCv, JSON_ARRAYAGG(JSON_OBJECT( 'id', edu.id, 'titulo', edu.titulo, 'institucion', edu.institucion, 'fecha', edu.fecha, 'tipo', edu.tipo)) AS educaciones FROM educacion edu INNER JOIN cv ON edu.idCv = cv.id WHERE cv.id = ? GROUP BY cv.id",
                 [id],
                 (err,data)=>{

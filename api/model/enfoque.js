@@ -2,11 +2,11 @@ import { myConexion } from "../db/conexion.js";
 
 const database = await myConexion();
 
-export class experienciaModel{
+export class enfoqueModel{
     static async getAll(){
         return new Promise((resolve,reject)=>{
             database.query(
-                "SELECT cv.id AS idCv, JSON_ARRAYAGG(JSON_OBJECT( 'id', exp.id, 'cargo', exp.cargo, 'empresa', exp.empresa, 'descripcionLogros', exp.descripcionLogros, 'fecha', exp.fecha, 'cargo', exp.cargo)) AS experiencias FROM experiencia exp INNER JOIN cv ON exp.idCv = cv.id GROUP BY cv.id",
+                "SELECT * FROM enfoque",
                 (err,data)=>{
                     if (err) return resolve({status:400, message:err.message})
                     return resolve({status:200, message:data})
@@ -14,11 +14,10 @@ export class experienciaModel{
             )
         })
     }
-
     static async getId(id){
         return new Promise((resolve,reject)=>{
             database.query(
-                "SELECT * FROM experiencia WHERE id = ?",
+                "SELECT * FROM enfoque WHERE id = ?",
                 [id],
                 (err,data)=>{
                     if(err) return resolve({status:400, message: err.message})
@@ -28,23 +27,11 @@ export class experienciaModel{
         })
     }
 
-    static async getCvId(id){
-        return new Promise((resolve,reject)=>{
-            database.query(
-                "SELECT cv.id AS idCv, JSON_ARRAYAGG(JSON_OBJECT( 'id', exp.id, 'cargo', exp.cargo, 'empresa', exp.empresa, 'descripcionLogros', exp.descripcionLogros, 'fecha', exp.fecha, 'cargo', exp.cargo)) AS experiencias FROM experiencia exp INNER JOIN cv ON exp.idCv = cv.id WHERE cv.id = ? GROUP BY cv.id",
-                [id],
-                (err,data)=>{
-                    if(err) return resolve({status:400, message: err.message})
-                    return resolve({status:200, message:data})
-                }
-            )
-        })
-    }
-    static async postExperiencia(keys,values){
+    static async postEnfoque(keys,values){
         return new Promise((resolve, reject)=>{
             const placeholders = keys.map(() => "?").join(", ");
             database.query(
-                `INSERT INTO experiencia(${keys.map(key=>key).join(", ")}) VALUES (${placeholders})`,
+                `INSERT INTO enfoque(${keys.map(key=>key).join(", ")}) VALUES (${placeholders})`,
                 [...values],
                 (err,data)=>{
                     if(err) return resolve({status:400, message: err.message})
@@ -53,10 +40,10 @@ export class experienciaModel{
             )
         })
     }
-    static async putExperiencia(info, id){
+    static async putEnfoque(info, id){
         return new Promise((resolve, reject)=>{
             database.query(
-                `UPDATE experiencia SET ? WHERE id = ?`,
+                `UPDATE enfoque SET ? WHERE id = ?`,
                 [info, id],
                 (err,data)=>{
                     if(err) return resolve({status:400, message: err.message})
@@ -65,10 +52,10 @@ export class experienciaModel{
             )
         })
     }
-    static async deleteExperiencia(id){
+    static async deleteEnfoque(id){
         return new Promise((resolve,reject)=>{
             database.query(
-                "DELETE FROM experiencia WHERE id = ?",
+                "DELETE FROM enfoque WHERE id = ?",
                 [id],
                 (err,data)=>{
                     if(err) return resolve({status:400, message: err.message})

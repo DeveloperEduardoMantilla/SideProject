@@ -98,10 +98,35 @@ export const validateUsuarioUpdate = [
 export const validateUsuarioQuerys = [
     check("id")
         .optional()
+        .isInt().withMessage("el param/query 'id' debe ser tipo INT")
+]
+
+export const validateUsuarioEstado = [
+    body()
+    .custom((value, { req }) => {
+        const permitidas = ['id', 'estado', 'rol']; // Lista de propiedades permitidas
+  
+        // Verificar si hay propiedades no permitidas en el cuerpo
+        const propiedadesNoPermitidas = Object.keys(req.body).filter(prop => !permitidas.includes(prop));
+  
+        if (propiedadesNoPermitidas.length > 0) {
+          throw new Error(`Propiedades no permitidas: ${propiedadesNoPermitidas.join(', ')}`);
+        }
+  
+        return true; // Indica que la validación fue exitosa
+      })
+      .withMessage('El Body contiene propiedades no permitidas'),
+
+    check("id")
+        .optional()
         .isInt().withMessage("el param/query 'id' debe ser tipo INT"),
 
     check("estado")
         .optional()
-        .isInt().withMessage("la propiedad 'estado' debe ser tipo INT")
-
+        .isBoolean().withMessage("la propiedad 'estado' debe ser tipo Boolean"),
+    
+    check("rol")
+        .optional()
+        .isString().withMessage("la propiedad 'rol' debe ser tipo string")
+        .isIn(['admin', 'usuario']).withMessage("la propiedad 'rol' debe ser 'admin' o 'usuario'"),
 ]

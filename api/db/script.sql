@@ -5,7 +5,7 @@ USE sideProject;
 CREATE TABLE
     `usuario`(
         `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        `usuario` TEXT NOT NULL,
+        `usuario` TEXT NOT NULL ,
         `password` TEXT NOT NULL,
         `fechaRegistro` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         `rol` TEXT NOT NULL,
@@ -25,10 +25,8 @@ CREATE TABLE
 CREATE TABLE
     `cv`(
         `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        `foto` TEXT NOT NULL,
         `nombre` VARCHAR(70) NOT NULL,
         `idEnfoque` INT NOT NULL,
-        `palabrasClave` JSON NOT NULL,
         `acercaDeMi` TEXT NOT NULL,
         `skills` JSON NOT NULL,
         `idUsuario` INT NOT NULL,
@@ -155,10 +153,8 @@ VALUES ("Desarrollador Full-stack"), ("Desarrollador Backend");
 
 INSERT INTO
     cv (
-        foto,
         nombre,
         idEnfoque,
-        palabrasClave,
         acercaDeMi,
         skills,
         idUsuario,
@@ -170,10 +166,8 @@ INSERT INTO
         linkedin
     )
 VALUES (
-        'https://example.com/foto.jpg',
         'Juan Pérez García',
         2,
-        JSON_ARRAY('clave1', 'clave2', 'clave3'),
         'Soy un desarrollador de software con 5 años de experiencia. Estoy interesado en trabajar en proyectos de desarrollo web y móvil.',
         JSON_ARRAY(
             'habilidad1',
@@ -189,10 +183,8 @@ VALUES (
         'https://linkedin.com/in/juanperezgarcia'
     ),
     (
-        'https://example.com/foto.jpg',
         'Felipe Guzman',
         2,
-        JSON_ARRAY('clave1', 'clave2', 'clave3'),
         'Soy un desarrollador de software con 5 años de experiencia. Estoy interesado en trabajar en proyectos de desarrollo web y móvil.',
         JSON_ARRAY(
             'habilidad1',
@@ -208,10 +200,8 @@ VALUES (
         'https://linkedin.com/in/juanperezgarcia'
     ),
     (
-        'https://example.com/foto.jpg',
         'Carmelo García',
         2,
-        JSON_ARRAY('clave1', 'clave2', 'clave3'),
         'Soy un desarrollador de software con 5 años de experiencia. Estoy interesado en trabajar en proyectos de desarrollo web y móvil.',
         JSON_ARRAY(
             'habilidad1',
@@ -227,10 +217,8 @@ VALUES (
         'https://linkedin.com/in/juanperezgarcia'
     ),
     (
-        'https://example.com/foto.jpg',
         'Juan mantilla',
         2,
-        JSON_ARRAY('clave1', 'clave2', 'clave3'),
         'Soy un desarrollador de software con 5 años de experiencia. Estoy interesado en trabajar en proyectos de desarrollo web y móvil.',
         JSON_ARRAY(
             'habilidad1',
@@ -246,10 +234,8 @@ VALUES (
         'https://linkedin.com/in/juanperezgarcia'
     ),
     (
-        'https://example.com/foto.jpg',
         'Pedro Matajira',
         2,
-        JSON_ARRAY('clave1', 'clave2', 'clave3'),
         'Soy un desarrollador de software con 5 años de experiencia. Estoy interesado en trabajar en proyectos de desarrollo web y móvil.',
         JSON_ARRAY(
             'habilidad1',
@@ -396,3 +382,4 @@ VALUES ('Comunicación', 1),
  ('Comunicación', 4),
  ('Trabajo en equipo', 1);
 
+SELECT * FROM cv;

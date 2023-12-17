@@ -50,11 +50,11 @@ export class usuarioModel{
             )
         })
     }
-    static async putEstado(estado, id){
+    static async putEstado(info, id){
         return new Promise((resolve, reject)=>{
             database.query(
-                `UPDATE usuario SET estado = ? WHERE id = ?`,
-                [parseInt(estado), id],
+                `UPDATE usuario SET ? WHERE id = ?`,
+                [info, id],
                 (err,data)=>{
                     if(err) return resolve({status:400, message: err.message})
                     return resolve({status:200, message:"Modificado con Exito"})
@@ -74,11 +74,11 @@ export class usuarioModel{
             )
         })
     }
-    static async validateUsuario(correo){
+    static async validateUsuario(user){
         return new Promise((resolve,reject)=>{
             database.query(
-                "SELECT u.id, u.usuario, u.fechaRegistro, u.rol, u.genero, u.estado, u.telefono, u.correo, u.ciudad FROM usuario u WHERE u.correo = ?",
-                [correo],
+                "SELECT u.id, u.usuario, u.fechaRegistro, u.rol, u.genero, u.estado, u.telefono, u.correo, u.ciudad FROM usuario u WHERE u.usuario = ?",
+                [user],
                 (err,data)=>{
                     if(err) return resolve({status:400, message: err.message})
                     return resolve({status:200, message:data})
@@ -90,6 +90,19 @@ export class usuarioModel{
         return new Promise((resolve,reject)=>{
             database.query(
                 "SELECT u.id, u.usuario, u.fechaRegistro, u.rol, u.genero, u.estado, u.telefono, u.correo, u.ciudad FROM usuario u WHERE u.estado = ?",
+                [parseInt(estado)],
+                (err,data)=>{
+                    if(err) return resolve({status:400, message: err.message})
+                    return resolve({status:200, message:data})
+                }
+            )
+        })
+    }
+
+    static async getCantidadEstado(estado){
+        return new Promise((resolve,reject)=>{
+            database.query(
+                "SELECT COUNT(*) AS cantidad FROM usuario WHERE estado = ?",
                 [parseInt(estado)],
                 (err,data)=>{
                     if(err) return resolve({status:400, message: err.message})

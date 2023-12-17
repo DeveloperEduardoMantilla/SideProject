@@ -3,7 +3,7 @@ import { check, body } from "express-validator";
 export const validateCvPost = [
     body()
     .custom((value, { req }) => {
-        const permitidas = ['foto', 'nombre','idEnfoque', 'palabrasClave','acercaDeMi', 'skills', 'idioma', 'nivelIdioma','github', 'linkedin']; // Lista de propiedades permitidas
+        const permitidas = ['nombre','idEnfoque','acercaDeMi', 'skills', 'idUsuario', 'idioma', 'nivelIdioma','github', 'linkedin']; // Lista de propiedades permitidas
   
         // Verificar si hay propiedades no permitidas en el cuerpo
         const propiedadesNoPermitidas = Object.keys(req.body).filter(prop => !permitidas.includes(prop));
@@ -15,11 +15,7 @@ export const validateCvPost = [
         return true; // Indica que la validación fue exitosa
       })
     .withMessage('El Body contiene propiedades no permitidas'),
-    check("foto")
-        .notEmpty().withMessage("la propiedad 'foto' es obligatorio")
-        .isLength({min:1, max:300}).withMessage("la propiedad 'foto' debe tener maximo 300 caracteres")
-        .isString().withMessage("la propiedad 'foto' debe ser un string"),
-    
+
     check("nombre")
         .notEmpty().withMessage("la propiedad 'nombre' es obligatoria")
         .isLength({min:3, max:60}).withMessage("la 'nombre' debe tener maximo 60 cracteres")
@@ -28,10 +24,6 @@ export const validateCvPost = [
     check("idEnfoque")
         .notEmpty().withMessage("la propiedad 'idEnfoque' es obligatoria")
         .isInt().withMessage("la propiedad 'idEnfoque' debe ser tipo INT"),
-    
-    check("palabrasClave")
-        .notEmpty().withMessage("la propiedad 'palabrasClave' es obligatoria")
-        .isArray().withMessage("la propiedad 'palabrasClave' debe ser un array"),
 
     check("acercaDeMi")
         .notEmpty().withMessage("la propiedad 'acercaDeMi' es obligatoria")
@@ -42,6 +34,10 @@ export const validateCvPost = [
     check("skills")
         .notEmpty().withMessage("la propiedad 'skills' es obligatoria")
         .isArray().withMessage("la propiedad 'skills' debe ser un array"),
+    
+    check("idUsuario")
+        .optional()
+        .isInt().withMessage("la propiedad 'idUsuario' debe ser tipo INT"),
     
     check("idioma")
         .notEmpty().withMessage("la propiedad 'idioma' es obligatoria")
@@ -66,7 +62,7 @@ export const validateCvPost = [
 export const validateCvUpdate = [
     body()
     .custom((value, { req }) => {
-        const permitidas = ['foto', 'nombre','idEnfoque', 'palabrasClave','acercaDeMi', 'skills', 'idioma', 'nivelIdioma','github', 'linkedin','estado', 'accesoEditar']; // Lista de propiedades permitidas
+        const permitidas = ['nombre','idEnfoque','acercaDeMi', 'skills', 'idioma', 'nivelIdioma','github', 'linkedin','estado', 'accesoEditar']; // Lista de propiedades permitidas
   
         // Verificar si hay propiedades no permitidas en el cuerpo
         const propiedadesNoPermitidas = Object.keys(req.body).filter(prop => !permitidas.includes(prop));
@@ -78,11 +74,6 @@ export const validateCvUpdate = [
         return true; // Indica que la validación fue exitosa
       })
     .withMessage('El Body contiene propiedades no permitidas'),
-
-    check("foto")
-        .optional()
-        .isLength({min:1, max:300}).withMessage("la propiedad 'foto' debe tener maximo 300 caracteres")
-        .isString().withMessage("la propiedad 'foto' debe ser un string"),
     
     check("nombre")
         .optional()
@@ -92,16 +83,11 @@ export const validateCvUpdate = [
     check("idEnfoque")
       .optional()
       .isInt().withMessage("la propiedad 'idEnfoque' debe ser tipo INT"),
-    
-    check("palabrasClave")
-        .optional()
-        .isArray().withMessage("la propiedad 'palabrasClave' debe ser un array"),
 
     check("acercaDeMi")
         .optional()
         .isString().withMessage("la propiedad 'acercaDeMi' debe ser un string")
         .isLength({ min: 1, max: 400}).withMessage("la propiedad 'acercaDeMi' debe tener maximo 400 caracteres"),
-
     
     check("skills")
         .optional()
@@ -128,11 +114,11 @@ export const validateCvUpdate = [
 
     check("estado")
         .optional()
-        .isInt().withMessage("la propiedad 'estado' debe ser tipo INT"),
+        .isBoolean().withMessage("la propiedad 'estado' debe ser tipo Boolean"),
 
     check("accesoEditar")
         .optional()
-        .isInt().withMessage("la propiedad 'accesoEditar' debe ser tipo INT")
+        .isBoolean().withMessage("la propiedad 'accesoEditar' debe ser tipo Boolean")
 ]
 
 

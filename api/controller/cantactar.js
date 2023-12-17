@@ -1,4 +1,6 @@
 import { contactarModel } from "../model/contactar.js";
+import { validationResult } from "express-validator";
+
 
 export class contactarController{
     static async getAll(req,res){

@@ -3,7 +3,6 @@ export const validatePermisos = (requiredPermission) => async (req, res, next) =
     if (req.data) {
         rol = req.data.payload.rol;
     }
-    
 
     if (!requiredPermission.includes("*")) {
         if(!requiredPermission.includes(rol)){
