@@ -1,0 +1,24 @@
+.MuiTable-root thead tr th{
+  padding: 0px !important;
+}
+
+.MuiTableCell-root {
+  padding: 10px !important;
+}
+.css-sghohy-MuiButtonBase-root-MuiButton-root {
+  padding: 0px !important;
+}
+.tss-178gktx-MUIDataTableHeadCell-contentWrapper{
+  display: flex;
+  justify-content: center;
+}
+.css-1ex1afd-MuiTableCell-root{
+  padding: 5px 20px !important;
+  text-align: center !important;
+}
+.css-nfmglb-MuiTableCell-root{
+    padding: 0 !important;
+}
+.css-11mde6h-MuiPaper-root{
+  width: 100% !important;
+}
