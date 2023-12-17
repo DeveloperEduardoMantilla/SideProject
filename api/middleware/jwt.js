@@ -39,7 +39,7 @@ const generateToken =  async(req,res,next) =>{
 const verifyToken = () => async (req, res, next) => {
     const { authorization } = req.headers;
     if (!authorization)
-      return res.status(400).json({ status: 400, message: "Porfavor Generar Token" });
+      return res.status(400).json({ status: 400, message: "Por favor Generar Token" });
       try {
         const encoder = new TextEncoder();
         req.data = await jwtVerify(
