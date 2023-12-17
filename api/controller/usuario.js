@@ -24,12 +24,19 @@ export class usuarioController{
         res.status(result.status).send(result)
     }
 
+    static async getCantidadEstado(req,res){
+
+        const {estado} = req.query;
+        const result = await usuarioModel.getCantidadEstado(estado);
+        res.status(result.status).send(result)
+    }
+
     static async postUsuario(req,res){
         //validar si hay errores
         const errors = validationResult(req)
         if(!errors.isEmpty()) return res.status(400).send({status:400, message:errors.errors[0].msg})
         //validar si el usuario que queremos agregar ya existe
-        const dataValidate = await usuarioModel.validateUsuario(req.body.correo)
+        const dataValidate = await usuarioModel.validateUsuario(req.body.usuario)
         if(dataValidate.message.length != 0) return res.status(400).send({status:400, message:"Error, usuario ya existente"})
         req.body.estado = false
         req.body.rol = "usuario"
@@ -47,9 +54,9 @@ export class usuarioController{
         const dataValidate = await usuarioModel.getId(id)
         if(dataValidate.message.length == 0) return res.status(400).send({status:400, message:"Error, usuario a modificar Inexistente"})
 
-        if(req.body.correo){
-            if(dataValidate.message[0].correo != req.body.correo){
-                const validateCorreo = await usuarioModel.validateUsuario(req.body.correo)
+        if(req.body.usuario){
+            if(dataValidate.message[0].usuario != req.body.usuario){
+                const validateCorreo = await usuarioModel.validateUsuario(req.body.usuario)
                 if(validateCorreo.message.length != 0) return res.status(400).send({status:400, message:"Error, usuario ya existente"})
             }
         }
@@ -65,7 +72,7 @@ export class usuarioController{
         const dataValidate = await usuarioModel.getId(id)
         if(dataValidate.message.length == 0) return res.status(400).send({status:400, message:"Error, usuario a modificar Inexistente"})
 
-        const result = await usuarioModel.putEstado(req.body.estado, id);
+        const result = await usuarioModel.putEstado(req.body, id);
         res.status(result.status).send(result)
     }
     static async deleteUsuario(req,res){

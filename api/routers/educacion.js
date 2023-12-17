@@ -5,10 +5,10 @@ import { educacionController } from "../controller/educacion.js";
 import { verifyToken } from "../middleware/jwt.js";
 const appEducacion = Router(); 
 
-appEducacion.get("/", validatePermisos(["*"]), educacionController.getAll)
-appEducacion.get("/:id", validatePermisos(["*"]), validateEducacionQuerys, educacionController.getId)
-appEducacion.post("/", verifyToken(), validatePermisos(["admin", "camper"]), validateEducacionPost, educacionController.postEducacion)
-appEducacion.put("/:id", verifyToken(), validatePermisos(["admin", "camper"]), validateEducacionQuerys, validateEducacionUpdate, educacionController.putEducacion)
-appEducacion.delete("/:id", verifyToken(), validatePermisos(["admin", "camper"]), validateEducacionQuerys, educacionController.deleteEducacion)
+appEducacion.get("/", validatePermisos(["*"]), validateEducacionQuerys, educacionController.getAll)
+appEducacion.get("/cv", validatePermisos(["*"]), validateEducacionQuerys, educacionController.getCvId)
+appEducacion.post("/", verifyToken(), validatePermisos(["admin", "usuario"]), validateEducacionPost, educacionController.postEducacion)
+appEducacion.put("/", verifyToken(), validatePermisos(["admin", "usuario"]), validateEducacionQuerys, validateEducacionUpdate, educacionController.putEducacion)
+appEducacion.delete("/", verifyToken(), validatePermisos(["admin", "usuario"]), validateEducacionQuerys, educacionController.deleteEducacion)
 
 export default appEducacion;

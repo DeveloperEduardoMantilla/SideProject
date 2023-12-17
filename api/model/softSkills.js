@@ -2,11 +2,11 @@ import { myConexion } from "../db/conexion.js";
 
 const database = await myConexion();
 
-export class experienciaModel{
+export class softSkillsModel{
     static async getAll(){
         return new Promise((resolve,reject)=>{
             database.query(
-                "SELECT cv.id AS idCv, JSON_ARRAYAGG(JSON_OBJECT( 'id', exp.id, 'cargo', exp.cargo, 'empresa', exp.empresa, 'descripcionLogros', exp.descripcionLogros, 'fecha', exp.fecha, 'cargo', exp.cargo)) AS experiencias FROM experiencia exp INNER JOIN cv ON exp.idCv = cv.id GROUP BY cv.id",
+                "SELECT cv.id AS idCv, JSON_ARRAYAGG(JSON_OBJECT('id', sof.id, 'competencia', sof.compentencia)) AS SoftSkills FROM softSkills sof INNER JOIN cv ON sof.idCv = cv.id GROUP BY cv.id",
                 (err,data)=>{
                     if (err) return resolve({status:400, message:err.message})
                     return resolve({status:200, message:data})
@@ -18,7 +18,7 @@ export class experienciaModel{
     static async getId(id){
         return new Promise((resolve,reject)=>{
             database.query(
-                "SELECT * FROM experiencia WHERE id = ?",
+                "SELECT * FROM softSkills WHERE id = ?",
                 [id],
                 (err,data)=>{
                     if(err) return resolve({status:400, message: err.message})
@@ -31,7 +31,7 @@ export class experienciaModel{
     static async getCvId(id){
         return new Promise((resolve,reject)=>{
             database.query(
-                "SELECT cv.id AS idCv, JSON_ARRAYAGG(JSON_OBJECT( 'id', exp.id, 'cargo', exp.cargo, 'empresa', exp.empresa, 'descripcionLogros', exp.descripcionLogros, 'fecha', exp.fecha, 'cargo', exp.cargo)) AS experiencias FROM experiencia exp INNER JOIN cv ON exp.idCv = cv.id WHERE cv.id = ? GROUP BY cv.id",
+                "SELECT cv.id AS idCv, JSON_ARRAYAGG(JSON_OBJECT('id', sof.id, 'competencia', sof.compentencia)) AS SoftSkills FROM softSkills sof INNER JOIN cv ON sof.idCv = cv.id WHERE cv.id = ? GROUP BY cv.id",
                 [id],
                 (err,data)=>{
                     if(err) return resolve({status:400, message: err.message})
@@ -40,11 +40,11 @@ export class experienciaModel{
             )
         })
     }
-    static async postExperiencia(keys,values){
+    static async postSoftSkills(keys,values){
         return new Promise((resolve, reject)=>{
             const placeholders = keys.map(() => "?").join(", ");
             database.query(
-                `INSERT INTO experiencia(${keys.map(key=>key).join(", ")}) VALUES (${placeholders})`,
+                `INSERT INTO softSkills(${keys.map(key=>key).join(", ")}) VALUES (${placeholders})`,
                 [...values],
                 (err,data)=>{
                     if(err) return resolve({status:400, message: err.message})
@@ -53,10 +53,10 @@ export class experienciaModel{
             )
         })
     }
-    static async putExperiencia(info, id){
+    static async putSoftSkills(info, id){
         return new Promise((resolve, reject)=>{
             database.query(
-                `UPDATE experiencia SET ? WHERE id = ?`,
+                `UPDATE softSkills SET ? WHERE id = ?`,
                 [info, id],
                 (err,data)=>{
                     if(err) return resolve({status:400, message: err.message})
@@ -65,10 +65,10 @@ export class experienciaModel{
             )
         })
     }
-    static async deleteExperiencia(id){
+    static async deleteSoftSkills(id){
         return new Promise((resolve,reject)=>{
             database.query(
-                "DELETE FROM experiencia WHERE id = ?",
+                "DELETE FROM softSkills WHERE id = ?",
                 [id],
                 (err,data)=>{
                     if(err) return resolve({status:400, message: err.message})
