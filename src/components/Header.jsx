@@ -21,7 +21,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [logo, setLogo] = useState(logoBlanco);
   const headerStyle = {
-    background:"transparent",
+    background: "transparent",
     color: "#fff",
     boxShadow: "none",
     position: "fixed",
@@ -103,8 +103,11 @@ export default function Header() {
               <Typography
                 variant="h5"
                 sx={{
+                  width: {xs:"100%", sm:"auto"},
+                  display: {xs:"flex", md:"block"},
+                  justifyContent: "end",
                   flexGrow: 1,
-                  height: {xs:"70px",md:"80px"},
+                  height: { xs: "60px", md: "80px" },
                 }}
               >
                 <img
@@ -129,7 +132,7 @@ export default function Header() {
                       letterSpacing: "0px",
                       "&:hover": {
                         borderBottom: "2px solid #ECA401",
-                        background:"transparent"
+                        background: "transparent",
                       },
                     }}
                   >

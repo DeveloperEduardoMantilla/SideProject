@@ -13,7 +13,7 @@ export default function Camper(props) {
   })
   // const skillsToShow = data.skills.slice(0, 5);
   return (
-    <Box className="camper_card">
+    <Box className="camper_card" sx={{width:{xs:"100%", sm:"300px", md:"23%", lg:"250px"}}}>
       <Box
         className="camper_img"
         sx={{ background: color }}

@@ -51,8 +51,8 @@ export default function Campers() {
   };
   return (
     <>
-      <Box sx={{ position: "relative", padding: "60px 0 120px 0" }}>
-        <Container>
+      <Box sx={{ position: "relative", padding: "0px 0 100px 0"}}>
+        <Container sx={{background:"#fff"}}>
           <Typography
             sx={{
               fontSize: "60px",
@@ -106,8 +106,7 @@ export default function Campers() {
               <MenuItem value={12}>B1</MenuItem>
             </Select>
           </Box>
-          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-        
+          <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent:{xs:"center", sm:"start"} }}>
             {
             data ? (
               data.map((item, index) => (

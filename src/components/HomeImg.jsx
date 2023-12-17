@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
-import imgHome from "../assets/Img/img33.jpg";
+import imgHome from "../assets/Img/img25.jpg";
 import '../assets/css/Home.css';
 export default function HomeImg() {
   return (
@@ -45,7 +45,7 @@ export default function HomeImg() {
               fontSize: {xs:"40px", md:"55px"},
             }}
           >
-            CampusLands
+            <span style={{color:"#ECA401"}}>Campus</span>Lands
           </Typography>
           <Typography
             variant="h6"
@@ -64,10 +64,12 @@ export default function HomeImg() {
             formación en programación y empleabilidad.
           </Typography>
           <Button
-            variant="contained"
+            variant="outlined"
             sx={{
               marginTop: "20px",
-              background: "#ECA401",
+              color:"#fff",
+              border:"1px solid #ECA401",
+              background:"#ECA401",
               transition:"all ease-in-out 0.3s",
               "&:hover": {
                 background: "#D59402",
