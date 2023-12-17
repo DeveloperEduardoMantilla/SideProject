@@ -89,7 +89,7 @@ export default function Login() {
       title: 'Usuario registrado correctamente',
       position: 'bottom-end',
       width: '20rem',
-      timer: 3000,
+      timer: 5000,
       toast: true,
       timerProgressBar: true,
       showConfirmButton: false,

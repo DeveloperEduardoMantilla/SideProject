@@ -12,7 +12,7 @@ export default function Address() {
           sx={{
             display: "flex",
             justifyContent: "end",
-            color: "#333",
+            color: "#34495E",
             fontSize: "40px",
             fontWeight: "800",
             padding: "30px 60px 10px 0",

@@ -1,72 +1,86 @@
-.camper_card{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 20px 20px 0 0;
-    overflow: hidden;
-    background-color: #fff;
-    border-radius: 3px;
-    box-shadow: -5px 5px 10px #dbdada;
-    color:#393939;
+.camper_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 20px 0 0;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: -5px 5px 10px #dbdada;
+  color: #393939;
 }
-.camper_card:hover{
-    cursor: pointer;
+.camper_card:hover {
+  cursor: pointer;
 }
-.camper_card .camper_img{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px 0px 20px 0;
-    position: relative;
+.camper_card .camper_img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0px 20px 0;
+  position: relative;
 }
-.camper_img img{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border:3px solid #fff;
-    margin: 5px 0;
+.camper_img img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  margin: 5px 0;
 }
 
-.camper_data{
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 20px;
+.camper_data {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
 }
-.caja_informacion{
-    position:relative;
-    top: -20px;
-    background-color: #fff;
-    box-shadow: 0px 5px 15px #ccc;
-    padding: 10px 5px;
-    width: 230px;
-    text-align: center;
+.caja_informacion {
+  position: relative;
+  top: -20px;
+  background-color: #fff;
+  box-shadow: 0px 5px 15px #ccc;
+  padding: 10px 5px;
+  width: 230px;
+  text-align: center;
 }
-.caja_informacion .name{
-    font-weight: 600;
-    font-size: 18px;
+.caja_informacion .name {
+  font-weight: 600;
+  font-size: 18px;
 }
-.caja_habilidades{
-    width: 80%;
+.caja_habilidades {
+  width: 80%;
 }
-.caja_habilidades .nivel_Ingles{
-    font-weight: 600;
-    font-size: 14px;
-    color: #333;
+.caja_habilidades .nivel_Ingles {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
 }
-.caja_Skills{
-    display: flex;
-    flex-wrap: wrap;
+.caja_Skills {
+  display: flex;
+  flex-wrap: wrap;
 }
-.skillsCamper{
-    margin: 0 5px 5px 0;
-    padding: 2px 6px;
-    border-radius: 5px;
-    font-size: 11px;
+.skillsCamper {
+  margin: 0 5px 5px 0;
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-size: 11px;
+}
+
+@keyframes rotateAstronaut {
+  0%,
+  100% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+.astronaut_animation {
+  animation: rotateAstronaut 5s infinite linear;
 }

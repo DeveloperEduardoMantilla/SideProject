@@ -12,7 +12,7 @@ import {
 import Camper from "../../components/Camper.jsx";
 import figura from "../../assets/Img/figura.png";
 import { useState, useEffect } from "react";
-import fondoCampers from "../../assets/Img/fondoCampers.svg";
+import astronautaTriste from "../../assets/Img/astronautaTriste.png";
 import "../../assets/css/Camper.css";
 
 export default function Campers() {
@@ -21,15 +21,11 @@ export default function Campers() {
   const [ruta, setRuta] = useState(5);
   const [ingles, setIngles] = useState(9);
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const campers = await fetch("http://127.17.0.97:5017/cv");
         const dataCampers = await campers.json();
-
-        // const response = await fetch("../../../server/campers.json");
-        // const dataRes = await response.json();
         setData(dataCampers.message);
       } catch (e) {
         console.log("Error => ", e);
@@ -51,24 +47,24 @@ export default function Campers() {
   };
   return (
     <>
-      <Box sx={{ position: "relative", padding: "0px 0 100px 0"}}>
-        <Container sx={{background:"#fff"}}>
+      <Box sx={{ position: "relative", padding: "0px 0 100px 0" }}>
+        <Container sx={{ background: "#fff" }}>
           <Typography
             sx={{
-              fontSize: "60px",
-              fontWeight: "600",
+              fontSize: "40px",
+              fontWeight: "800",
               paddingBottom: "10px",
-              color: "#333333",
+              color: "#34495E",
             }}
           >
             Campers
           </Typography>
-          <Box sx={{display:"flex", flexWrap:"wrap"}}>
+          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={tecnologia}
-              sx={{width:{xs:"100%", sm:"30%"}}}
+              sx={{ width: { xs: "100%", sm: "30%" } }}
               label="Age"
               onChange={handleChangeTecnologia}
             >
@@ -82,7 +78,10 @@ export default function Campers() {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={ruta}
-              sx={{width:{xs:"100%", sm:"30%"},margin:{xs:"10px 0", sm:"0px 10px"}}}
+              sx={{
+                width: { xs: "100%", sm: "30%" },
+                margin: { xs: "10px 0", sm: "0px 10px" },
+              }}
               label="Age"
               onChange={handleChangeRuta}
             >
@@ -96,7 +95,7 @@ export default function Campers() {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={ingles}
-              sx={{width:{xs:"100%", sm:"30%"}}}
+              sx={{ width: { xs: "100%", sm: "30%" } }}
               label="Age"
               onChange={handleChangeIngles}
             >
@@ -106,9 +105,14 @@ export default function Campers() {
               <MenuItem value={12}>B1</MenuItem>
             </Select>
           </Box>
-          <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent:{xs:"center", sm:"start"} }}>
-            {
-            data ? (
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: { xs: "center", lg: "start" },
+            }}
+          >
+            {data.length > 0 ? (
               data.map((item, index) => (
                 <Camper
                   data={item}
@@ -121,7 +125,10 @@ export default function Campers() {
                 />
               ))
             ) : (
-              <p>Cargando datos...</p>
+              <Box sx={{width:"100%", minHeight:"200px", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
+                <Typography variant="body1" sx={{fontWeight:"400", fontSize:"18px"}}>No hay datos disponibles</Typography>
+                <img width="100px" src={astronautaTriste} alt="" className="astronaut_animation" />
+              </Box>
             )}
           </Box>
         </Container>
@@ -157,7 +164,7 @@ export default function Campers() {
             top: "90%",
             bottom: "0px",
             right: "-50px",
-            width: "100px"
+            width: "100px",
           }}
         />
       </Box>

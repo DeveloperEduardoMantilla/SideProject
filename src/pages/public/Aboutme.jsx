@@ -5,7 +5,7 @@ import PersonIcon from "@mui/icons-material/Person";
 
 export default function Aboutme() {
   return (
-    <Box sx={{ width:"100%", padding: "70px 0", position: "relative" }}>
+    <Box sx={{ width:"100%", padding: {xs:"60px 0", md:"120px 0"}, position: "relative" }}>
       <Container>
         <Box
           sx={{
@@ -15,10 +15,11 @@ export default function Aboutme() {
             flexWrap: "wrap",
           }}
         >
-          <Box sx={{ width: { xs: "100%", md: "600px",  } }}>
+          <Box sx={{ width: { xs: "100%", md:"800px", lg:"600px"  } }}>
             <Typography
               sx={{
-                fontSize: { xs: "19px", md: "30px", lg: "40px" },
+                fontSize: { xs: "30px", sm:"30px", md: "35px", lg: "40px" },
+                textAlign:{xs:"center", lg:"start"},
                 fontWeight: "800",
                 lineHeight:"40px",
                 color: "#34495E",
@@ -28,7 +29,7 @@ export default function Aboutme() {
             </Typography>
             <Typography
               sx={{
-                fontSize: "16px",
+                fontSize: { xs: "14px", md: "15px", lg: "16px" },
                 paddingTop: "15px",
                 textAlign: { xs: "justify", md: "justify", ld: "start" },
                 background:"#fff"
@@ -41,10 +42,10 @@ export default function Aboutme() {
           </Box>
           <Box
             sx={{
-              width: {xs: "100%", md: "400px", lg: "450px" },
-              height:{xs:"200px", sm:"auto"},
-              margin:{xs:"30px 0 ", md:"0"},
-              paddingTop: { xs: "25px", sm: "0" },
+              width: {xs: "100%", md: "800px", lg: "450px" },
+              height:{xs:"200px", md:"250px"},
+              margin:{xs:"10px 0 ", md:"0"},
+              paddingTop: { xs: "25px", lg: "0"},
             }}
           >
             <img
@@ -54,7 +55,7 @@ export default function Aboutme() {
                 boxShadow: "5px 10px 15px rgba(0,0,0,0.3)",
                 height: "100%",
                 objectFit: "cover",
-                objectPosition: "top",
+                objectPosition: "center",
               }}
             />
           </Box>

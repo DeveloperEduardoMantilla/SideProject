@@ -8,12 +8,8 @@ import { useEffect } from "react";
 export default function Camper(props) {
   const { data, color } = props;
 
-  useEffect(()=>{
-    console.log(data);
-  })
-  // const skillsToShow = data.skills.slice(0, 5);
   return (
-    <Box className="camper_card" sx={{width:{xs:"100%", sm:"300px", md:"23%", lg:"250px"}}}>
+    <Box className="camper_card" sx={{width:{xs:"100%", sm:"250px", lg:"250px"}}}>
       <Box
         className="camper_img"
         sx={{ background: color }}
