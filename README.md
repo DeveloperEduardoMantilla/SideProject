@@ -170,7 +170,18 @@ se debe tener en cuenta que los endpoints que tiene permiso **Global** se pueden
 
   **GET** `http://<host>:<port>/cv/user?id=<'id'>`
 
-  
+
+- filtrar los CV [Global]
+
+  **Tecnologia**  string
+  **GET** `http://<host>:<port>/cv/filter?tecn=<'tecn'>`
+
+  **RUTA** int  
+  **GET** `http://<host>:<port>/cv/filter?rut=<'rut'>`
+
+  **INGLES** string  
+  **GET** `http://<host>:<port>/cv/filter?ing=<'ing'>`
+
 
 - obtener los CV dependiendo el estado [Admin]
 

@@ -121,6 +121,39 @@ export const validateCvUpdate = [
         .isBoolean().withMessage("la propiedad 'accesoEditar' debe ser tipo Boolean")
 ]
 
+export const validateCvFilter = [
+    body()
+    .custom((value, { req }) => {
+        const permitidas = ['tecn','rut','ing']; // Lista de propiedades permitidas
+  
+        // Verificar si hay propiedades no permitidas en el cuerpo
+        const propiedadesNoPermitidas = Object.keys(req.body).filter(prop => !permitidas.includes(prop));
+  
+        if (propiedadesNoPermitidas.length > 0) {
+          throw new Error(`Propiedades no permitidas: ${propiedadesNoPermitidas.join(', ')}`);
+        }
+  
+        return true; // Indica que la validación fue exitosa
+      })
+    .withMessage('El Body contiene propiedades no permitidas'),
+    
+    check("tecn")
+        .optional()
+        .isLength({min:1, max:12}).withMessage("el query 'tecn' debe tener maximo 12 cracteres")
+        .isString().withMessage("el query 'tecn' debe ser un string"),
+
+    check("ing")
+        .optional()
+        .isLength({min:1, max:4}).withMessage("el query 'ing' debe tener maximo 4 cracteres")
+        .isString().withMessage("el query 'ing' debe ser un string"),
+
+    check("rut")
+        .optional()
+        .isInt().withMessage("el query 'rut' debe ser tipo INT")
+    
+   
+]
+
 
 
 export const validateCvQuerys = [
