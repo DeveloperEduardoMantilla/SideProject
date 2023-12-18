@@ -61,8 +61,11 @@ export default function TableUser() {
 
   useEffect(() => {
     const dataUser = async () => {
-      const data = await fetch("http://127.17.0.97:5017/usuario");
-      const userData = await data.json();
+      const sever = JSON.parse(import.meta.env.VITE_MY_SERVER);
+      const userData = await (
+        await fetch(`http://${sever.host}:${sever.port}/usuario`)
+      ).json();
+
       const formattedData = userData.message.map((user) => [
         user.usuario,
         user.rol,
@@ -95,7 +98,7 @@ export default function TableUser() {
       <Box
         sx={{
           display: "flex",
-          width:"100%",
+          width: "100%",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
@@ -103,7 +106,18 @@ export default function TableUser() {
           margin: "30px 0",
         }}
       >
-        <Typography variant="h4" sx={{fontWeight:"600", color:"#34495E", marginBottom:"20px", textAlign:"start", width:"100%"}}>Lista Usuarios</Typography>
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: "600",
+            color: "#34495E",
+            marginBottom: "20px",
+            textAlign: "start",
+            width: "100%",
+          }}
+        >
+          Lista Usuarios
+        </Typography>
         <MUIDataTable
           data={dataUser}
           columns={columns}

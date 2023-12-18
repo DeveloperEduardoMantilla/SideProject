@@ -42,8 +42,11 @@ export default function TablePermitApplication() {
 
   useEffect(() => {
     const dataUser = async () => {
-      const data = await fetch("http://127.17.0.97:5017/usuario");
-      const userData = await data.json();
+      const sever = JSON.parse(import.meta.env.VITE_MY_SERVER);
+      const userData = await (
+        await fetch(`http://${sever.host}:${sever.port}/usuario`)
+      ).json();
+
       const formattedData = userData.message.map((user) => [
         user.usuario,
         user.rol,

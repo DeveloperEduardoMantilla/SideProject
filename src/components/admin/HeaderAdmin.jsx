@@ -64,6 +64,11 @@ export default function Header() {
       title: "Perfil",
       path: "#",
       icon: <LoginIcon />,
+    },
+    {
+      title: "Salir",
+      path: "/salir",
+      icon: <LoginIcon />,
     }
   ];
   return (

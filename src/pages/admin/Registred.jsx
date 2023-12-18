@@ -1,4 +1,4 @@
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -77,39 +77,41 @@ export default function Login() {
     let options = {
       method: "POST",
       headers: new Headers({
-          "Content-Type": "application/json"
+        "Content-Type": "application/json",
       }),
-      body: JSON.stringify(formData)
-    }
+      body: JSON.stringify(formData),
+    };
     try {
-      const sever =JSON.parse(import.meta.env.VITE_MY_SERVER);
-      const response = await (await fetch(`http://${sever.host}:${sever.port}/usuario`, options)).json();
+      const sever = JSON.parse(import.meta.env.VITE_MY_SERVER);
+      const response = await (
+        await fetch(`http://${sever.host}:${sever.port}/usuario`, options)
+      ).json();
 
-      if(response.status === 200){
+      if (response.status === 200) {
         Swal.fire({
-          icon: 'success',
+          icon: "success",
           title: response.message,
-          position: 'bottom-end',
-          width: '20rem',
+          position: "bottom-end",
+          width: "20rem",
           timer: 3000,
           toast: true,
           timerProgressBar: true,
           showConfirmButton: false,
-        })
-      } else{
+        });
+      } else {
         Swal.fire({
-          icon: 'error',
+          icon: "error",
           title: response.message,
-          position: 'bottom-end',
-          width: '20rem',
+          position: "bottom-end",
+          width: "20rem",
           timer: 3000,
           toast: true,
           timerProgressBar: true,
           showConfirmButton: false,
-        })
+        });
       }
     } catch (error) {
-      alert(error.message)
+      alert(error.message);
     }
 
     setFormData({
@@ -120,9 +122,7 @@ export default function Login() {
       correo: "",
       ciudad: "",
     });
-    
   };
- 
 
   return (
     <>
@@ -201,6 +201,17 @@ export default function Login() {
                 increíbles oportunidades profesionales. Tu viaje hacia el éxito
                 comienza aquí.
               </Typography>
+              <Typography color="red" sx={{width:"100%", textAlign:"start", fontWeight:"600"}}>
+                Importante
+              </Typography>
+              <Typography
+                variant="caption"
+                color="#34495E"
+                sx={{marginBottom:"10px"}}
+              >
+                La contraseña debe tener al menos 8 caracteres e incluir
+                símbolos y números.
+              </Typography>
               <form onSubmit={handleSubmit}>
                 <Grid
                   container
@@ -262,6 +273,7 @@ export default function Login() {
                       value={formData.password}
                       onChange={handleChange}
                     />
+
                     {errors.password && (
                       <Typography
                         variant="caption"
@@ -384,7 +396,7 @@ export default function Login() {
                     <Box
                       sx={{
                         display: "flex",
-                        flexWrap:"wrap",
+                        flexWrap: "wrap",
                         justifyContent: "center",
                         margin: "40px 0px",
                       }}
@@ -393,8 +405,8 @@ export default function Login() {
                         variant="contained"
                         onClick={handleSubmit}
                         sx={{
-                          width: {xs:"100%", sm:"130px"},
-                          textTransform:"capitalize",
+                          width: { xs: "100%", sm: "130px" },
+                          textTransform: "capitalize",
                           background: "#2A4B9B",
                           margin: "0 10px",
                           "&:hover": {
@@ -409,11 +421,11 @@ export default function Login() {
                         component={Link}
                         to="/login"
                         sx={{
-                          width: {xs:"100%", sm:"130px"},
-                      
+                          width: { xs: "100%", sm: "130px" },
+
                           background: "#F4D03F",
-                          textTransform:"capitalize",
-                          margin: {xs:"10px", sm:"0 10px"},
+                          textTransform: "capitalize",
+                          margin: { xs: "10px", sm: "0 10px" },
                           "&:hover": {
                             background: "#F4D03F",
                           },
@@ -426,15 +438,17 @@ export default function Login() {
                         component={Link}
                         to="/"
                         sx={{
-                          width: {xs:"100%", sm:"130px"},
+                          width: { xs: "100%", sm: "130px" },
                           background: "#2A4B9B",
-                          textTransform:"capitalize",
+                          textTransform: "capitalize",
                           margin: "0 10px",
                           "&:hover": {
                             background: "#2A4B9B",
                           },
                         }}
-                      >Inicio</Button>
+                      >
+                        Inicio
+                      </Button>
                     </Box>
                   </Grid>
                 </Grid>

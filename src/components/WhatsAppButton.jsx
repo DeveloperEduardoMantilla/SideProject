@@ -27,8 +27,8 @@ function WhatsAppButton() {
     <Box
       sx={{
         position: "fixed",
-        right: "10px",
-        top: "70%",
+        right: "-5px",
+        top: "80%",
         animation: `${bounce} 2s infinite`,
       }}
     >
