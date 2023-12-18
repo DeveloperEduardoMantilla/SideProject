@@ -19,6 +19,9 @@ appExpress.use(limitRequest())
 appExpress.all("/login", generateToken, (req, res) => {
     res.status(req.data.status).send(req.data)
 })
+appExpress.get("/dataToken", verifyToken(), (req, res) => {
+    res.status(200).send({status:200, message: req.data})
+})
 appExpress.use("/usuario", appUsuario)
 appExpress.use("/cv", appCv)
 appExpress.use("/experiencia", appExperiencia)

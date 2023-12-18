@@ -16,8 +16,8 @@ const generateToken =  async(req,res,next) =>{
         if (err) return res.status(400).send({status:400, message: err.message})
         if (data.length == 0) return res.status(400).send({status:400, message: "Usuario no encontrado"})
         database.query(
-        "SELECT * FROM usuario u WHERE u.password = ?",
-        [req.body.password],
+        "SELECT * FROM usuario u WHERE u.usuario = ? AND u.password = ?",
+        [req.body.usuario, req.body.password],
         async (err2,data2)=>{
             if (err2) return res.status(400).send({status:400, message: err2.message})
             if (data2.length == 0) return res.status(400).send({status:400, message: "Password Incorrecta"})

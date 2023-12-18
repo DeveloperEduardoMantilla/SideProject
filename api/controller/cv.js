@@ -1,4 +1,7 @@
 import { cvModel } from "../model/cv.js";
+import { educacionModel } from "../model/educacion.js";
+import { experienciaModel } from "../model/experiencia.js";
+import { softSkillsModel } from "../model/softSkills.js";
 import { validationResult } from "express-validator";
 
 export class cvController{
@@ -9,6 +12,32 @@ export class cvController{
     
             const result = await cvModel.getId(req.query.id);
             return res.status(result.status).send(result)
+        }
+
+        const result = await cvModel.getAll();
+        res.status(result.status).send(result)
+    }
+
+    static async getCvUser(req,res){
+        if(req.query.id){
+            const errors = validationResult(req)
+            if(!errors.isEmpty()) return res.status(400).send({status:400, message:errors.errors[0].msg})
+
+            const resultCv = await cvModel.getCvUser(req.query.id);
+            const newId = resultCv.message[0].id
+            const resultEducacion = await educacionModel.getCvId(newId);
+            const resultExperiencia = await experienciaModel.getCvId(newId);
+            const resultSkills = await softSkillsModel.getCvId(newId);
+
+            const objeto = {
+                cv: resultCv.message[0],
+                educacion: resultEducacion.message[0].educaciones,
+                experiencia: resultExperiencia.message[0].experiencias,
+                skills: resultSkills.message[0].SoftSkills,
+
+            }
+
+            return res.status(200).send({status:200, message:objeto})
         }
 
         const result = await cvModel.getAll();

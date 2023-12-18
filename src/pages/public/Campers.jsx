@@ -118,7 +118,7 @@ export default function Campers() {
                   data={item}
                   key={index}
                   color={
-                    JSON.parse(item.info_usuario).genero === "masculino"
+                    (JSON.parse(item.info_usuario).genero == "masculino")
                       ? "#2A4B9B"
                       : "#6C3483"
                   }

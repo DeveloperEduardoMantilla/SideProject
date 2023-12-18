@@ -3,8 +3,22 @@ import Experience from "./cv/experience.jsx";
 import photo from "../../../assets/Img/Avatar.png";
 import Education from "./cv/Education.jsx";
 import SoftSkills from "./cv/SoftSkills.jsx";
+import useInfoUser from "../../../pages/hook/useInfoUser.js";
+import { useEffect, useState } from "react";
+
 export default function Profile() {
-  const softSkills = [
+  const { dataCv, getDataToken} = useInfoUser()
+
+    const [isLoading, setIsLoading] = useState(true)
+
+useEffect(() => {
+  getDataToken()
+  setIsLoading(false)
+}, [])
+
+ 
+  
+  const sssss = [
     {
       title: "Html",
     },
@@ -55,7 +69,9 @@ export default function Profile() {
                       variant="h4"
                       sx={{ fontWeight: "600", color: "#34495E" }}
                     >
-                      Edgar Eduardo Mantilla Garcia
+                       {/* {(!isLoading)
+                        ? dataCv.cv.nombre
+                        : 'Cargando'} */}
                     </Typography>
                     <Box
                       sx={{
@@ -75,7 +91,9 @@ export default function Profile() {
                           padding: "8px 10px",
                         }}
                       >
-                        eduardoma876@gmail.com
+                        {/* {(!isLoading)
+                        ? dataCv.cv.ifo_usuario.correo
+                        : 'cargando'} */}
                       </Typography>
                       <Typography
                         variant="h6"
@@ -85,7 +103,9 @@ export default function Profile() {
                           marginLeft: "20px",
                         }}
                       >
-                        3167967956
+                       {/* {(isLoading)
+                        ?"Cargando"
+                        :cv.nombre} */}
                       </Typography>
                     </Box>
                   </Box>
@@ -99,10 +119,12 @@ export default function Profile() {
                     fontSize: "20px",
                   }}
                 >
-                  Acerca de
+                  Acerca de mi
                 </Typography>
                 <Typography sx={{fontSize:"14px", textAlign:"justify"}}>
-                    Soy una persona responsable y comprometidacon mi trabajo, siempre en busca de laexcelencia. Me apasiona la programación yencuentro gran satisfacción en la creación desoluciones a través del código. Mi objetivo esbrindar respuestas efectivas a las necesidadesde las personas, utilizando mis habilidades endesarrollo para generar soluciones innovadoras,prácticas, eficientes y eficaces. Estoyemocionado por colaborar en proyectosdesafiantes y contribuir al éxito de equipos detrabajo altamente motivados.
+                {/* {(isLoading)
+                        ?"Cargando"
+                        :cv.nombre} */}
                 </Typography>
                 <Typography
                   variant="h4"
@@ -116,7 +138,7 @@ export default function Profile() {
                 Skills
                 </Typography>
                 <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-                  {softSkills.map((item, index) => (
+                  {sssss.map((item, index) => (
                     <SoftSkills
                       data={item}
                       key={index}

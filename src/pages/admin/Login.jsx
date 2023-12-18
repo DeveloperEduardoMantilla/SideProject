@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 import {
   Box,
   Button,
@@ -9,14 +11,139 @@ import {
   InputAdornment,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-
 import photo from "../../assets/Img/Astronauta.png";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
 
+  const redirect = useNavigate();
+
+  const [requiredFields, setRequiredFields] = useState([
+    "usuario",
+    "password"
+  ]);
+
+  const [errors, setErrors] = useState({});
+  const [formData, setFormData] = useState({
+    usuario: "",
+    password: ""
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: "",
+    }));
+  };
+
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const newErrors = {};
+    requiredFields.forEach((field) => {
+      if (!formData[field]) {
+        newErrors[field] = "Este campo es obligatorio";
+      }
+    });
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+    let options = {
+      method: "POST",
+      headers: new Headers({
+          "Content-Type": "application/json"
+      }),
+      body: JSON.stringify(formData)
+    }
+    try {
+      const sever =JSON.parse(import.meta.env.VITE_MY_SERVER);
+      const response = await (await fetch(`http://${sever.host}:${sever.port}/login`, options)).json();
+
+      if(response.status === 200){
+        localStorage.setItem("token", JSON.stringify(response.token))
+          let option = {
+            method: "GET",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "Authorization": response.token
+            })
+          }
+          const dataToken =  await (await fetch(`http://${sever.host}:${sever.port}/dataToken`, option)).json();
+          if (dataToken.status == 200) {
+            if (dataToken.message.payload.rol == "usuario") {
+              const validateInfo = await (await fetch(`http://${sever.host}:${sever.port}/usuario?id=${dataToken.message.payload.idUsuario}`, option)).json(); 
+              if (validateInfo.status == 200) {
+                if (validateInfo.message[0].estado == 1) {
+                  Swal.fire({
+                    icon: 'success',
+                    title: "inicio de sesion exitoso",
+                    position: 'bottom-end',
+                    width: '20rem',
+                    timer: 3000,
+                    toast: true,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                  })
+                  redirect("/profile")
+                } else{
+                  Swal.fire({
+                    icon: 'warning',
+                    title: "En espera de acceso",
+                    position: 'bottom-end',
+                    width: '20rem',
+                    timer: 3000,
+                    toast: true,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                  })
+                }
+              }
+              
+            } else{
+              Swal.fire({
+                icon: 'success',
+                title: "inicio de sesion exitoso",
+                position: 'bottom-end',
+                width: '20rem',
+                timer: 3000,
+                toast: true,
+                timerProgressBar: true,
+                showConfirmButton: false,
+              })
+              redirect("/dashboard")
+            }
+          }
+      } else{
+        Swal.fire({
+          icon: 'error',
+          title: response.message,
+          position: 'bottom-end',
+          width: '20rem',
+          timer: 3000,
+          toast: true,
+          timerProgressBar: true,
+          showConfirmButton: false,
+        })
+      }
+    } catch (error) {
+      alert(error.message)
+    }
+
+    setFormData({
+      usuario: "",
+      password: "",
+    });
+   
   };
 
   return (
@@ -70,14 +197,28 @@ export default function Login() {
               <TextField
                 id="standard-basic"
                 label="Usuario"
+                name="usuario"
                 variant="standard"
+                value={formData.usuario}
+                onChange={handleChange}
               />
+              {errors.usuario && (
+                      <Typography
+                        variant="caption"
+                        color="error"
+                      >
+                        {errors.usuario}
+                      </Typography>
+                )}
               <TextField
                 id="standard-basic"
                 variant="standard"
                 label="Contraseña"
+                name="password"
                 type={showPassword ? "text" : "password"}
                 sx={{ marginTop: "15px" }}
+                value={formData.password}
+                onChange={handleChange}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -91,11 +232,20 @@ export default function Login() {
                   ),
                 }}
               />
+               {errors.password && (
+                      <Typography
+                        variant="caption"
+                        color="error"
+                      >
+                        {errors.password}
+                      </Typography>
+                    )}
               <Box sx={{ display: "flex", margin: "40px 0px" }}>
                 <Button
                   variant="contained"
-                  component={Link}
-                  to="/dashboard"
+                  onClick={handleSubmit}
+                  // component={Link}
+                  // to="/dashboard"
                   sx={{
                     width: "130px",
                     background: "#2A4B9B",
