@@ -23,20 +23,26 @@ export class cvController{
             const errors = validationResult(req)
             if(!errors.isEmpty()) return res.status(400).send({status:400, message:errors.errors[0].msg})
 
+            let objeto = {};
+
             const resultCv = await cvModel.getCvUser(req.query.id);
             if(resultCv.status == 200){
+                objeto.cv = resultCv.message[0]
                 const newId = resultCv.message[0].id
                 const resultEducacion = await educacionModel.getCvId(newId);
-                const resultExperiencia = await experienciaModel.getCvId(newId);
-                const resultSkills = await softSkillsModel.getCvId(newId);
+                if(resultEducacion.status == 200){
+                    objeto.educacion= (resultEducacion.message.length > 0) ?resultEducacion.message[0].educaciones : []
+                    const resultExperiencia = await experienciaModel.getCvId(newId);
+                    if(resultExperiencia.status == 200){
+                        objeto.experiencia= (resultExperiencia.message.length > 0) ?resultExperiencia.message[0].experiencias : []
+                        const resultSkills = await softSkillsModel.getCvId(newId);
+                        if(resultSkills.status == 200){
+                            objeto.skills= (resultSkills.message.length > 0) ?resultSkills.message[0].SoftSkills : []
+                        }
 
-            const objeto = {
-                cv: resultCv.message[0],
-                educacion: resultEducacion.message[0].educaciones,
-                experiencia: resultExperiencia.message[0].experiencias,
-                skills: resultSkills.message[0].SoftSkills,
+                    }
 
-            }
+                }
 
             return res.status(200).send({status:200, message:objeto})
 

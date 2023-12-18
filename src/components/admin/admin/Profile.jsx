@@ -1,12 +1,13 @@
 import { Box, Container, Typography } from "@mui/material";
 import Experience from "./cv/Experience.jsx";
-import photo from "../../../assets/Img/Avatar.png";
+import avatarHombre from "../../../assets/Img/Avatar.png"
+import avatarMujer from "../../../assets/Img/AvatarMujer.png";
 import Education from "./cv/Education.jsx";
 import SoftSkills from "./cv/SoftSkills.jsx";
 import { useEffect, useState } from "react";
 
 export default function Profile() {
-  const [dataCv, setDataCv] = useState({})
+  const [dataCamper, setDataCamper] = useState({})
   const [isLoading, setIsLoading] = useState(true)
 
   const token = JSON.parse(localStorage.getItem("token"))
@@ -24,7 +25,7 @@ export default function Profile() {
       if (datasToken.status == 200) {
           const infoCv =  await (await fetch(`http://${sever.host}:${sever.port}/cv/user?id=${datasToken.message.payload.idUsuario}`, option)).json();
           if (infoCv.status == 200) {
-             setDataCv(infoCv.message);
+            setDataCamper(infoCv.message);
           }
       }
   } catch (error) {
@@ -38,69 +39,64 @@ useEffect(() => {
 }, [])
 
 if (!isLoading) {
-  console.log(dataCv);
+  console.log(dataCamper);
 }
 
- 
-  
-  const sssss = [
-    {
-      title: "Html",
-    },
-    {
-      title: "Css",
-    },
-    {
-      title: "Js",
-    },
-    {
-      title: "React",
-    },
-    {
-      title: "Node Js",
-    },
-    {
-      title: "MySql",
-    },
-    {
-      title: "MongoDB",
-    },
-    {
-      title: "Java",
-    },
-  ];
   return (
     <>
       <Box sx={{ position: "relative" }}>
-        <Box sx={{ background: "#2A4B9B", height: "200px" }}></Box>
-        <Box sx={{ position: "absolute", top:"70px", width:"100%"}}>
+        <Box
+          sx={{
+            background:
+              dataCamper &&
+              dataCamper.cv &&
+              dataCamper.cv.info_usuario.genero === "femenino"
+                ? "#6C3483"
+                : "#2A4B9B",
+            height: "200px",
+          }}
+        ></Box>
+        <Box sx={{ position: "absolute", top: "70px", width: "100%" }}>
           <Container>
             <Box
               sx={{
                 boxShadow: "-2px 5px 10px rgba(0,0,0,0.08)",
+                marginTop: "50px",
                 padding: "30px",
                 background: "#fff",
               }}
             >
               <Box>
-                <Box sx={{ display: "flex" }}>
-                  <img
-                    src={photo}
-                    alt=""
-                    style={{ with: "100px", height: "100px" }}
-                  />
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: { xs: "column", md: "row" },
+                  }}
+                >
+                  <Box sx={{display:"flex", justifyContent:"center"}}>
+                    <img
+                      src={
+                        dataCamper &&
+                        dataCamper.cv &&
+                        dataCamper.cv.info_usuario.genero === "femenino"
+                          ? avatarMujer
+                          : avatarHombre
+                      }
+                      alt=""
+                      style={{ with: "150px", height: "150px" }}
+                    />
+                  </Box>
                   <Box sx={{ margin: "0px 30px" }}>
                     <Typography
                       variant="h4"
                       sx={{ fontWeight: "600", color: "#34495E" }}
                     >
-                       {(dataCv.cv)
-                        ? dataCv.cv.nombre
-                        : "Cargando"}
+                      {dataCamper && dataCamper.cv && dataCamper.cv.nombre}
                     </Typography>
                     <Box
                       sx={{
                         display: "flex",
+                        flexWrap: "wrap",
                         alignItems: "center",
                         marginTop: "10px",
                       }}
@@ -108,60 +104,94 @@ if (!isLoading) {
                       <Typography
                         variant="h6"
                         sx={{
+                          width: { xs: "100%", md: "auto" },
+                          marginTop: { xs: "10px", md: "0" },
                           fontWeight: "400",
                           fontSize: "15px",
                           color: "#fff",
-                          background: "#2A4B9B",
+                          background:
+                            dataCamper &&
+                            dataCamper.cv &&
+                            dataCamper.cv.info_usuario.genero === "femenino"
+                              ? "#6C3483"
+                              : "#2A4B9B",
                           borderRadius: "10px",
                           padding: "8px 10px",
                         }}
                       >
-                         {(dataCv.cv)
-                        ? dataCv.cv.info_usuario.correo
-                        : 'cargando'}
+                        {dataCamper &&
+                          dataCamper.cv &&
+                          dataCamper.cv.info_usuario.correo}
                       </Typography>
                       <Typography
                         variant="h6"
                         sx={{
+                          width: { xs: "100%", md: "auto" },
+                          marginTop: { xs: "10px", md: "0" },
                           fontWeight: "400",
                           fontSize: "15px",
+                          marginLeft: { xs: "0", md: "20px" },
                           color: "#fff",
-                          background: "#2A4B9B",
+                          background:
+                            dataCamper &&
+                            dataCamper.cv &&
+                            dataCamper.cv.info_usuario.genero === "femenino"
+                              ? "#6C3483"
+                              : "#2A4B9B",
                           borderRadius: "10px",
                           padding: "8px 10px",
                         }}
                       >
-                         {(dataCv.cv)
-                        ? dataCv.cv.info_usuario.telefono
-                        : 'cargando'}
+                        {dataCamper &&
+                          dataCamper.cv &&
+                          dataCamper.cv.info_usuario.telefono}
                       </Typography>
                       <Typography
                         variant="h6"
                         sx={{
+                          width: { xs: "100%", md: "auto" },
+                          marginTop: { xs: "10px", md: "0" },
                           fontWeight: "400",
                           fontSize: "15px",
+                          marginLeft: { xs: "0", md: "20px" },
                           color: "#fff",
-                          background: "#2A4B9B",
+                          background:
+                            dataCamper &&
+                            dataCamper.cv &&
+                            dataCamper.cv.info_usuario.genero === "femenino"
+                              ? "#6C3483"
+                              : "#2A4B9B",
                           borderRadius: "10px",
                           padding: "8px 10px",
                         }}
                       >
-                         {(dataCv.cv)
-                        ? dataCv.cv.info_usuario.correo
-                        : 'cargando'}
+                        {dataCamper &&
+                          dataCamper.cv &&
+                          dataCamper.cv.info_usuario.ciudad}
                       </Typography>
-                      {/* <Typography
+                      <Typography
                         variant="h6"
                         sx={{
-                          fontWeight: "400",
+                          width: { xs: "100%", md: "auto" },
+                          marginTop: { xs: "10px", md: "0" },
                           fontSize: "15px",
-                          marginLeft: "20px",
+                          marginLeft: { xs: "0", md: "20px" },
+                          color: "#fff",
+                          background:
+                            dataCamper &&
+                            dataCamper.cv &&
+                            dataCamper.cv.info_usuario.genero === "femenino"
+                              ? "#6C3483"
+                              : "#2A4B9B",
+                          borderRadius: "10px",
+                          padding: "8px 10px",
                         }}
                       >
-                       {(dataCv.cv)
-                        ? dataCv.cv.info_usuario.telefono
-                        : 'cargando'}
-                      </Typography> */}
+                        {dataCamper && dataCamper.cv && dataCamper.cv.idioma}{" "}
+                        {dataCamper &&
+                          dataCamper.cv &&
+                          dataCamper.cv.nivelIdioma}
+                      </Typography>
                     </Box>
                   </Box>
                 </Box>
@@ -174,12 +204,10 @@ if (!isLoading) {
                     fontSize: "20px",
                   }}
                 >
-                  Acerca de mi
+                  Acerca de
                 </Typography>
-                <Typography sx={{fontSize:"14px", textAlign:"justify"}}>
-                {/* {(isLoading)
-                        ?"Cargando"
-                        :cv.nombre} */}
+                <Typography sx={{ fontSize: "14px", textAlign: "justify" }}>
+                  {dataCamper && dataCamper.cv && dataCamper.cv.acercaDeMi}
                 </Typography>
                 <Typography
                   variant="h4"
@@ -190,15 +218,60 @@ if (!isLoading) {
                     fontSize: "20px",
                   }}
                 >
-                Skills
+                  Skills
                 </Typography>
                 <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-                  {sssss.map((item, index) => (
-                    <SoftSkills
-                      data={item}
-                      key={index}
-                    />
-                  ))}
+                  {dataCamper &&
+                    dataCamper.cv && 
+                    (dataCamper.cv.skills.length > 0)
+                     ?(dataCamper.cv.skills.map((item, index) => (
+                      <SoftSkills
+                        data={item}
+                        key={index}
+                        color={
+                          dataCamper &&
+                          dataCamper.cv &&
+                          dataCamper.cv.info_usuario.genero === "femenino"
+                            ? "#6C3483"
+                            : "#2A4B9B"
+                        }
+                      />
+                    ))
+                    )
+                    :(<p>No se encentra skills.</p>)
+                  }
+                </Box>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontWeight: "600",
+                    color: "#34495E",
+                    marginTop: "30px",
+                    fontSize: "20px",
+                  }}
+                >
+                  Soft-Skills
+                </Typography>
+                <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+                  {dataCamper &&
+                   dataCamper.skills &&
+                    (dataCamper.skills.length > 0)
+                    ?(dataCamper.skills.map((item, index) => (
+                      <SoftSkills
+                        data={item.competencia}
+                        key={index}
+                        color={
+                          dataCamper &&
+                          dataCamper.cv &&
+                          dataCamper.cv.info_usuario.genero === "femenino"
+                            ? "#6C3483"
+                            : "#2A4B9B"
+                        }
+                        
+                      />
+                  )))
+                  :(<p>No se encuentra softSkills.</p>)
+                  }
                 </Box>
                 <Typography
                   variant="h4"
@@ -212,9 +285,24 @@ if (!isLoading) {
                   Educacion
                 </Typography>
                 <Box sx={{ display: "flex", flexDirection: "column" }}>
-                  <Education />
-                  <Education />
-                  <Education />
+                  {dataCamper &&
+                    dataCamper.educacion &&
+                    (dataCamper.educacion.length > 0)
+                    ?( dataCamper.educacion.map((item, index) => (
+                      <Education
+                        data={item}
+                        color={
+                          dataCamper &&
+                          dataCamper.cv &&
+                          dataCamper.cv.info_usuario.genero === "femenino"
+                            ? "#6C3483"
+                            : "#2A4B9B"
+                        }
+                        key={index}
+                      />
+                    )))
+                    :(<p>No se encuentran Educaciones</p>)
+                  }
                 </Box>
                 <Typography
                   variant="h4"
@@ -228,9 +316,23 @@ if (!isLoading) {
                   Experiencia Laboral
                 </Typography>
                 <Box sx={{ display: "flex", flexDirection: "column" }}>
-                  <Experience />
-                  <Experience />
-                  <Experience />
+                  {dataCamper &&
+                    dataCamper.experiencia &&
+                    (dataCamper.experiencia.length > 0)
+                    ?(dataCamper.experiencia.map((item, index) => (
+                      <Experience
+                        data={item}
+                        color={
+                          dataCamper &&
+                          dataCamper.cv &&
+                          dataCamper.cv.info_usuario.genero === "femenino"
+                            ? "#6C3483"
+                            : "#2A4B9B"
+                        }
+                        key={index}
+                      />
+                    )))
+                  :(<p>No se encuentran Experiencias</p>)}
                 </Box>
               </Box>
             </Box>

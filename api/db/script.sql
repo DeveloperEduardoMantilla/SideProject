@@ -382,5 +382,5 @@ VALUES ('Comunicación', 1),
  ('Comunicación', 4),
  ('Trabajo en equipo', 1);
 
- UPDATE cv SET skills = JSON_ARRAY( 'php', 'node', 'react') WHERE id = 1;
+SELECT * from educacion;
 

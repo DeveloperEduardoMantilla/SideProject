@@ -78,6 +78,7 @@ export default function Router() {
           <Route element={<ProtectedRoute canActivate={stateRoutes.Admin} redirectPath={"/"} />}>
             <Route path="/dashboard" element={<DashboardTest />}/>
           </Route>
+          <Route path="*" element={<p>Error 404. Page Not Found</p>}/>
         </Routes>
     </BrowserRouter>
     </>
