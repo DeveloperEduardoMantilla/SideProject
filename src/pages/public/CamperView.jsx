@@ -1,5 +1,5 @@
 import { Box, Container, Typography } from "@mui/material";
-import Experience from "../../components/admin/admin/cv/experience.jsx";
+import Experience from "../../components/admin/admin/cv/Experience.jsx";
 import avatarHombre from "../../../src/assets/Img/Avatar.png";
 import avatarMujer from "../../../src/assets/Img/AvatarMujer.png";
 import Education from "../../components/admin/admin/cv/Education.jsx";
@@ -13,12 +13,10 @@ export default function CamperView() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const ruta = `http://127.17.0.97:5017/cv?id=${id}`;
+        const ruta = `http://127.17.0.97:5017/cv/user?id=${id}`;
         const campers = await fetch(ruta);
         const response = await campers.json();
         console.log(response.message);
-        setDataCamper(response.message[0]);
-        console.log(dataCamper);
       } catch (e) {
         console.log("Error => ", e);
       }

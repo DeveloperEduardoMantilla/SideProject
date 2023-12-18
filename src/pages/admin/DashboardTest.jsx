@@ -1,6 +1,6 @@
 import { Box, Container } from "@mui/material";
 import HeaderAdmin from "../../components/admin/HeaderAdmin.jsx";
-import ListUser from "../../components/admin/admin/listUser.jsx";
+import ListUser from "../../components/admin/admin/ListUser.jsx";
 import TableUser from "../../components/admin/admin/TableUser.jsx";
 import TablePermitApplication from "../../components/admin/admin/TablePermitApplication.jsx";
 import TableValidateCv from "../../components/admin/admin/TableValidateCv.jsx";

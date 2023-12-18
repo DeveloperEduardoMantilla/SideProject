@@ -1,5 +1,5 @@
 import { Box, Container, Typography } from "@mui/material";
-import Experience from "./cv/experience.jsx";
+import Experience from "./cv/Experience.jsx";
 import photo from "../../../assets/Img/Avatar.png";
 import Education from "./cv/Education.jsx";
 import SoftSkills from "./cv/SoftSkills.jsx";
