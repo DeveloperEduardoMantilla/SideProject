@@ -24,10 +24,11 @@ export class cvController{
             if(!errors.isEmpty()) return res.status(400).send({status:400, message:errors.errors[0].msg})
 
             const resultCv = await cvModel.getCvUser(req.query.id);
-            const newId = resultCv.message[0].id
-            const resultEducacion = await educacionModel.getCvId(newId);
-            const resultExperiencia = await experienciaModel.getCvId(newId);
-            const resultSkills = await softSkillsModel.getCvId(newId);
+            if(resultCv.status == 200){
+                const newId = resultCv.message[0].id
+                const resultEducacion = await educacionModel.getCvId(newId);
+                const resultExperiencia = await experienciaModel.getCvId(newId);
+                const resultSkills = await softSkillsModel.getCvId(newId);
 
             const objeto = {
                 cv: resultCv.message[0],
@@ -38,6 +39,9 @@ export class cvController{
             }
 
             return res.status(200).send({status:200, message:objeto})
+
+            }
+            
         }
 
         const result = await cvModel.getAll();
