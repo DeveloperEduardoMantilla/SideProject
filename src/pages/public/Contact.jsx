@@ -51,6 +51,18 @@ export default function Contact() {
       ...prevErrors,
       [name]: "",
     }));
+
+    if (name === 'telefono' && !/^\d+$/.test(value)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: 'El teléfono debe contener solo números',
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: '',
+      }));
+    }
   };
 
   const handleSubmit = (event) => {
@@ -65,6 +77,8 @@ export default function Contact() {
           newErrors[field] =
             "Por favor, ingrese una dirección de correo electrónico válida.";
         }
+      }else if (field === 'telefono' && !/^\d+$/.test(formData[field])) {
+        newErrors[field] = 'El teléfono debe contener solo números';
       }
     });
     if (Object.keys(newErrors).length > 0) {

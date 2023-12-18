@@ -37,7 +37,7 @@ export default function Header() {
       setStyleHeader({
         color: "#333",
         background: "#fff",
-        boxShadow: "20px 2px 5px #515A5A",
+        boxShadow: "0px 5px 5px rgba(0,0,0,0.1)",
         position: "fixed",
         transition: "all ease-in-out .5s",
       });
@@ -62,22 +62,22 @@ export default function Header() {
     },
     {
       title: "Quienes Somos",
-      path: "#",
+      path: "#aboutme",
       icon: <LoginIcon />,
     },
     {
       title: "Campers",
-      path: "#",
+      path: "#campers",
       icon: <LoginIcon />,
     },
     {
       title: "Casos de Exito",
-      path: "#",
+      path: "#successStories",
       icon: <LoginIcon />,
     },
     {
       title: "Contactenos",
-      path: "contact",
+      path: "#contact",
       icon: <LoginIcon />,
     },
     {
@@ -86,6 +86,14 @@ export default function Header() {
       icon: <LoginIcon />,
     },
   ];
+
+  const handleContactClick = () => {
+    if (contactRef.current) {
+      contactRef.current.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
   return (
     <>
       <Box>
@@ -123,6 +131,7 @@ export default function Header() {
                     key={item.title}
                     component={NavLink}
                     to={item.path}
+                    onClick={handleContactClick}
                     sx={{
                       borderRadius: "0px",
                       borderBottom: "0px solid gray",

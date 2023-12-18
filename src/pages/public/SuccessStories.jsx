@@ -6,6 +6,7 @@ import { width } from "@mui/system";
 export default function SuccessStories() {
   return (
     <Box
+      id="successStories"
       sx={{
         background: "#f8f8f8",
         display: "flex",

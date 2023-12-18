@@ -25,7 +25,7 @@ export default function Education({ data }) {
           },
         }}
       >
-        {data.title}
+        {data}
       </Typography>
     </Box>
   );

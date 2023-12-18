@@ -5,7 +5,7 @@ import PersonIcon from "@mui/icons-material/Person";
 
 export default function Aboutme() {
   return (
-    <Box sx={{ width:"100%", padding: {xs:"60px 0", md:"120px 0"}, position: "relative" }}>
+    <Box id="aboutme" sx={{ width:"100%", padding: {xs:"60px 0", md:"120px 0"}, position: "relative" }}>
       <Container>
         <Box
           sx={{

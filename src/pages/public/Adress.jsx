@@ -3,10 +3,12 @@ export default function Address() {
   return (
     <>
       <Box
+        id="contact"
         sx={{
           display: "flex",
           flexDirection: "column",
         }}
+        
       >
         <Typography
           sx={{

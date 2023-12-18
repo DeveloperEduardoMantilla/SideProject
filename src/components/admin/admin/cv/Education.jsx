@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-export default function Education() {
+export default function Education({data}) {
   return (
     <Box
       sx={{

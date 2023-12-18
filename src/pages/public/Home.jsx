@@ -7,7 +7,7 @@ import Adress from "./Adress.jsx";
 import Footer from "../../components/Footer.jsx";
 import { Box } from "@mui/material";
 import Header from "../../components/Header.jsx";
-
+import Chat from "../../components/Chat.jsx";
 export default function Home() {
   return (
     <>
@@ -20,6 +20,7 @@ export default function Home() {
         <Contact/>
         <Adress/>
         <Footer/>
+        <Chat/>
       </Box>
     </>
    

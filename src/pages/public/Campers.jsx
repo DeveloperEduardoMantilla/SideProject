@@ -47,7 +47,7 @@ export default function Campers() {
   };
   return (
     <>
-      <Box sx={{ position: "relative", padding: "0px 0 100px 0" }}>
+      <Box id="campers" sx={{ position: "relative", padding: "0px 0 100px 0" }}>
         <Container sx={{ background: "#fff" }}>
           <Typography
             sx={{
