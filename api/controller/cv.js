@@ -119,12 +119,14 @@ export class cvController{
         const result = await cvModel.deleteCv(id);
         res.status(result.status).send(result)
     }
+
     static async filterCv(req,res){
         const errors = validationResult(req)
         if(!errors.isEmpty()) return res.status(400).send({status:400, message:errors.errors[0].msg})
 
-        if(Object.keys(req.query).length == 0){
+        if(Object.keys(req.query).length > 1){
             return res.status(400).send({status:400, message:"Error, Se envio mas de una query"})
+
         }
 
         if(req.query.tecn){
@@ -139,6 +141,5 @@ export class cvController{
             const result = await cvModel.filterRutaCv(req.query.rut);
             return res.status(result.status).send(result)
         }
-
     }
 }
