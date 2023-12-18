@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-export default function Education({ data }) {
+export default function Education({ data, color }) {
   return (
     <Box
       sx={{
@@ -21,7 +21,7 @@ export default function Education({ data }) {
           "&:hover": {
             cursor:"pointer",
             color:"#fff",
-            backgroundColor: "#2A4B9B",
+            backgroundColor: color,
           },
         }}
       >

@@ -24,15 +24,20 @@ export default function Contact() {
 
   const sendDataFetch = async (dt) => {
     try {
-      console.log(dt);
-      const response = await fetch("http://127.17.0.97:5017/contacto", {
+      
+      let options = {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dt),
-      });
-      if (!response.ok) {
+        headers: new Headers({
+            "Content-Type": "application/json"
+        }),
+        body: JSON.stringify(dt)
+      }
+      const sever = JSON.parse(import.meta.env.VITE_MY_SERVER);
+      const response = await (
+        await fetch(`http://${sever.host}:${sever.port}/contacto`, options)
+      ).json();
+        console.log(response);
+      if (response.status !=200) {
         throw new Error("Error al enviar datos a la API");
       }
     } catch (e) {
@@ -52,15 +57,15 @@ export default function Contact() {
       [name]: "",
     }));
 
-    if (name === 'telefono' && !/^\d+$/.test(value)) {
+    if (name === "telefono" && !/^\d+$/.test(value)) {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        [name]: 'El teléfono debe contener solo números',
+        [name]: "El teléfono debe contener solo números",
       }));
     } else {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        [name]: '',
+        [name]: "",
       }));
     }
   };
@@ -77,8 +82,8 @@ export default function Contact() {
           newErrors[field] =
             "Por favor, ingrese una dirección de correo electrónico válida.";
         }
-      }else if (field === 'telefono' && !/^\d+$/.test(formData[field])) {
-        newErrors[field] = 'El teléfono debe contener solo números';
+      } else if (field === "telefono" && !/^\d+$/.test(formData[field])) {
+        newErrors[field] = "El teléfono debe contener solo números";
       }
     });
     if (Object.keys(newErrors).length > 0) {
@@ -87,7 +92,7 @@ export default function Contact() {
     }
 
     sendDataFetch(formData);
-    
+
     setFormData({
       nombre: "",
       telefono: "",

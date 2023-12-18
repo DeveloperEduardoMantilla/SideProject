@@ -23,10 +23,19 @@ export default function Campers() {
 
   useEffect(() => {
     const fetchData = async () => {
+      let options = {
+        method: "GET",
+        headers: new Headers({
+          "Content-Type": "application/json",
+        })
+      };
       try {
-        const campers = await fetch("http://127.17.0.97:5017/cv");
-        const dataCampers = await campers.json();
-        setData(dataCampers.message);
+        const sever = JSON.parse(import.meta.env.VITE_MY_SERVER);
+        const campers = await (
+          await fetch(`http://${sever.host}:${sever.port}/cv`, options)
+        ).json();
+
+        setData(campers.message);
       } catch (e) {
         console.log("Error => ", e);
       }
