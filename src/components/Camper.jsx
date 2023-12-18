@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 export default function Camper(props) {
   const { data, color } = props;
-  const camperUrl = `/camper/${data.id}`;
+  const camperUrl = `/camper/${data.idUsuario}`;
 
   return (
     <Link to={camperUrl} style={{ textDecoration: 'none' }}>
@@ -51,7 +51,7 @@ export default function Camper(props) {
               variant=""
               className="nivel_Ingles"
             >
-              Nivel {data.idioma} : {data.nivelIdioma}
+              {data.idioma}  {data.nivelIdioma}
             </Typography>
 
             <Typography

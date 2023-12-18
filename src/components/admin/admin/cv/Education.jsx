@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-export default function Education({data}) {
+export default function Education({data, color}) {
   return (
     <Box
       sx={{
@@ -22,12 +22,12 @@ export default function Education({data}) {
           "&:hover": {
             cursor: "pointer",
             color: "#fff",
-            backgroundColor: "#2A4B9B",
+            backgroundColor: color,
           },
         }}
       >
-        Ingeniero de Sistemas || Unidades Tecnologicas de Santander S.A.S ||
-        17/12/2023 || Pregrado
+        {data.titulo} || {data.institucion} ||
+        {data.fecha} || {data.tipo}
       </Typography>
     </Box>
   );
