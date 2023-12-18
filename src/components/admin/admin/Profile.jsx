@@ -3,18 +3,43 @@ import Experience from "./cv/Experience.jsx";
 import photo from "../../../assets/Img/Avatar.png";
 import Education from "./cv/Education.jsx";
 import SoftSkills from "./cv/SoftSkills.jsx";
-import useInfoUser from "../../../pages/hook/useInfoUser.js";
 import { useEffect, useState } from "react";
 
 export default function Profile() {
-  const { dataCv, getDataToken} = useInfoUser()
+  const [dataCv, setDataCv] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
 
-    const [isLoading, setIsLoading] = useState(true)
+  const token = JSON.parse(localStorage.getItem("token"))
+  const getData =  async() =>{
+    try {
+      const sever =JSON.parse(import.meta.env.VITE_MY_SERVER);
+      let option = {
+        method: "GET",
+        headers: new Headers({
+            "Content-Type": "application/json",
+            "Authorization": token
+        })
+      }
+      const datasToken =  await (await fetch(`http://${sever.host}:${sever.port}/dataToken`, option)).json();
+      if (datasToken.status == 200) {
+          const infoCv =  await (await fetch(`http://${sever.host}:${sever.port}/cv/user?id=${datasToken.message.payload.idUsuario}`, option)).json();
+          if (infoCv.status == 200) {
+             setDataCv(infoCv.message);
+          }
+      }
+  } catch (error) {
+      alert(error.message)
+  }
+  }
 
 useEffect(() => {
-  getDataToken()
+  getData()
   setIsLoading(false)
 }, [])
+
+if (!isLoading) {
+  console.log(dataCv);
+}
 
  
   
@@ -69,9 +94,9 @@ useEffect(() => {
                       variant="h4"
                       sx={{ fontWeight: "600", color: "#34495E" }}
                     >
-                       {/* {(!isLoading)
+                       {(dataCv.cv)
                         ? dataCv.cv.nombre
-                        : 'Cargando'} */}
+                        : "Cargando"}
                     </Typography>
                     <Box
                       sx={{
@@ -91,11 +116,41 @@ useEffect(() => {
                           padding: "8px 10px",
                         }}
                       >
-                        {/* {(!isLoading)
-                        ? dataCv.cv.ifo_usuario.correo
-                        : 'cargando'} */}
+                         {(dataCv.cv)
+                        ? dataCv.cv.info_usuario.correo
+                        : 'cargando'}
                       </Typography>
                       <Typography
+                        variant="h6"
+                        sx={{
+                          fontWeight: "400",
+                          fontSize: "15px",
+                          color: "#fff",
+                          background: "#2A4B9B",
+                          borderRadius: "10px",
+                          padding: "8px 10px",
+                        }}
+                      >
+                         {(dataCv.cv)
+                        ? dataCv.cv.info_usuario.telefono
+                        : 'cargando'}
+                      </Typography>
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          fontWeight: "400",
+                          fontSize: "15px",
+                          color: "#fff",
+                          background: "#2A4B9B",
+                          borderRadius: "10px",
+                          padding: "8px 10px",
+                        }}
+                      >
+                         {(dataCv.cv)
+                        ? dataCv.cv.info_usuario.correo
+                        : 'cargando'}
+                      </Typography>
+                      {/* <Typography
                         variant="h6"
                         sx={{
                           fontWeight: "400",
@@ -103,10 +158,10 @@ useEffect(() => {
                           marginLeft: "20px",
                         }}
                       >
-                       {/* {(isLoading)
-                        ?"Cargando"
-                        :cv.nombre} */}
-                      </Typography>
+                       {(dataCv.cv)
+                        ? dataCv.cv.info_usuario.telefono
+                        : 'cargando'}
+                      </Typography> */}
                     </Box>
                   </Box>
                 </Box>
