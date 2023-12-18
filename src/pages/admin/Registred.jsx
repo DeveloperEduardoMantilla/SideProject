@@ -56,7 +56,7 @@ export default function Login() {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const newErrors = {};
     requiredFields.forEach((field) => {
@@ -74,8 +74,44 @@ export default function Login() {
       setErrors(newErrors);
       return;
     }
+    let options = {
+      method: "POST",
+      headers: new Headers({
+          "Content-Type": "application/json"
+      }),
+      body: JSON.stringify(formData)
+    }
+    try {
+      const sever =JSON.parse(import.meta.env.VITE_MY_SERVER);
+      const response = await (await fetch(`http://${sever.host}:${sever.port}/usuario`, options)).json();
 
-    console.log("Datos enviados:", formData);
+      if(response.status === 200){
+        Swal.fire({
+          icon: 'success',
+          title: response.message,
+          position: 'bottom-end',
+          width: '20rem',
+          timer: 3000,
+          toast: true,
+          timerProgressBar: true,
+          showConfirmButton: false,
+        })
+      } else{
+        Swal.fire({
+          icon: 'error',
+          title: response.message,
+          position: 'bottom-end',
+          width: '20rem',
+          timer: 3000,
+          toast: true,
+          timerProgressBar: true,
+          showConfirmButton: false,
+        })
+      }
+    } catch (error) {
+      alert(error.message)
+    }
+
     setFormData({
       usuario: "",
       password: "",
@@ -84,16 +120,7 @@ export default function Login() {
       correo: "",
       ciudad: "",
     });
-    Swal.fire({
-      icon: 'success',
-      title: 'Usuario registrado correctamente',
-      position: 'bottom-end',
-      width: '20rem',
-      timer: 3000,
-      toast: true,
-      timerProgressBar: true,
-      showConfirmButton: false,
-    })
+   
   };
 
   return (

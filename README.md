@@ -165,6 +165,11 @@ se debe tener en cuenta que los endpoints que tiene permiso **Global** se pueden
 
   **GET** `http://<host>:<port>/cv?id=<'id'>`
 
+
+- Obtener el CV de un usuario especifico [Global]
+
+  **GET** `http://<host>:<port>/cv/user?id=<'id'>`
+
   
 
 - obtener los CV dependiendo el estado [Admin]

@@ -8,6 +8,7 @@ const appCv = Router();
 
 appCv.get("/", validatePermisos(["*"]), validateCvQuerys, cvController.getAll)
 appCv.get("/estado/:estado", verifyToken(), validatePermisos(["admin"]), cvController.filterEstadoCv)
+appCv.get("/user", validatePermisos(["*"]), validateCvQuerys, cvController.getCvUser)
 appCv.get("/cant", verifyToken(), validatePermisos(["admin"]), cvController.getCantidadEstado)
 appCv.post("/", verifyToken(), validatePermisos(["admin", "usuario"]), validateCvPost, cvController.postCv)
 appCv.put("/", verifyToken(), validatePermisos(["admin", "usuario"]), validateCvQuerys, validateCvUpdate, cvController.putCv)
