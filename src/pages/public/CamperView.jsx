@@ -221,6 +221,7 @@ export default function CamperView() {
                     dataCamper.cv.skills.map((item, index) => (
                       <SoftSkills
                         data={item}
+                        key={index}
                         color={
                           dataCamper &&
                           dataCamper.cv &&
@@ -228,7 +229,6 @@ export default function CamperView() {
                             ? "#6C3483"
                             : "#2A4B9B"
                         }
-                        key={index}
                       />
                     ))}
                 </Box>
@@ -247,9 +247,9 @@ export default function CamperView() {
                   {dataCamper &&
                     dataCamper.skills &&
                     dataCamper.skills.map((item, index) => (
-                      <>
                         <SoftSkills
                           data={item.competencia}
+                          key={index}
                           color={
                             dataCamper &&
                             dataCamper.cv &&
@@ -257,9 +257,8 @@ export default function CamperView() {
                               ? "#6C3483"
                               : "#2A4B9B"
                           }
-                          key={index}
+                          
                         />
-                      </>
                     ))}
                 </Box>
                 <Typography

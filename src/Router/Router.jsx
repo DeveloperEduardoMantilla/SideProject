@@ -1,5 +1,5 @@
 import { BrowserRouter , Routes, Route } from "react-router-dom";
-import {useLocation} from "react-use"
+import {useLocation} from "react-use";
 import Home from "../pages/public/Home.jsx";
 import Login from "../pages/admin/Login.jsx";
 import { CssBaseline } from "@mui/material";
