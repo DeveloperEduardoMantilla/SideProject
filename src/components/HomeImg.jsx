@@ -1,10 +1,17 @@
 import { Box, Button, Typography } from "@mui/material";
 import imgHome from "../assets/Img/img25.jpg";
-import '../assets/css/Home.css';
+import "../assets/css/Home.css";
 export default function HomeImg() {
   return (
     <>
-      <Box id="homeImg" sx={{ width: "100%", position: "relative", height: {xs:"60vh",sm:"60vh", lg:"60vh"} }}>
+      <Box
+        id="homeImg"
+        sx={{
+          width: "100%",
+          position: "relative",
+          height: { xs: "60vh", sm: "60vh", lg: "60vh" },
+        }}
+      >
         <Box
           sx={{
             background: "rgba(46, 64, 83,0.3)",
@@ -38,39 +45,43 @@ export default function HomeImg() {
           }}
         >
           <Typography
+            data-aos="fade-down"
             variant="h4"
             sx={{
               color: "white",
               fontWeight: "800",
-              fontSize: {xs:"40px", md:"55px"},
+              fontSize: { xs: "40px", md: "55px" },
             }}
           >
-            <span style={{color:"#ECA401"}}>Campus</span>Lands
+            <span style={{ color: "#ECA401" }}>Campus</span>
+            Lands
           </Typography>
           <Typography
+          data-aos="fade-right"
             variant="h6"
             sx={{
               color: "white",
-              background:"rgba(46, 64, 83,0.5)",
-              padding:"30px",
-              marginTop:"10px",
-              fontSize: {xs:"17px", md:"20px"},
+              background: "rgba(46, 64, 83,0.5)",
+              padding: "30px",
+              marginTop: "10px",
+              fontSize: { xs: "17px", md: "20px" },
               fontWeight: "300",
-              maxWidth:"830px",
-              textAlign:"center"
+              maxWidth: "830px",
+              textAlign: "center",
             }}
           >
             Transformamos futuros a través de la educación. Garantizamos
             formación en programación y empleabilidad.
           </Typography>
           <Button
+            data-aos="fade-up"
             variant="outlined"
             sx={{
               marginTop: "20px",
-              color:"#fff",
-              border:"1px solid #ECA401",
-              background:"#ECA401",
-              transition:"all ease-in-out 0.3s",
+              color: "#fff",
+              border: "1px solid #ECA401",
+              background: "#ECA401",
+              transition: "all ease-in-out 0.3s",
               "&:hover": {
                 background: "#D59402",
               },

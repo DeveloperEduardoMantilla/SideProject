@@ -3,6 +3,7 @@ export default function Address() {
   return (
     <>
       <Box
+        data-aos="fade-left"
         id="contact"
         sx={{
           display: "flex",

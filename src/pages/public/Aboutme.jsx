@@ -3,11 +3,23 @@ import photo from "../../assets/Img/img33.jpg";
 import figura from "../../assets/Img/figura.png";
 import PersonIcon from "@mui/icons-material/Person";
 
+import { useEffect } from "react";
+
 export default function Aboutme() {
+
   return (
-    <Box id="aboutme" sx={{ width:"100%", padding: {xs:"60px 0", md:"120px 0"}, position: "relative" }}>
+    <Box
+      id="aboutme"
+      sx={{
+        width: "100%",
+        padding: { xs: "60px 0", md: "120px 0" },
+        position: "relative",
+      }}
+    >
       <Container>
         <Box
+          data-aos="fade-up"
+          data-aos-duration="1000"
           sx={{
             display: "flex",
             alignItems: "center",
@@ -15,13 +27,13 @@ export default function Aboutme() {
             flexWrap: "wrap",
           }}
         >
-          <Box sx={{ width: { xs: "100%", md:"800px", lg:"600px"  } }}>
+          <Box sx={{ width: { xs: "100%", md: "800px", lg: "600px" } }}>
             <Typography
               sx={{
-                fontSize: { xs: "30px", sm:"30px", md: "35px", lg: "40px" },
-                textAlign:{xs:"center", lg:"start"},
+                fontSize: { xs: "30px", sm: "30px", md: "35px", lg: "40px" },
+                textAlign: { xs: "center", lg: "start" },
                 fontWeight: "800",
-                lineHeight:"40px",
+                lineHeight: "40px",
                 color: "#34495E",
               }}
             >
@@ -32,7 +44,7 @@ export default function Aboutme() {
                 fontSize: { xs: "14px", md: "15px", lg: "16px" },
                 paddingTop: "15px",
                 textAlign: { xs: "justify", md: "justify", ld: "start" },
-                background:"#fff"
+                background: "#fff",
               }}
             >
               Nuestro objetivo es aumentar la productividad del sector de la
@@ -42,10 +54,10 @@ export default function Aboutme() {
           </Box>
           <Box
             sx={{
-              width: {xs: "100%", md: "800px", lg: "450px" },
-              height:{xs:"200px", md:"250px"},
-              margin:{xs:"10px 0 ", md:"0"},
-              paddingTop: { xs: "25px", lg: "0"},
+              width: { xs: "100%", md: "800px", lg: "450px" },
+              height: { xs: "200px", md: "250px" },
+              margin: { xs: "10px 0 ", md: "0" },
+              paddingTop: { xs: "25px", lg: "0" },
             }}
           >
             <img

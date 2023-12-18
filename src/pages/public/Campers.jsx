@@ -47,7 +47,11 @@ export default function Campers() {
   };
   return (
     <>
-      <Box id="campers" sx={{ position: "relative", padding: "0px 0 100px 0" }}>
+      <Box
+        data-aos="fade-right"
+        id="campers"
+        sx={{ position: "relative", padding: "0px 0 100px 0" }}
+      >
         <Container sx={{ background: "#fff" }}>
           <Typography
             sx={{
@@ -118,16 +122,35 @@ export default function Campers() {
                   data={item}
                   key={index}
                   color={
-                    (JSON.parse(item.info_usuario).genero == "masculino")
+                    JSON.parse(item.info_usuario).genero == "masculino"
                       ? "#2A4B9B"
                       : "#6C3483"
                   }
                 />
               ))
             ) : (
-              <Box sx={{width:"100%", minHeight:"200px", display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
-                <Typography variant="body1" sx={{fontWeight:"400", fontSize:"18px"}}>No hay datos disponibles</Typography>
-                <img width="100px" src={astronautaTriste} alt="" className="astronaut_animation" />
+              <Box
+                sx={{
+                  width: "100%",
+                  minHeight: "200px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Typography
+                  variant="body1"
+                  sx={{ fontWeight: "400", fontSize: "18px" }}
+                >
+                  No hay datos disponibles
+                </Typography>
+                <img
+                  width="100px"
+                  src={astronautaTriste}
+                  alt=""
+                  className="astronaut_animation"
+                />
               </Box>
             )}
           </Box>

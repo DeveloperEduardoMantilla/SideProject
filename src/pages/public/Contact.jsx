@@ -109,6 +109,7 @@ export default function Contact() {
   };
   return (
     <Box
+      data-aos="fade-right"
       id="contact"
       sx={{ background: "#34495E", width: "100%", minHeight: "400px" }}
     >

@@ -8,21 +8,31 @@ import Footer from "../../components/Footer.jsx";
 import { Box } from "@mui/material";
 import Header from "../../components/Header.jsx";
 import Chat from "../../components/Chat.jsx";
+import "aos/dist/aos.css";
+import AOS from "aos";
+import { useEffect } from "react";
+import WhatsAppButton from "../../components/WhatsAppButton.jsx";
+
 export default function Home() {
+  useEffect(() => {
+    AOS.init({ duration: 1000,  once: true });
+  });
   return (
     <>
+      <Box sx={{position:"relative"}}>
       <Header />
-      <Box sx={{overflow:"hidden"}}>
-        <HomeImg/>
+      <Box sx={{ overflow: "hidden" }}>
+        <HomeImg />
         <Aboutme />
         <Campers />
-        <SuccessStories/>
-        <Contact/>
-        <Adress/>
-        <Footer/>
-        <Chat/>
+        <SuccessStories />
+        <Contact />
+        <Adress />
+        <Footer />
+        <Chat />
+      </Box>
+      <WhatsAppButton/>
       </Box>
     </>
-   
-  )
+  );
 }

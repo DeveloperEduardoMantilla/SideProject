@@ -120,17 +120,9 @@ export default function Login() {
       correo: "",
       ciudad: "",
     });
+    
   };
-  Swal.fire({
-    icon: 'success',
-    title: 'Usuario registrado correctamente',
-    position: 'bottom-end',
-    width: '20rem',
-    timer: 5000,
-    toast: true,
-    timerProgressBar: true,
-    showConfirmButton: false,
-  })
+ 
 
   return (
     <>
