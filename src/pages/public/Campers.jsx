@@ -17,9 +17,41 @@ import "../../assets/css/Camper.css";
 
 export default function Campers() {
   const [data, setData] = useState([]);
-  const [tecnologia, setTecnologia] = useState(1);
-  const [ruta, setRuta] = useState(5);
-  const [ingles, setIngles] = useState(9);
+  const [tecnologia, setTecnologia] = useState("2");
+  const [ruta, setRuta] = useState(3);
+  const [ingles, setIngles] = useState("0");
+
+  const handleChangeTecnologia = (event) => {
+    setTecnologia(event.target.value);
+    filterTecn();
+  };
+  const handleChangeRuta = (event) => {
+    setRuta(event.target.value);
+    document.getElementById("navbar").style.zIndex = 3;
+  };
+  const handleChangeIngles = (event) => {
+    setIngles(event.target.value);
+    document.getElementById("navbar").style.zIndex = 3;
+  };
+
+  const filterTecn = async() => {
+    try {
+      const sever =JSON.parse(import.meta.env.VITE_MY_SERVER);
+      let option = {
+        method: "GET",
+        headers: new Headers({
+            "Content-Type": "application/json",
+        })
+      }
+      console.log(tecnologia);
+      const infoFilter =  await (await fetch(`http://${sever.host}:${sever.port}/cv/filter/?tecn=${tecnologia}`, option)).json();
+      if (infoFilter.status == 200) {
+          setData(infoFilter.message)
+      }
+  } catch (error) {
+      alert(error.message)
+  }
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,17 +75,6 @@ export default function Campers() {
     fetchData();
   }, []);
 
-  const handleChangeTecnologia = (event) => {
-    setTecnologia(event.target.value);
-  };
-  const handleChangeRuta = (event) => {
-    setRuta(event.target.value);
-    document.getElementById("navbar").style.zIndex = 3;
-  };
-  const handleChangeIngles = (event) => {
-    setIngles(event.target.value);
-    document.getElementById("navbar").style.zIndex = 3;
-  };
   return (
     <>
       <Box
@@ -81,10 +102,15 @@ export default function Campers() {
               label="Age"
               onChange={handleChangeTecnologia}
             >
-              <MenuItem value={1}>Tecnologias</MenuItem>
-              <MenuItem value={2}>Php</MenuItem>
-              <MenuItem value={3}>React</MenuItem>
-              <MenuItem value={4}>Java</MenuItem>
+              <MenuItem value="2" disabled>Tecnologias</MenuItem>
+              <MenuItem value="php">Php</MenuItem>
+              <MenuItem value="laravel">Laravel</MenuItem>
+              <MenuItem value="react">React</MenuItem>
+              <MenuItem value="java">Java</MenuItem>
+              <MenuItem value="node">Node</MenuItem>
+              <MenuItem value="express">Express</MenuItem>
+              <MenuItem value="c#">C#</MenuItem>
+              <MenuItem value=".net">.Net</MenuItem>
             </Select>
 
             <Select
@@ -98,10 +124,9 @@ export default function Campers() {
               label="Age"
               onChange={handleChangeRuta}
             >
-              <MenuItem value={5}>Ruta</MenuItem>
-              <MenuItem value={6}>Developer BackEnd</MenuItem>
-              <MenuItem value={7}>Developer FullStack</MenuItem>
-              <MenuItem value={8}>Develope FrontEnd</MenuItem>
+              <MenuItem value={3} disabled>Ruta</MenuItem>
+              <MenuItem value={1}>Developer BackEnd</MenuItem>
+              <MenuItem value={2}>Developer FullStack</MenuItem>
             </Select>
 
             <Select
@@ -112,10 +137,12 @@ export default function Campers() {
               label="Age"
               onChange={handleChangeIngles}
             >
-              <MenuItem value={9}>Nivel ingles</MenuItem>
-              <MenuItem value={10}>A1</MenuItem>
-              <MenuItem value={11}>A2</MenuItem>
-              <MenuItem value={12}>B1</MenuItem>
+              <MenuItem value="0" disabled>Nivel ingles</MenuItem>
+              <MenuItem value="A1">A1</MenuItem>
+              <MenuItem value="A2">A2</MenuItem>
+              <MenuItem value="B1">B1</MenuItem>
+              <MenuItem value="B2">B2</MenuItem>
+              <MenuItem value="C1">C1</MenuItem>
             </Select>
           </Box>
           <Box
