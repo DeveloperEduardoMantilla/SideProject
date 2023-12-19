@@ -13,66 +13,52 @@ import Camper from "../../components/Camper.jsx";
 import figura from "../../assets/Img/figura.png";
 import { useState, useEffect } from "react";
 import astronautaTriste from "../../assets/Img/astronautaTriste.png";
+import useFilterCampers from "../hook/useFilterCampers.js";
 import "../../assets/css/Camper.css";
 
 export default function Campers() {
-  const [data, setData] = useState([]);
-  const [tecnologia, setTecnologia] = useState("2");
-  const [ruta, setRuta] = useState(3);
-  const [ingles, setIngles] = useState("0");
+  const {
+    data,
+    setData,
+    enfoques,
+    ingles,
+    setIngles,
+    tecnologia,
+    setTecnologia,
+    ruta,
+    setRuta,
+    filterIng,
+    filterRut,
+    filterTecn,
+    fetchEnfoques,
+    fetchData
+  } = useFilterCampers()
 
   const handleChangeTecnologia = (event) => {
     setTecnologia(event.target.value);
-    filterTecn();
   };
   const handleChangeRuta = (event) => {
     setRuta(event.target.value);
-    document.getElementById("navbar").style.zIndex = 3;
   };
   const handleChangeIngles = (event) => {
     setIngles(event.target.value);
-    document.getElementById("navbar").style.zIndex = 3;
   };
 
-  const filterTecn = async() => {
-    try {
-      const sever =JSON.parse(import.meta.env.VITE_MY_SERVER);
-      let option = {
-        method: "GET",
-        headers: new Headers({
-            "Content-Type": "application/json",
-        })
-      }
-      console.log(tecnologia);
-      const infoFilter =  await (await fetch(`http://${sever.host}:${sever.port}/cv/filter/?tecn=${tecnologia}`, option)).json();
-      if (infoFilter.status == 200) {
-          setData(infoFilter.message)
-      }
-  } catch (error) {
-      alert(error.message)
-  }
-  }
+  useEffect(()=>{
+    filterTecn();
+  },[tecnologia])
+
+  useEffect(()=>{
+    filterIng();
+  },[ingles])
+
+  useEffect(()=>{
+    filterRut();
+  },[ruta])
 
   useEffect(() => {
-    const fetchData = async () => {
-      let options = {
-        method: "GET",
-        headers: new Headers({
-          "Content-Type": "application/json",
-        })
-      };
-      try {
-        const sever = JSON.parse(import.meta.env.VITE_MY_SERVER);
-        const campers = await (
-          await fetch(`http://${sever.host}:${sever.port}/cv`, options)
-        ).json();
-
-        setData(campers.message);
-      } catch (e) {
-        console.log("Error => ", e);
-      }
-    };
     fetchData();
+    fetchEnfoques();
   }, []);
 
   return (
@@ -102,7 +88,7 @@ export default function Campers() {
               label="Age"
               onChange={handleChangeTecnologia}
             >
-              <MenuItem value="2" disabled>Tecnologias</MenuItem>
+              <MenuItem value="t">Tecnologias</MenuItem>
               <MenuItem value="php">Php</MenuItem>
               <MenuItem value="laravel">Laravel</MenuItem>
               <MenuItem value="react">React</MenuItem>
@@ -124,9 +110,9 @@ export default function Campers() {
               label="Age"
               onChange={handleChangeRuta}
             >
-              <MenuItem value={3} disabled>Ruta</MenuItem>
-              <MenuItem value={1}>Developer BackEnd</MenuItem>
-              <MenuItem value={2}>Developer FullStack</MenuItem>
+              <MenuItem value={0} >Ruta</MenuItem>
+              {enfoques &&
+                enfoques.map(item =>(<MenuItem key={item.id} value={item.id}>{item.nombre}</MenuItem>))}
             </Select>
 
             <Select
@@ -137,7 +123,7 @@ export default function Campers() {
               label="Age"
               onChange={handleChangeIngles}
             >
-              <MenuItem value="0" disabled>Nivel ingles</MenuItem>
+              <MenuItem value="i">Nivel ingles</MenuItem>
               <MenuItem value="A1">A1</MenuItem>
               <MenuItem value="A2">A2</MenuItem>
               <MenuItem value="B1">B1</MenuItem>

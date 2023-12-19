@@ -382,5 +382,6 @@ VALUES ('Comunicación', 1),
  ('Comunicación', 4),
  ('Trabajo en equipo', 1);
 
-SELECT * from educacion;
 
+
+select * from cv;

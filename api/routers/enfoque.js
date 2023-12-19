@@ -5,7 +5,7 @@ import { enfoqueController } from "../controller/enfoque.js";
 import { verifyToken } from "../middleware/jwt.js";
 const appEnfoque = Router(); 
 
-appEnfoque.get("/", verifyToken(), validatePermisos(["admin", "usuario"]), validateEnfoqueQuerys, enfoqueController.getAll)
+appEnfoque.get("/", validatePermisos(["*"]), validateEnfoqueQuerys, enfoqueController.getAll)
 appEnfoque.post("/", verifyToken(), validatePermisos(["admin"]), validateEnfoquePost, enfoqueController.postEnfoque)
 appEnfoque.put("/", verifyToken(), validatePermisos(["admin"]), validateEnfoqueQuerys, validateEnfoqueUpdate, enfoqueController.putEnfoque)
 appEnfoque.delete("/", verifyToken(), validatePermisos(["admin"]), validateEnfoqueQuerys, enfoqueController.deleteEnfoque)
