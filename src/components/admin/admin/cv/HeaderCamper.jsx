@@ -35,7 +35,7 @@ import {
         setLogo(logoNegro);
         setStyleHeader({
           color: "#333",
-          background: "#333",
+          background: "#fff",
           boxShadow: "20px 2px 5px #515A5A",
           position: "fixed",
           transition: "all ease-in-out .5s",
@@ -55,15 +55,21 @@ import {
   
     const navLinks = [
       {
+        title: "Mi Cv",
+        path: "/camperCreateCv",
+        icon: <LoginIcon />,
+      },
+      {
         title: "Perfil",
-        path: "#",
+        path: "/profile",
         icon: <LoginIcon />,
       },
       {
         title: "Salir",
         path: "/",
         icon: <LoginIcon />,
-      }
+      },
+      
     ];
     return (
       <>

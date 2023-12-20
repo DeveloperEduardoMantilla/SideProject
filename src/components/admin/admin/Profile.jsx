@@ -5,7 +5,7 @@ import avatarMujer from "../../../assets/Img/AvatarMujer.png";
 import Education from "./cv/Education.jsx";
 import SoftSkills from "./cv/SoftSkills.jsx";
 import { useEffect, useState } from "react";
-import HeaderCamper from "./cv/HeaderCamper";
+import HeaderCamper from "./cv/HeaderCamper.jsx";
 
 export default function Profile() {
   const [dataCamper, setDataCamper] = useState({})

@@ -9,6 +9,7 @@ import Profile from "../components/admin/admin/Profile.jsx";
 import CamperView from "../pages/public/CamperView.jsx";
 import ProtectedRoute from "./utils/protectedRoute";
 import usePrivatizacion from "./hook/usePrivatizacion.js";
+import CamperCreateCv from "../pages/admin/Camper/CamperCreateCv.jsx";
 import { useEffect } from "react";
 
 export default function Router() {
@@ -73,7 +74,8 @@ export default function Router() {
           </Route>
          
           <Route element={<ProtectedRoute canActivate={stateRoutes.Camper} redirectPath={"/dashboard"} />}>
-            <Route path="/profile" element={<Profile/>}/>
+              <Route path="/profile" element={<Profile/>}/>
+              <Route path="/camperCreateCv" element={<CamperCreateCv/>}/>
           </Route>
 
           <Route element={<ProtectedRoute canActivate={stateRoutes.Admin} redirectPath={"/"} />}>
