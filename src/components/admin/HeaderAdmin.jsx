@@ -36,9 +36,9 @@ export default function Header() {
       setLogo(logoNegro);
       setStyleHeader({
         color: "#333",
-        background: "#333",
+        background: "#fff",
         boxShadow: "20px 2px 5px #515A5A",
-        position: "fixed",
+        fontWeight:"600",
         transition: "all ease-in-out .5s",
       });
     } else if (currentPosition > 0) {
