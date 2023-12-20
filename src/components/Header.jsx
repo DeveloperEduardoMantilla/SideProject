@@ -11,8 +11,13 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import LoginIcon from "@mui/icons-material/Login";
 import HomeIcon from "@mui/icons-material/Home";
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { NavLink } from "react-router-dom";
 import HeaderListDrawer from "../components/HeaderListDrawer.jsx";
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import PersonIcon from '@mui/icons-material/Person';
+import ContactsIcon from '@mui/icons-material/Contacts';
 import { useEffect, useState } from "react";
 import logoNegro from "../assets/Img/logo.png";
 import logoBlanco from "../assets/Img/logoBlanco.png";
@@ -63,27 +68,27 @@ export default function Header() {
     {
       title: "Quienes Somos",
       path: "#aboutme",
-      icon: <LoginIcon />,
+      icon: <EmojiPeopleIcon />,
     },
     {
       title: "Campers",
       path: "#campers",
-      icon: <LoginIcon />,
+      icon: <PersonIcon />,
     },
     {
       title: "Casos de Exito",
       path: "#successStories",
-      icon: <LoginIcon />,
+      icon: <StarBorderIcon />,
     },
     {
       title: "Contactenos",
       path: "#contact",
-      icon: <LoginIcon />,
+      icon: <ContactsIcon />,
     },
     {
       title: "Admin",
       path: "/login",
-      icon: <LoginIcon />,
+      icon: <AdminPanelSettingsIcon />,
     },
   ];
 
