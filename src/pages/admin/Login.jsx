@@ -95,28 +95,32 @@ export default function Login() {
       <Box
         sx={{
           width: "100%",
-          minHeight: "100vh",
+          height: "100vh",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          background:{xs:"#2A4B9B",md:"#fff"}
         }}
       >
         <Box
           sx={{
             display: "flex",
-            height: "500px",
-            boxShadow: "-3px 5px 10px #ccc",
+            minHeight: "500px",
+            justifyContent:"center",
+            flexWrap:"wrap",
+            boxShadow: {xs:"none", md:"-3px 5px 10px #ccc"},
+            background:"#2A4B9B"
           }}
         >
           <Box
             sx={{
-              
-              width: "400px",
+              width: {xs:"80%", md:"400px"},
               padding: "30px 60px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
+              background:"#fff"
             }}
           >
             <Typography
@@ -143,6 +147,7 @@ export default function Login() {
                 label="Usuario"
                 name="usuario"
                 variant="standard"
+                fullWidth
                 value={formData.usuario}
                 onChange={handleChange}
               />
@@ -157,6 +162,7 @@ export default function Login() {
               <TextField
                 id="standard-basic"
                 variant="standard"
+                fullWidth
                 label="Contraseña"
                 name="password"
                 type={showPassword ? "text" : "password"}
@@ -184,14 +190,14 @@ export default function Login() {
                         {errors.password}
                       </Typography>
                     )}
-              <Box sx={{ display: "flex", margin: "40px 0px" }}>
+              <Box sx={{ display: "flex", justifyContent:"space-between", flexWrap:"wrap", margin: "40px 0px" }}>
                 <Button
                   variant="contained"
                   onClick={handleSubmit}
                   // component={Link}
                   // to="/dashboard"
                   sx={{
-                    width: "130px",
+                    width: "40%",
                     background: "#2A4B9B",
                     margin: "0 10px",
                     "&:hover": {
@@ -206,7 +212,7 @@ export default function Login() {
                   component={Link}
                   to="/registred"
                   sx={{
-                    width: "130px",
+                    width: "40%",
                     background: "#FED641",
                     margin: "0 10px",
                     "&:hover": {
@@ -215,6 +221,21 @@ export default function Login() {
                   }}
                 >
                   Registrate
+                </Button>
+                <Button
+                  variant="contained"
+                  component={Link}
+                  to="/"
+                  sx={{
+                    width: "100%",
+                    background: "#371A46",
+                    margin: "10px",
+                    "&:hover": {
+                      background: "#371A46",
+                    },
+                  }}
+                >
+                  Volver
                 </Button>
               </Box>
             </form> 
@@ -226,7 +247,7 @@ export default function Login() {
               background: "#2A4B9B",
               position: "relative",
               transition: "transform 0.3s ease-in-out",
-              
+              overflow:"hidden"
             }}
           >
             <img

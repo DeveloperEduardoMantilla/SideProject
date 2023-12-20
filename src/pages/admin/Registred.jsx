@@ -432,11 +432,11 @@ export default function Login() {
                         to="/"
                         sx={{
                           width: { xs: "100%", sm: "130px" },
-                          background: "#2A4B9B",
+                          background: "#371B43",
                           textTransform: "capitalize",
                           margin: "0 10px",
                           "&:hover": {
-                            background: "#2A4B9B",
+                            background: "#371B43",
                           },
                         }}
                       >
