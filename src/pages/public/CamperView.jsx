@@ -10,6 +10,7 @@ import { useParams } from "react-router";
 export default function CamperView() {
   const [dataCamper, setDataCamper] = useState([]);
   const { id } = useParams();
+  const validateLocal = localStorage.getItem("token")
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +39,11 @@ export default function CamperView() {
 
   return (
     <>
+    {!validateLocal && (
       <Header />
+    )
+    }
+      
       <Box sx={{ position: "relative" }}>
         <Box
           sx={{

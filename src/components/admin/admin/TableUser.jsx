@@ -38,32 +38,23 @@ export default function TableUser() {
         filter: true,
       },
     },
-    {
-      name: "estado",
-      options: {
-        filter: false,
-        customBodyRender: (value, tableMeta, updateValue) => {
-          return (
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => {
-                console.log(tableMeta.rowData);
-              }}
-            >
-              Ver
-            </Button>
-          );
-        },
-      },
-    },
   ];
 
   useEffect(() => {
     const dataUser = async () => {
       const sever = JSON.parse(import.meta.env.VITE_MY_SERVER);
+      const token = JSON.parse(localStorage.getItem("token"))
+
+      let options = {
+        method: "GET",
+        headers: new Headers({
+          "Content-Type": "application/json",
+          "Authorization": token
+        })
+      };
+
       const userData = await (
-        await fetch(`http://${sever.host}:${sever.port}/usuario`)
+        await fetch(`http://${sever.host}:${sever.port}/usuario/estado/1`, options)
       ).json();
 
       const formattedData = userData.message.map((user) => [

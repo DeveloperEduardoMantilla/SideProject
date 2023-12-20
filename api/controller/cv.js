@@ -27,6 +27,9 @@ export class cvController{
 
             const resultCv = await cvModel.getCvUser(req.query.id);
             if(resultCv.status == 200){
+                if (resultCv.message.length == 0) {
+                    return res.status(200).send({status:200, message:resultCv.message})
+                }
                 objeto.cv = resultCv.message[0]
                 const newId = resultCv.message[0].id
                 const resultEducacion = await educacionModel.getCvId(newId);

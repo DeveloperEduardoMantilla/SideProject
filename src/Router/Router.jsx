@@ -66,17 +66,19 @@ export default function Router() {
         <CssBaseline/>
         <Routes>
           <Route element={<ProtectedRoute canActivate={stateRoutes.Login} redirectPath={"/profile"} />}>
-          <Route path='/' element={<Home />} />
+            <Route path='/' element={<Home />} />
             <Route path="/login" element={<Login/>}/>
             <Route path="/registred" element={<Registred/>}/>
             <Route path="/camper/:id" element={<CamperView/>}/>
           </Route>
-            
+         
           <Route element={<ProtectedRoute canActivate={stateRoutes.Camper} redirectPath={"/dashboard"} />}>
             <Route path="/profile" element={<Profile/>}/>
           </Route>
+
           <Route element={<ProtectedRoute canActivate={stateRoutes.Admin} redirectPath={"/"} />}>
             <Route path="/dashboard" element={<DashboardTest />}/>
+            <Route path="/cv/:id" element={<CamperView/>}/>
           </Route>
           <Route path="*" element={<p>Error 404. Page Not Found</p>}/>
         </Routes>

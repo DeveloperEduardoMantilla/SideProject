@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import {
   Box,
@@ -12,11 +11,11 @@ import {
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import photo from "../../assets/Img/Astronauta.png";
+import useLogin from "../hook/useLogin.js";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-
-  const redirect = useNavigate();
+  const {getDataToken} = useLogin();
 
   const [requiredFields, setRequiredFields] = useState([
     "usuario",
@@ -65,64 +64,12 @@ export default function Login() {
       }),
       body: JSON.stringify(formData)
     }
-    try {
       const sever =JSON.parse(import.meta.env.VITE_MY_SERVER);
       const response = await (await fetch(`http://${sever.host}:${sever.port}/login`, options)).json();
 
       if(response.status === 200){
         localStorage.setItem("token", JSON.stringify(response.token))
-          let option = {
-            method: "GET",
-            headers: new Headers({
-                "Content-Type": "application/json",
-                "Authorization": response.token
-            })
-          }
-          const dataToken =  await (await fetch(`http://${sever.host}:${sever.port}/dataToken`, option)).json();
-          if (dataToken.status == 200) {
-            if (dataToken.message.payload.rol == "usuario") {
-              const validateInfo = await (await fetch(`http://${sever.host}:${sever.port}/usuario?id=${dataToken.message.payload.idUsuario}`, option)).json(); 
-              if (validateInfo.status == 200) {
-                if (validateInfo.message[0].estado == 1) {
-                  Swal.fire({
-                    icon: 'success',
-                    title: "inicio de sesion exitoso",
-                    position: 'bottom-end',
-                    width: '20rem',
-                    timer: 3000,
-                    toast: true,
-                    timerProgressBar: true,
-                    showConfirmButton: false,
-                  })
-                  redirect("/profile")
-                } else{
-                  Swal.fire({
-                    icon: 'warning',
-                    title: "En espera de acceso",
-                    position: 'bottom-end',
-                    width: '20rem',
-                    timer: 3000,
-                    toast: true,
-                    timerProgressBar: true,
-                    showConfirmButton: false,
-                  })
-                }
-              }
-              
-            } else{
-              Swal.fire({
-                icon: 'success',
-                title: "inicio de sesion exitoso",
-                position: 'bottom-end',
-                width: '20rem',
-                timer: 3000,
-                toast: true,
-                timerProgressBar: true,
-                showConfirmButton: false,
-              })
-              redirect("/dashboard")
-            }
-          }
+        getDataToken();
       } else{
         Swal.fire({
           icon: 'error',
@@ -135,9 +82,6 @@ export default function Login() {
           showConfirmButton: false,
         })
       }
-    } catch (error) {
-      alert(error.message)
-    }
 
     setFormData({
       usuario: "",

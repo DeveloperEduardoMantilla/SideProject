@@ -5,6 +5,7 @@ import avatarMujer from "../../../assets/Img/AvatarMujer.png";
 import Education from "./cv/Education.jsx";
 import SoftSkills from "./cv/SoftSkills.jsx";
 import { useEffect, useState } from "react";
+import HeaderCamper from "./cv/HeaderCamper";
 
 export default function Profile() {
   const [dataCamper, setDataCamper] = useState({})
@@ -44,6 +45,7 @@ if (!isLoading) {
 
   return (
     <>
+    <HeaderCamper />
       <Box sx={{ position: "relative" }}>
         <Box
           sx={{

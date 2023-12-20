@@ -67,7 +67,7 @@ export default function Header() {
     },
     {
       title: "Salir",
-      path: "/salir",
+      path: "/",
       icon: <LoginIcon />,
     }
   ];
@@ -104,6 +104,11 @@ export default function Header() {
                     color="inherit"
                     key={item.title}
                     component={NavLink}
+                    onClick={()=>{
+                      if(item.title == "Salir"){
+                        localStorage.removeItem("token")
+                      }
+                    }}
                     to={item.path}
                     sx={{
                       borderRadius: "0px",
@@ -120,7 +125,8 @@ export default function Header() {
                   >
                     {item.title}
                   </Button>
-                ))}
+                )
+               )}
               </Box>
             </Toolbar>
           </Container>

@@ -16,10 +16,11 @@ import {
   Container,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-
 import photo from "../../assets/Img/Astronauta_registrar.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const redirect = useNavigate()
   const [showPassword, setShowPassword] = useState(false);
   const [requiredFields, setRequiredFields] = useState([
     "usuario",
@@ -98,6 +99,7 @@ export default function Login() {
           timerProgressBar: true,
           showConfirmButton: false,
         });
+        redirect("/login")
       } else {
         Swal.fire({
           icon: "error",
@@ -113,15 +115,6 @@ export default function Login() {
     } catch (error) {
       alert(error.message);
     }
-
-    setFormData({
-      usuario: "",
-      password: "",
-      genero: "",
-      telefono: "",
-      correo: "",
-      ciudad: "",
-    });
   };
 
   return (
