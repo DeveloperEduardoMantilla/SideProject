@@ -4,6 +4,36 @@ import figura from "../../assets/Img/figura.png";
 import { width } from "@mui/system";
 
 export default function SuccessStories() {
+  const successStorieData = [
+    {
+      background: "#fff",
+      colorText: "#333",
+      title: "Mujeres Pioneras en Campuslands: Transformando el Futuro con Amaris",
+      enterprise: "",
+      content: "Mujeres de Campuslands se incorporan a la empresa multinacional Amaris para crear soluciones mediante la programación.",
+    },
+    {
+      background: "#34495E",
+      colorText: "#fff",
+      title: "Diez Jóvenes, Una Ciudad: Programadores que Rompen Barreras en Bucaramanga.",
+      enterprise: "",
+      content: "Diez jóvenes ingresan al ámbito laboral en empresas de la ciudad de Bucaramanga, desempeñándose como programadores.",
+    },
+    {
+      background: "#fff",
+      colorText: "#333",
+      title: "Conexiones Globales: Cinco Jóvenes Desarrolladores, Una Misión Remota.",
+      enterprise: "",
+      content: "Cinco jóvenes se unen a empresas multinacionales, trabajando de forma remota como desarrolladores.",
+    },
+    {
+      background: "#34495E",
+      colorText: "#fff",
+      title: "Backend Brillante: Una Joven Programadora Conquista Empresas Estadounidenses.",
+      enterprise: "",
+      content: "Una joven se integra a una empresa estadounidense para crear soluciones a través de código, asumiendo el rol de programadora backend.",
+    },
+  ];
   return (
     <Box
       data-aos="fade-left"
@@ -51,10 +81,11 @@ export default function SuccessStories() {
           width: { xs: "100%", sm: "90%", lg: "100%" },
         }}
       >
-        <SuccessStorie data={["#fff", "#333"]} />
-        <SuccessStorie data={["#34495E", "#fff"]} />
-        <SuccessStorie data={["#fff", "#333"]} />
-        <SuccessStorie data={["#34495E", "#fff"]} />
+        {
+          successStorieData.map((item, index)=>(
+            <SuccessStorie data={item} key={index} />
+          ))
+        }
       </Box>
       <img
         className="figura"

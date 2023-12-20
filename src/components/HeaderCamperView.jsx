@@ -12,7 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import LoginIcon from "@mui/icons-material/Login";
 import HomeIcon from "@mui/icons-material/Home";
 import { NavLink } from "react-router-dom";
-import HeaderListDrawer from "../components/HeaderListDrawer.jsx";
+import HeaderListDrawerCamperView from "../components/HeaderListDrawerCamperView.jsx";
 import { useEffect, useState } from "react";
 import logoNegro from "../assets/Img/logo.png";
 import logoBlanco from "../assets/Img/logoBlanco.png";
@@ -57,34 +57,9 @@ export default function Header() {
   const navLinks = [
     {
       title: "Inicio",
-      path: "#",
+      path: "/",
       icon: <HomeIcon />,
-    },
-    {
-      title: "Quienes Somos",
-      path: "#aboutme",
-      icon: <LoginIcon />,
-    },
-    {
-      title: "Campers",
-      path: "#campers",
-      icon: <LoginIcon />,
-    },
-    {
-      title: "Casos de Exito",
-      path: "#successStories",
-      icon: <LoginIcon />,
-    },
-    {
-      title: "Contactenos",
-      path: "#contact",
-      icon: <LoginIcon />,
-    },
-    {
-      title: "Admin",
-      path: "/login",
-      icon: <LoginIcon />,
-    },
+    }
   ];
 
   const handleContactClick = () => {
@@ -159,7 +134,7 @@ export default function Header() {
         onClose={() => setOpen(false)}
         sx={{ display: { sm: "flex", md: "none" } }}
       >
-        <HeaderListDrawer
+        <HeaderListDrawerCamperView
           navLinks={navLinks}
           NavLink={NavLink}
           setOpen={setOpen}

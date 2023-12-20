@@ -6,11 +6,12 @@ import Education from "../../components/admin/admin/cv/Education.jsx";
 import SoftSkills from "../../components/admin/admin/cv/SoftSkills.jsx";
 import { useEffect, useState } from "react";
 import Header from "../../components/Header.jsx";
+import HeaderCamperView from "../../components/HeaderCamperView.jsx";
 import { useParams } from "react-router";
 export default function CamperView() {
   const [dataCamper, setDataCamper] = useState([]);
   const { id } = useParams();
-  const validateLocal = localStorage.getItem("token")
+  const validateLocal = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,11 +40,8 @@ export default function CamperView() {
 
   return (
     <>
-    {!validateLocal && (
-      <Header />
-    )
-    }
-      
+      {/* {!validateLocal && <Header />} */}
+      <HeaderCamperView />
       <Box sx={{ position: "relative" }}>
         <Box
           sx={{
@@ -73,7 +71,7 @@ export default function CamperView() {
                     flexDirection: { xs: "column", md: "row" },
                   }}
                 >
-                  <Box sx={{display:"flex", justifyContent:"center"}}>
+                  <Box sx={{ display: "flex", justifyContent: "center" }}>
                     <img
                       src={
                         dataCamper &&
@@ -252,18 +250,17 @@ export default function CamperView() {
                   {dataCamper &&
                     dataCamper.skills &&
                     dataCamper.skills.map((item, index) => (
-                        <SoftSkills
-                          data={item.competencia}
-                          key={index}
-                          color={
-                            dataCamper &&
-                            dataCamper.cv &&
-                            dataCamper.cv.info_usuario.genero === "femenino"
-                              ? "#6C3483"
-                              : "#2A4B9B"
-                          }
-                          
-                        />
+                      <SoftSkills
+                        data={item.competencia}
+                        key={index}
+                        color={
+                          dataCamper &&
+                          dataCamper.cv &&
+                          dataCamper.cv.info_usuario.genero === "femenino"
+                            ? "#6C3483"
+                            : "#2A4B9B"
+                        }
+                      />
                     ))}
                 </Box>
                 <Typography

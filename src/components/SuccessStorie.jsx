@@ -1,11 +1,14 @@
 import { Box, Typography } from "@mui/material";
+import { useEffect } from "react";
+
 
 export default function SuccessStorie({data}) {
+
   return (
     <Box
       sx={{
-        background:data[0],
-        color:data[1],
+        background:data.background,
+        color:data.colorText,
         display:"flex",
         flexDirection:"column",
         alignItems:"center",
@@ -13,7 +16,7 @@ export default function SuccessStorie({data}) {
         width:{xs:"100%", sm:"300px",},
         margin: "10px",
         boxShadow: "0px 10px 15px rgba(0,0,0,0.1)",
-        padding: "40px 30px",
+        padding: "20px 15px",
         position:"relative",
         transition: "all 0.5s ease",
         "&:hover": {
@@ -23,10 +26,10 @@ export default function SuccessStorie({data}) {
       }}
     >
       <Typography sx={{ fontWeight: "500", fontSize: "20px", padding:"10px 0" }}>
-        Edgar Eduardo Mantilla
+        {data.title}
       </Typography>
       <Typography sx={{ fontWeight: "400", fontSize: "17px", padding:"0 0 0px 0" }}>
-        LatamOriental
+        {data.enterprise}
       </Typography>
       <Typography
         sx={{
@@ -35,9 +38,7 @@ export default function SuccessStorie({data}) {
           textAlign: "justify",
         }}
       >
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis,
-        earum repudiandae voluptas doloribus distinctio unde? Asperiores
-        laudantium fugiat nulla illo. 
+        {data.content}
       </Typography>
     </Box>
   );
