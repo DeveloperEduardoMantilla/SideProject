@@ -223,7 +223,7 @@ export default function CamperView() {
                 <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                   {dataCamper &&
                     dataCamper.cv &&
-                    dataCamper.cv.skills.map((item, index) => (
+                    JSON.parse(dataCamper.cv.skills).map((item, index) => (
                       <SoftSkills
                         data={item}
                         key={index}

@@ -42,7 +42,7 @@ export default function Camper(props) {
               variant=""
               className="nivelIngles"
             >
-              {(data.enfoque).nombre}
+              {JSON.parse(data.enfoque).nombre}
             </Typography>
           </Box>
 
@@ -59,7 +59,7 @@ export default function Camper(props) {
               className="skills"
             >
               <Box className="caja_Skills">
-                 {(data.skills).map((item, index) => (
+                 {JSON.parse(data.skills).map((item, index) => (
                   <span
                     key={index}
                     style={{ background: "#ccc" }}
