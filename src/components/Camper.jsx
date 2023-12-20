@@ -18,7 +18,7 @@ export default function Camper(props) {
           sx={{ background: color }}
         >
           {
-            data.info_usuario.genero ==="masculino" ?  <img
+            JSON.parse(data.info_usuario).genero ==="masculino" ?  <img
             src={photo}
             alt=""
             className="camper_Img"
