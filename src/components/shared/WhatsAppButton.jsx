@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, IconButton } from "@mui/material";
-import WhatsAppIcon from "../assets/Img/whatsapp.png";
+import WhatsAppIcon from "../../assets/Img/whatsapp.png";
 import { keyframes } from "@emotion/react";
 
 function WhatsAppButton() {

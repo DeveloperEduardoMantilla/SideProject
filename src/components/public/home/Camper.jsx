@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 
 import { Box, Typography } from "@mui/material";
-import photo from "../assets/Img/Avatar.png";
+import photo from "../../../assets/Img/Avatar.png";
 import { Link } from 'react-router-dom'; 
-import avatarMujer from "../assets/Img/AvatarMujer.png";
-import { useEffect } from "react";
+import avatarMujer from "../../../assets/Img/AvatarMujer.png";
 
 export default function Camper(props) {
   const { data, color } = props;

@@ -1,6 +1,6 @@
 import { Box, Container, Typography } from "@mui/material";
-import photo from "../../assets/Img/img33.jpg";
-import figura from "../../assets/Img/figura.png";
+import photo from "../../../assets/Img/img33.jpg";
+import figura from "../../../assets/Img/figura.png";
 import PersonIcon from "@mui/icons-material/Person";
 
 import { useEffect } from "react";

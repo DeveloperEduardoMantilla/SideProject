@@ -1,49 +1,54 @@
 import { Box, Container, Typography } from "@mui/material";
-import Experience from "./cv/Experience.jsx";
-import avatarHombre from "../../../assets/Img/Avatar.png"
+import Experience from "../../../components/admin/admin/cv/Experience.jsx";
+import avatarHombre from "../../../assets/Img/Avatar.png";
 import avatarMujer from "../../../assets/Img/AvatarMujer.png";
-import Education from "./cv/Education.jsx";
-import SoftSkills from "./cv/SoftSkills.jsx";
+import Education from "../../../components/admin/admin/cv/Education.jsx";
+import SoftSkills from "../../../components/admin/admin/cv/SoftSkills.jsx";
 import { useEffect, useState } from "react";
-import HeaderCamper from "./cv/HeaderCamper.jsx";
+import HeaderCamper from "../../../components/admin/admin/cv/HeaderCamper.jsx";
 
 export default function Profile() {
-  const [dataCamper, setDataCamper] = useState({})
-  const [isLoading, setIsLoading] = useState(true)
+  const [dataCamper, setDataCamper] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
-  const token = JSON.parse(localStorage.getItem("token"))
-  const getData =  async() =>{
+  const token = JSON.parse(localStorage.getItem("token"));
+  const getData = async () => {
     try {
-      const sever =JSON.parse(import.meta.env.VITE_MY_SERVER);
+      const sever = JSON.parse(import.meta.env.VITE_MY_SERVER);
       let option = {
         method: "GET",
         headers: new Headers({
-            "Content-Type": "application/json",
-            "Authorization": token
-        })
-      }
-      const datasToken =  await (await fetch(`http://${sever.host}:${sever.port}/dataToken`, option)).json();
+          "Content-Type": "application/json",
+          Authorization: token,
+        }),
+      };
+      const datasToken = await (
+        await fetch(`http://${sever.host}:${sever.port}/dataToken`, option)
+      ).json();
       if (datasToken.status == 200) {
-          const infoCv =  await (await fetch(`http://${sever.host}:${sever.port}/cv/user?id=${datasToken.message.payload.idUsuario}`, option)).json();
-          if (infoCv.status == 200) {
-            setDataCamper(infoCv.message);
-          }
+        const infoCv = await (
+          await fetch(
+            `http://${sever.host}:${sever.port}/cv/user?id=${datasToken.message.payload.idUsuario}`,
+            option
+          )
+        ).json();
+        if (infoCv.status == 200) {
+          setDataCamper(infoCv.message);
+        }
       }
-  } catch (error) {
-      alert(error.message)
-  }
-  }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
-useEffect(() => {
-  getData()
-  setIsLoading(false)
-}, [])
-
-
+  useEffect(() => {
+    getData();
+    setIsLoading(false);
+  }, []);
 
   return (
     <>
-    <HeaderCamper />
+      <HeaderCamper />
       <Box sx={{ position: "relative" }}>
         <Box
           sx={{
@@ -73,7 +78,7 @@ useEffect(() => {
                     flexDirection: { xs: "column", md: "row" },
                   }}
                 >
-                  <Box sx={{display:"flex", justifyContent:"center"}}>
+                  <Box sx={{ display: "flex", justifyContent: "center" }}>
                     <img
                       src={
                         dataCamper &&
@@ -222,9 +227,9 @@ useEffect(() => {
                 </Typography>
                 <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                   {dataCamper &&
-                    dataCamper.cv && 
-                    (dataCamper.cv.skills.length > 0)
-                     ?(dataCamper.cv.skills.map((item, index) => (
+                  dataCamper.cv &&
+                  dataCamper.cv.skills.length > 0 ? (
+                    dataCamper.cv.skills.map((item, index) => (
                       <SoftSkills
                         data={item}
                         key={index}
@@ -237,9 +242,9 @@ useEffect(() => {
                         }
                       />
                     ))
-                    )
-                    :(<p>No se encentra skills.</p>)
-                  }
+                  ) : (
+                    <p>No se encentra skills.</p>
+                  )}
                 </Box>
                 <Typography
                   variant="h4"
@@ -254,9 +259,9 @@ useEffect(() => {
                 </Typography>
                 <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                   {dataCamper &&
-                   dataCamper.skills &&
-                    (dataCamper.skills.length > 0)
-                    ?(dataCamper.skills.map((item, index) => (
+                  dataCamper.skills &&
+                  dataCamper.skills.length > 0 ? (
+                    dataCamper.skills.map((item, index) => (
                       <SoftSkills
                         data={item.competencia}
                         key={index}
@@ -267,11 +272,11 @@ useEffect(() => {
                             ? "#6C3483"
                             : "#2A4B9B"
                         }
-                        
                       />
-                  )))
-                  :(<p>No se encuentra softSkills.</p>)
-                  }
+                    ))
+                  ) : (
+                    <p>No se encuentra softSkills.</p>
+                  )}
                 </Box>
                 <Typography
                   variant="h4"
@@ -286,9 +291,9 @@ useEffect(() => {
                 </Typography>
                 <Box sx={{ display: "flex", flexDirection: "column" }}>
                   {dataCamper &&
-                    dataCamper.educacion &&
-                    (dataCamper.educacion.length > 0)
-                    ?( dataCamper.educacion.map((item, index) => (
+                  dataCamper.educacion &&
+                  dataCamper.educacion.length > 0 ? (
+                    dataCamper.educacion.map((item, index) => (
                       <Education
                         data={item}
                         color={
@@ -300,9 +305,10 @@ useEffect(() => {
                         }
                         key={index}
                       />
-                    )))
-                    :(<p>No se encuentran Educaciones</p>)
-                  }
+                    ))
+                  ) : (
+                    <p>No se encuentran Educaciones</p>
+                  )}
                 </Box>
                 <Typography
                   variant="h4"
@@ -317,9 +323,9 @@ useEffect(() => {
                 </Typography>
                 <Box sx={{ display: "flex", flexDirection: "column" }}>
                   {dataCamper &&
-                    dataCamper.experiencia &&
-                    (dataCamper.experiencia.length > 0)
-                    ?(dataCamper.experiencia.map((item, index) => (
+                  dataCamper.experiencia &&
+                  dataCamper.experiencia.length > 0 ? (
+                    dataCamper.experiencia.map((item, index) => (
                       <Experience
                         data={item}
                         color={
@@ -331,8 +337,10 @@ useEffect(() => {
                         }
                         key={index}
                       />
-                    )))
-                  :(<p>No se encuentran Experiencias</p>)}
+                    ))
+                  ) : (
+                    <p>No se encuentran Experiencias</p>
+                  )}
                 </Box>
               </Box>
             </Box>

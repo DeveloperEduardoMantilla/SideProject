@@ -1,12 +1,11 @@
 import { Box, Container, Typography } from "@mui/material";
-import Experience from "../../components/admin/admin/cv/Experience.jsx";
-import avatarHombre from "../../../src/assets/Img/Avatar.png";
-import avatarMujer from "../../../src/assets/Img/AvatarMujer.png";
-import Education from "../../components/admin/admin/cv/Education.jsx";
-import SoftSkills from "../../components/admin/admin/cv/SoftSkills.jsx";
+import Experience from "../../admin/admin/cv/Experience.jsx";
+import avatarHombre from "../../../assets/Img/Avatar.png";
+import avatarMujer from "../../../assets/Img/AvatarMujer.png";
+import Education from "../../admin/admin/cv/Education.jsx";
+import SoftSkills from "../../admin/admin/cv/SoftSkills.jsx";
 import { useEffect, useState } from "react";
-import Header from "../../components/Header.jsx";
-import HeaderCamperView from "../../components/HeaderCamperView.jsx";
+import HeaderCamperView from "../../shared/HeaderCamperView.jsx";
 import { useParams } from "react-router";
 export default function CamperView() {
   const [dataCamper, setDataCamper] = useState([]);

@@ -9,12 +9,12 @@ import {
   Select,
   Typography,
 } from "@mui/material";
-import Camper from "../../components/Camper.jsx";
-import figura from "../../assets/Img/figura.png";
+import Camper from "./Camper.jsx";
+import figura from "../../../assets/Img/figura.png";
 import { useState, useEffect } from "react";
-import astronautaTriste from "../../assets/Img/astronautaTriste.png";
-import useFilterCampers from "../hook/useFilterCampers.js";
-import "../../assets/css/Camper.css";
+import astronautaTriste from "../../../assets/Img/astronautaTriste.png";
+import useFilterCampers from "../../../hooks/useFilterCampers.js";
+import "../../../assets/css/Camper.css";
 
 export default function Campers() {
   const {
@@ -31,8 +31,8 @@ export default function Campers() {
     filterRut,
     filterTecn,
     fetchEnfoques,
-    fetchData
-  } = useFilterCampers()
+    fetchData,
+  } = useFilterCampers();
 
   const handleChangeTecnologia = (event) => {
     setTecnologia(event.target.value);
@@ -44,17 +44,17 @@ export default function Campers() {
     setIngles(event.target.value);
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     filterTecn();
-  },[tecnologia])
+  }, [tecnologia]);
 
-  useEffect(()=>{
+  useEffect(() => {
     filterIng();
-  },[ingles])
+  }, [ingles]);
 
-  useEffect(()=>{
+  useEffect(() => {
     filterRut();
-  },[ruta])
+  }, [ruta]);
 
   useEffect(() => {
     fetchData();
@@ -110,9 +110,16 @@ export default function Campers() {
               label="Age"
               onChange={handleChangeRuta}
             >
-              <MenuItem value={0} >Ruta</MenuItem>
+              <MenuItem value={0}>Ruta</MenuItem>
               {enfoques &&
-                enfoques.map(item =>(<MenuItem key={item.id} value={item.id}>{item.nombre}</MenuItem>))}
+                enfoques.map((item) => (
+                  <MenuItem
+                    key={item.id}
+                    value={item.id}
+                  >
+                    {item.nombre}
+                  </MenuItem>
+                ))}
             </Select>
 
             <Select

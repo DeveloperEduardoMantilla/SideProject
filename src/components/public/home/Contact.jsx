@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
-import photo from "../../assets/Img/Img26.jpg";
-import "../../assets/css/Contact.css";
+import photo from "../../../assets/Img/Img26.jpg";
+import "../../../assets/css/Contact.css";
 import { useState } from "react";
 
 export default function Contact() {

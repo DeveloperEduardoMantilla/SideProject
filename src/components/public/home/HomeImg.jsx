@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
-import imgHome from "../assets/Img/img25.jpg";
-import "../assets/css/Home.css";
+import imgHome from "../../../assets/Img/img25.jpg";
+import "../../../assets/css/Home.css";
 export default function HomeImg() {
   return (
     <>

@@ -11,11 +11,16 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import LoginIcon from "@mui/icons-material/Login";
 import HomeIcon from "@mui/icons-material/Home";
-import { NavLink, Link } from "react-router-dom";
-import HeaderListDrawerCamperView from "../components/HeaderListDrawerCamperView.jsx";
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import { NavLink } from "react-router-dom";
+import HeaderListDrawer from "./HeaderListDrawer.jsx";
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import PersonIcon from '@mui/icons-material/Person';
+import ContactsIcon from '@mui/icons-material/Contacts';
 import { useEffect, useState } from "react";
-import logoNegro from "../assets/Img/logo.png";
-import logoBlanco from "../assets/Img/logoBlanco.png";
+import logoNegro from "../../assets/Img/logo.png";
+import logoBlanco from "../../assets/Img/logoBlanco.png";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -32,7 +37,7 @@ export default function Header() {
   const handleScroll = () => {
     const currentPosition = window.scrollY;
 
-    if (currentPosition > 100) {
+    if (currentPosition > 20) {
       setLogo(logoNegro);
       setStyleHeader({
         color: "#333",
@@ -57,8 +62,33 @@ export default function Header() {
   const navLinks = [
     {
       title: "Inicio",
-      path: "/",
+      path: "#",
       icon: <HomeIcon />,
+    },
+    {
+      title: "Quienes Somos",
+      path: "#aboutme",
+      icon: <EmojiPeopleIcon />,
+    },
+    {
+      title: "Campers",
+      path: "#campers",
+      icon: <PersonIcon />,
+    },
+    {
+      title: "Casos de Exito",
+      path: "#successStories",
+      icon: <StarBorderIcon />,
+    },
+    {
+      title: "Contactenos",
+      path: "#contact",
+      icon: <ContactsIcon />,
+    },
+    {
+      title: "Admin",
+      path: "/login",
+      icon: <AdminPanelSettingsIcon />,
     },
   ];
 
@@ -86,8 +116,8 @@ export default function Header() {
               <Typography
                 variant="h5"
                 sx={{
-                  width: { xs: "100%", sm: "auto" },
-                  display: { xs: "flex", md: "block" },
+                  width: {xs:"100%", sm:"auto"},
+                  display: {xs:"flex", md:"block"},
                   justifyContent: "end",
                   flexGrow: 1,
                   height: { xs: "60px", md: "80px" },
@@ -104,7 +134,7 @@ export default function Header() {
                   <Button
                     color="inherit"
                     key={item.title}
-                    component={Link}
+                    component={NavLink}
                     to={item.path}
                     onClick={handleContactClick}
                     sx={{
@@ -134,7 +164,7 @@ export default function Header() {
         onClose={() => setOpen(false)}
         sx={{ display: { sm: "flex", md: "none" } }}
       >
-        <HeaderListDrawerCamperView
+        <HeaderListDrawer
           navLinks={navLinks}
           NavLink={NavLink}
           setOpen={setOpen}

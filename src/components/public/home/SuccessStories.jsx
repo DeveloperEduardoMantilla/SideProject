@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
-import SuccessStorie from "../../components/SuccessStorie";
-import figura from "../../assets/Img/figura.png";
+import SuccessStorie from "./SuccessStorie";
+import figura from "../../../assets/Img/figura.png";
 import { width } from "@mui/system";
 
 export default function SuccessStories() {
@@ -10,28 +10,33 @@ export default function SuccessStories() {
       colorText: "#333",
       title: "Mujeres pioneras en Campuslands tranforman futuro con Amaris",
       enterprise: "",
-      content: "Mujeres de Campuslands se incorporan a la empresa multinacional Amaris para crear soluciones mediante la programación.",
+      content:
+        "Mujeres de Campuslands se incorporan a la empresa multinacional Amaris para crear soluciones mediante la programación.",
     },
     {
       background: "#34495E",
       colorText: "#fff",
       title: "Programadores  de CampusLands rompen barreras en bucaramanga.",
       enterprise: "",
-      content: "Diez jóvenes ingresan al ámbito laboral en empresas de la ciudad de Bucaramanga, desempeñándose como programadores.",
+      content:
+        "Diez jóvenes ingresan al ámbito laboral en empresas de la ciudad de Bucaramanga, desempeñándose como programadores.",
     },
     {
       background: "#fff",
       colorText: "#333",
-      title: "Conexiones Globales: Cinco Jóvenes Desarrolladores, Una Misión Remota.",
+      title:
+        "Conexiones Globales: Cinco Jóvenes Desarrolladores, Una Misión Remota.",
       enterprise: "",
-      content: "Cinco jóvenes se unen a empresas multinacionales, trabajando de forma remota como desarrolladores.",
+      content:
+        "Cinco jóvenes se unen a empresas multinacionales, trabajando de forma remota como desarrolladores.",
     },
     {
       background: "#34495E",
       colorText: "#fff",
       title: "Una Joven Programadora Conquista Empresas Estadounidenses.",
       enterprise: "",
-      content: "Una joven se integra a una empresa estadounidense para crear soluciones a través de código, asumiendo el rol de programadora backend.",
+      content:
+        "Una joven se integra a una empresa estadounidense para crear soluciones a través de código, asumiendo el rol de programadora backend.",
     },
   ];
   return (
@@ -81,11 +86,12 @@ export default function SuccessStories() {
           width: { xs: "100%", sm: "90%", lg: "100%" },
         }}
       >
-        {
-          successStorieData.map((item, index)=>(
-            <SuccessStorie data={item} key={index} />
-          ))
-        }
+        {successStorieData.map((item, index) => (
+          <SuccessStorie
+            data={item}
+            key={index}
+          />
+        ))}
       </Box>
       <img
         className="figura"

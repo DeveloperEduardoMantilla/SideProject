@@ -12,7 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import LoginIcon from "@mui/icons-material/Login";
 import HomeIcon from "@mui/icons-material/Home";
 import { NavLink } from "react-router-dom";
-import HeaderListDrawer from "../../components/admin/HeaderListDrawerAdmin.jsx";
+import HeaderListDrawer from "./HeaderListDrawerAdmin.jsx";
 import { useEffect, useState } from "react";
 import logoNegro from "../../assets/Img/logo.png";
 import logoBlanco from "../../assets/Img/logoBlanco.png";
@@ -21,7 +21,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [logo, setLogo] = useState(logoBlanco);
   const headerStyle = {
-    background:"#2A4B9B",
+    background: "#2A4B9B",
     color: "#fff",
     boxShadow: "none",
     position: "relative",
@@ -38,7 +38,7 @@ export default function Header() {
         color: "#333",
         background: "#fff",
         boxShadow: "20px 2px 5px #515A5A",
-        fontWeight:"600",
+        fontWeight: "600",
         transition: "all ease-in-out .5s",
       });
     } else if (currentPosition > 0) {
@@ -69,7 +69,7 @@ export default function Header() {
       title: "Salir",
       path: "/",
       icon: <LoginIcon />,
-    }
+    },
   ];
   return (
     <>
@@ -89,7 +89,7 @@ export default function Header() {
                 variant="h5"
                 sx={{
                   flexGrow: 1,
-                  height: {xs:"70px",md:"80px"},
+                  height: { xs: "70px", md: "80px" },
                 }}
               >
                 <img
@@ -104,9 +104,9 @@ export default function Header() {
                     color="inherit"
                     key={item.title}
                     component={NavLink}
-                    onClick={()=>{
-                      if(item.title == "Salir"){
-                        localStorage.removeItem("token")
+                    onClick={() => {
+                      if (item.title == "Salir") {
+                        localStorage.removeItem("token");
                       }
                     }}
                     to={item.path}
@@ -119,14 +119,13 @@ export default function Header() {
                       letterSpacing: "0px",
                       "&:hover": {
                         borderBottom: "2px solid #ECA401",
-                        background:"transparent"
+                        background: "transparent",
                       },
                     }}
                   >
                     {item.title}
                   </Button>
-                )
-               )}
+                ))}
               </Box>
             </Toolbar>
           </Container>
