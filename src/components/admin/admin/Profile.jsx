@@ -56,7 +56,7 @@ useEffect(() => {
             height: "200px",
           }}
         ></Box>
-        <Box sx={{ position: "absolute", top: "70px", width: "100%" }}>
+        <Box sx={{ position: "absolute", top: "0px", width: "100%" }}>
           <Container>
             <Box
               sx={{
@@ -223,8 +223,8 @@ useEffect(() => {
                 <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                   {dataCamper &&
                     dataCamper.cv && 
-                    (JSON.parse(dataCamper.cv.skills).length > 0)
-                     ?(JSON.parse(dataCamper.cv.skills).map((item, index) => (
+                    (dataCamper.cv.skills.length > 0)
+                     ?(dataCamper.cv.skills.map((item, index) => (
                       <SoftSkills
                         data={item}
                         key={index}

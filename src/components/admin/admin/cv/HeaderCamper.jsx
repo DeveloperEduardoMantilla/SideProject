@@ -31,7 +31,7 @@ import {
     const handleScroll = () => {
       const currentPosition = window.scrollY;
   
-      if (currentPosition > 20) {
+      if (currentPosition > 100) {
         setLogo(logoNegro);
         setStyleHeader({
           color: "#333",

@@ -11,7 +11,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import LoginIcon from "@mui/icons-material/Login";
 import HomeIcon from "@mui/icons-material/Home";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import HeaderListDrawerCamperView from "../components/HeaderListDrawerCamperView.jsx";
 import { useEffect, useState } from "react";
 import logoNegro from "../assets/Img/logo.png";
@@ -32,7 +32,7 @@ export default function Header() {
   const handleScroll = () => {
     const currentPosition = window.scrollY;
 
-    if (currentPosition > 20) {
+    if (currentPosition > 100) {
       setLogo(logoNegro);
       setStyleHeader({
         color: "#333",
@@ -59,7 +59,7 @@ export default function Header() {
       title: "Inicio",
       path: "/",
       icon: <HomeIcon />,
-    }
+    },
   ];
 
   const handleContactClick = () => {
@@ -86,8 +86,8 @@ export default function Header() {
               <Typography
                 variant="h5"
                 sx={{
-                  width: {xs:"100%", sm:"auto"},
-                  display: {xs:"flex", md:"block"},
+                  width: { xs: "100%", sm: "auto" },
+                  display: { xs: "flex", md: "block" },
                   justifyContent: "end",
                   flexGrow: 1,
                   height: { xs: "60px", md: "80px" },
@@ -104,7 +104,7 @@ export default function Header() {
                   <Button
                     color="inherit"
                     key={item.title}
-                    component={NavLink}
+                    component={Link}
                     to={item.path}
                     onClick={handleContactClick}
                     sx={{

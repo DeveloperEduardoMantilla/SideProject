@@ -30,7 +30,6 @@ export default function CamperView() {
           )
         ).json();
         setDataCamper(campers.message);
-        console.log(campers.message);
       } catch (e) {
         console.log("Error => ", e);
       }
@@ -221,7 +220,7 @@ export default function CamperView() {
                 <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                   {dataCamper &&
                     dataCamper.cv &&
-                    JSON.parse(dataCamper.cv.skills).map((item, index) => (
+                    dataCamper.cv.skills.map((item, index) => (
                       <SoftSkills
                         data={item}
                         key={index}

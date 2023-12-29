@@ -8,14 +8,14 @@ export default function SuccessStories() {
     {
       background: "#fff",
       colorText: "#333",
-      title: "Mujeres Pioneras en Campuslands: Transformando el Futuro con Amaris",
+      title: "Mujeres pioneras en Campuslands tranforman futuro con Amaris",
       enterprise: "",
       content: "Mujeres de Campuslands se incorporan a la empresa multinacional Amaris para crear soluciones mediante la programación.",
     },
     {
       background: "#34495E",
       colorText: "#fff",
-      title: "Diez Jóvenes, Una Ciudad: Programadores que Rompen Barreras en Bucaramanga.",
+      title: "Programadores  de CampusLands rompen barreras en bucaramanga.",
       enterprise: "",
       content: "Diez jóvenes ingresan al ámbito laboral en empresas de la ciudad de Bucaramanga, desempeñándose como programadores.",
     },
@@ -29,7 +29,7 @@ export default function SuccessStories() {
     {
       background: "#34495E",
       colorText: "#fff",
-      title: "Backend Brillante: Una Joven Programadora Conquista Empresas Estadounidenses.",
+      title: "Una Joven Programadora Conquista Empresas Estadounidenses.",
       enterprise: "",
       content: "Una joven se integra a una empresa estadounidense para crear soluciones a través de código, asumiendo el rol de programadora backend.",
     },

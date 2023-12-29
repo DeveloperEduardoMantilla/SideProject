@@ -82,7 +82,6 @@ export default function TablePermitApplication() {
         ])
         id= cv.id
        } );
-      console.log(formattedData);
       setDataCv(formattedData);
     };
     fetchCv();

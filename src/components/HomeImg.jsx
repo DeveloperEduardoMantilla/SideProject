@@ -76,6 +76,7 @@ export default function HomeImg() {
           <Button
             data-aos="fade-up"
             variant="outlined"
+            href="#contact"
             sx={{
               marginTop: "20px",
               color: "#fff",

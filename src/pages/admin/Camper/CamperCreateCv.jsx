@@ -45,7 +45,7 @@ export default function CamperView() {
           await fetch(`http://${sever.host}:${sever.port}/usuario?id=${id}`)
         ).json();
         setDataCamper(campers.message[0]);
-          console.log(campers);
+        console.log(campers);
         setColorTheme(
           campers.message[0].genero == "femenino" ? "#6C3483" : "#2A4B9B"
         );
@@ -80,7 +80,7 @@ export default function CamperView() {
       fecha: formData.fechaInstitucion,
       titulo: formData.titulo,
       institucion: formData.institucion,
-      idCv:parseInt(id)
+      idCv: parseInt(id),
     };
 
     console.log(dataToSend);
@@ -89,7 +89,8 @@ export default function CamperView() {
       method: "POST",
       headers: new Headers({
         "Content-Type": "application/json",
-        "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzdWFyaW8iOjMsInJvbCI6ImFkbWluIiwiaWF0IjoxNzAzMDM5NDkyLCJleHAiOjE3MDMwNTAyOTJ9.10rGrWgyYgQ_2Xa6mck4rAEVUVMCjnJovr0KRBfAXlk",
+        Authorization:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzdWFyaW8iOjMsInJvbCI6ImFkbWluIiwiaWF0IjoxNzAzMDM5NDkyLCJleHAiOjE3MDMwNTAyOTJ9.10rGrWgyYgQ_2Xa6mck4rAEVUVMCjnJovr0KRBfAXlk",
       }),
       body: JSON.stringify(dataToSend),
     };
@@ -103,7 +104,7 @@ export default function CamperView() {
 
   return (
     <>
-      <HeaderCamper/>
+      <HeaderCamper />
       <Box sx={{ position: "relative" }}>
         <Box
           sx={{
@@ -111,7 +112,7 @@ export default function CamperView() {
             height: "200px",
           }}
         ></Box>
-        <Box sx={{ position: "absolute", top: "70px", width: "100%" }}>
+        <Box sx={{ position: "absolute", top: "0px", width: "100%" }}>
           <Container>
             <Box
               sx={{
@@ -391,8 +392,8 @@ export default function CamperView() {
                       }
                       key={index}
                     />
-                  ))}
-                */}
+                  ))} */}
+
                 <Box
                   component="form"
                   sx={{ margin: "30px 0 0 0" }}
