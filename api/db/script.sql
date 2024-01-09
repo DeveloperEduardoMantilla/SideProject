@@ -80,6 +80,11 @@ CREATE TABLE
         descripcion VARCHAR(300) NOT NULL
     );
 
+CREATE TABLE tokens(
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        token VARCHAR(300) NOT NULL
+);
+
 INSERT INTO
     usuario (
         usuario,
@@ -93,7 +98,7 @@ INSERT INTO
     )
 VALUES (
         'usuario1',
-        'password1',
+        '$2b$10$CnNpsu3rHhKdO1gvLr4UNOqIb0v2lNAs7o.UVb/LTUeWxZqz302NG',
         'usuario',
         'masculino',
         true,
@@ -102,7 +107,7 @@ VALUES (
         'Floridablanca'
     ), (
         'usuario2',
-        'password2',
+        '$2b$10$yrmhk7Z4R7AFWHka40OAWuIfOK7.jZeAs0TzdBnUOQQ/WPPN6Z7/u',
         'usuario',
         'femenino',
         true,
@@ -111,7 +116,7 @@ VALUES (
         'Bucaramanga'
     ), (
         'villafrades',
-        '123',
+        '$2b$10$i4jaR9npI5HYpF/Mh2D/XuMxEylCr.ZKMqB1QtibuPGH8zv9/I10C',
         'admin',
         'masculino',
         true,
@@ -121,7 +126,7 @@ VALUES (
     ),
     (
         'felipe',
-        '123',
+        '$2b$10$zu58NB5ozzmyEP08zpzg/eYKvky43J42tTiADhaWZ675yTGchwOPm',
         'usuario',
         'masculino',
         true,
@@ -130,7 +135,7 @@ VALUES (
         'Floridablanca'
     ), (
         'juan',
-        '123',
+        '$2b$10$cBIkRr7hm.Y4FkBbc9y6Ou1riKpg5.Equ3NRd1TnPpAWE7U.IjyKS',
         'usuario',
         'femenino',
         true,
@@ -139,7 +144,7 @@ VALUES (
         'Bucaramanga'
     ), (
         'pedro',
-        '123',
+        '$2b$10$MHF5vgkdiCBp6jZuMyQ8ZOW5RImopxlcWSpHRHPX9apl3iAhNyf/a',
         'usuario',
         'masculino',
         true,
@@ -381,7 +386,3 @@ VALUES ('Comunicación', 1),
  ('Trabajo en equipo', 3),
  ('Comunicación', 4),
  ('Trabajo en equipo', 1);
-
-
-
-select * from cv;

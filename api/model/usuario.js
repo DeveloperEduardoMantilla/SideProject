@@ -74,6 +74,18 @@ export class usuarioModel{
             )
         })
     }
+    static async deleteToken(token){
+        return new Promise((resolve,reject)=>{
+            database.query(
+                "DELETE FROM tokens WHERE token = ?",
+                [token],
+                (err,data)=>{
+                    if(err) return resolve({status:400, message: err.message})
+                    return resolve({status:200, message:"Eliminado con Exito"})
+                }
+            )
+        })
+    }
     static async validateUsuario(user){
         return new Promise((resolve,reject)=>{
             database.query(

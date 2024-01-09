@@ -1,5 +1,6 @@
 import { usuarioModel } from "../model/usuario.js";
 import { validationResult } from "express-validator";
+import bcrypt, { hash } from "bcrypt";
 
 export class usuarioController{
     static async getAll(req,res){
@@ -18,7 +19,6 @@ export class usuarioController{
     static async getValidateEstado(req,res){
         const errors = validationResult(req)
         if(!errors.isEmpty()) return res.status(400).send({status:400, message:errors.errors[0].msg})
-
         const {estado} = req.params;
         const result = await usuarioModel.getValidateEstado(estado);
         res.status(result.status).send(result)
@@ -31,6 +31,13 @@ export class usuarioController{
         res.status(result.status).send(result)
     }
 
+    static async pruebaBcrypt(req,res){
+        const salt = await bcrypt.genSalt(10)
+        const crypted = await bcrypt.hash("123", salt)
+
+        res.send({message: crypted})
+    }
+
     static async postUsuario(req,res){
         //validar si hay errores
         const errors = validationResult(req)
@@ -38,6 +45,10 @@ export class usuarioController{
         //validar si el usuario que queremos agregar ya existe
         const dataValidate = await usuarioModel.validateUsuario(req.body.usuario)
         if(dataValidate.message.length != 0) return res.status(400).send({status:400, message:"Error, usuario ya existente"})
+
+        const salt = await bcrypt.genSalt(10)
+        const crypted = await bcrypt.hash(req.body.password, salt)
+        req.body.password = crypted
         req.body.estado = false
         req.body.rol = "usuario"
         const keys = Object.keys(req.body);
@@ -84,6 +95,11 @@ export class usuarioController{
         if(dataValidate.message.length == 0) return res.status(400).send({status:400, message:"Error, usuario a Eliminar Inexistente"})
         
         const result = await usuarioModel.deleteUsuario(id);
+        res.status(result.status).send(result)
+    }
+    static async deleteToken(req,res){
+        const {token} = req.params
+        const result = await usuarioModel.deleteToken(token);
         res.status(result.status).send(result)
     }
 }

@@ -104,9 +104,28 @@ import {
                       color="inherit"
                       key={item.title}
                       component={NavLink}
-                      onClick={()=>{
+                      onClick={async()=>{
                         if(item.title == "Salir"){
+                          const token = JSON.parse(localStorage.getItem("token"));
                           localStorage.removeItem("token")
+                          try {
+                            const sever = JSON.parse(import.meta.env.VITE_MY_SERVER);
+                            let option = {
+                              method: "DELETE",
+                              headers: new Headers({
+                                "Content-Type": "application/json",
+                                Authorization: token,
+                              }),
+                            };
+                            const eliminarToken = await (
+                              await fetch(`http://${sever.host}:${sever.port}/usuario/token/${token}`, option)
+                            ).json();
+                            if(eliminarToken.status == 200){
+                              console.log("Log out");
+                            }
+                          } catch (error) {
+                            alert(error.message)
+                          }
                         }
                       }}
                       to={item.path}

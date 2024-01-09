@@ -5,7 +5,7 @@ import Login from "../pages/public/Login.jsx";
 import { CssBaseline } from "@mui/material";
 import Registred from "../pages/public/Registred.jsx";
 import DashboardTest from "../pages/admin/admin/DashboardTest.jsx";
-import Profile from "../pages/admin/camper/Profile.jsx";
+import Profile from "../pages/admin/Camper/Profile.jsx"
 import CamperView from "../components/public/camper/CamperView.jsx";
 import ProtectedRoute from "./utils/protectedRoute";
 import usePrivatizacion from "../hooks/usePrivatizacion.js";
