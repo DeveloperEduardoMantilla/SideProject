@@ -40,7 +40,15 @@ export const validateUsuarioPost = [
     
     check("correo")
         .notEmpty().withMessage("la propiedad 'correo' es obligatoria")
-        .isEmail().withMessage('El correo electrónico no es válido'),
+        .isEmail()
+        .custom((value) => {
+            // Validar que el correo sea de Gmail
+            const regex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+            if (!regex.test(value)) {
+                throw new Error('correo electrónico no valido');
+            }
+            return true;
+        }),
     
     check("ciudad")
         .notEmpty().withMessage("la propiedad 'ciudad' es obligatoria")

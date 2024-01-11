@@ -6,6 +6,7 @@ import appEducacion from "./routers/educacion.js";
 import appContactar from "./routers/contactar.js";
 import appEnfoque from "./routers/enfoque.js";
 import appSoftSkills from "./routers/softSkills.js";
+import appEmail from "./routers/email.js";
 import { generateToken, verifyToken } from "./middleware/jwt.js"
 import { limitRequest } from "./middleware/limit_request.js";
 import cors from "cors"
@@ -28,7 +29,8 @@ appExpress.use("/experiencia", appExperiencia)
 appExpress.use("/educacion", appEducacion)
 appExpress.use("/contacto", appContactar)
 appExpress.use("/enfoque", appEnfoque )
-appExpress.use("/skills", appSoftSkills )
+appExpress.use("/skills", appSoftSkills)
+appExpress.use("/email", appEmail)
 
 
 const env = loadEnv("development", process.cwd(), "VITE")

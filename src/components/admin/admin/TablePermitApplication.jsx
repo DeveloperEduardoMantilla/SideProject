@@ -4,11 +4,14 @@ import Swal from "sweetalert2";
 import MUIDataTable from "mui-datatables";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import useEmail from "../../../hooks/useEmail.js";
 import "../../../assets/css/Tables.css";
 
 export default function TablePermitApplication() {
   const [dataUser, setDataUser] = useState([]);
   const [responsive, setResponsive] = useState("standard");
+  const {sendEmail} = useEmail()
+
   const columns = [
     {
       name: "id",
@@ -51,7 +54,7 @@ export default function TablePermitApplication() {
       options: {
         filter: false,
         customBodyRender: (value, tableMeta, updateValue) => {
-          const rowData = tableMeta.rowData[0]; // Obtener los datos de la fila actual
+          const rowData = tableMeta.rowData; // Obtener los datos de la fila actual
           return (
             <Button
               variant="contained"
@@ -104,7 +107,7 @@ export default function TablePermitApplication() {
     setDataUser(formattedData);
   };
 
-  const validateAcceso = async (id) => {
+  const validateAcceso = async (dataCamper) => {
     const sever = JSON.parse(import.meta.env.VITE_MY_SERVER);
     const token = JSON.parse(localStorage.getItem("token"));
 
@@ -122,22 +125,37 @@ export default function TablePermitApplication() {
     };
     const userData = await (
       await fetch(
-        `http://${sever.host}:${sever.port}/usuario/estado?id=${id}`,
+        `http://${sever.host}:${sever.port}/usuario/estado?id=${dataCamper[0]}`,
         options
       )
     ).json();
     if (userData.status == 200) {
-      Swal.fire({
-        icon: "success",
-        title: "Acceso Concebido",
-        position: "bottom-end",
-        width: "20rem",
-        timer: 3000,
-        toast: true,
-        timerProgressBar: true,
-        showConfirmButton: false,
-      });
-      dataUsers();
+      const envioEmail = await sendEmail(dataCamper)
+      if (envioEmail.status == 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Acceso Concebido",
+          position: "bottom-end",
+          width: "20rem",
+          timer: 3000,
+          toast: true,
+          timerProgressBar: true,
+          showConfirmButton: false,
+        });
+        dataUsers();
+      } else{
+        Swal.fire({
+          icon: "error",
+          title: envioEmail.message,
+          position: "bottom-end",
+          width: "20rem",
+          timer: 3000,
+          toast: true,
+          timerProgressBar: true,
+          showConfirmButton: false,
+        });
+      }
+      
     }
   };
 
