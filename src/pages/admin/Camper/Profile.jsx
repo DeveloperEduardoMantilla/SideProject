@@ -1,20 +1,28 @@
+import { useEffect, useState } from "react";
 import { Box, Container, Typography } from "@mui/material";
-import Experience from "../../../components/admin/admin/cv/Experience.jsx";
+
+//Recursos
 import avatarHombre from "../../../assets/Img/Avatar.png";
 import avatarMujer from "../../../assets/Img/AvatarMujer.png";
+
+//Componentes 
+import Experience from "../../../components/admin/admin/cv/Experience.jsx";
 import Education from "../../../components/admin/admin/cv/Education.jsx";
 import SoftSkills from "../../../components/admin/admin/cv/SoftSkills.jsx";
-import { useEffect, useState } from "react";
 import HeaderCamper from "../../../components/admin/admin/cv/HeaderCamper.jsx";
+
+//Utilidades
+import {getDataCamper} from "../../../utils/apiCamper.js";
 
 export default function Profile() {
   const [dataCamper, setDataCamper] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  const token = JSON.parse(localStorage.getItem("token"));
   const getData = async () => {
     try {
       const sever = JSON.parse(import.meta.env.VITE_MY_SERVER);
+      const token = JSON.parse(localStorage.getItem("token"));
+
       let option = {
         method: "GET",
         headers: new Headers({
@@ -22,6 +30,7 @@ export default function Profile() {
           Authorization: token,
         }),
       };
+
       const datasToken = await (
         await fetch(`http://${sever.host}:${sever.port}/dataToken`, option)
       ).json();
@@ -40,6 +49,7 @@ export default function Profile() {
       alert(error.message);
     }
   };
+
 
   useEffect(() => {
     getData();
