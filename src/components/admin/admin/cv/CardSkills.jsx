@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 export default function CardTextCv({
   data,
+  arrayData,
   onDataReload,
   enableDelete = false,
   endpoint,
@@ -11,20 +12,22 @@ export default function CardTextCv({
   const handleDelete = async () => {
 
     try {
+     
+      let newData = {skills:arrayData.skills.filter(item=> item !== data)};
+
       const server = JSON.parse(import.meta.env.VITE_MY_SERVER);
       const token = JSON.parse(localStorage.getItem("token"));
 
       let option = {
-        method: "DELETE",
+        method: "PUT",
         headers: new Headers({
           "Content-Type": "application/json",
           Authorization: token,
         }),
+        body: JSON.stringify(newData),
       };
-      let ruta = "";
-      if (endpoint === "softSkills") {
-        ruta = `http://${server.host}:${server.port}/skills?id=${data.id}`
-      }
+      let ruta = `http://${server.host}:${server.port}/cv?id=${arrayData.id}`;
+
       const response = await fetch(ruta, option);
 
       if (response.ok) {
@@ -49,7 +52,7 @@ export default function CardTextCv({
           fontWeight: "400",
         }}
       >
-        <Typography sx={{ padding: "10px", fontSize: "14px" }}>{data.competencia}</Typography>
+        <Typography sx={{ padding: "10px", fontSize: "14px" }}>{data}</Typography>
         {enableDelete && (
           <IconButton
             sx={{ color: "#aaa" }}

@@ -18,7 +18,6 @@ export default function Profile() {
   const [dataCamper, setDataCamper] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  //const token = JSON.parse(localStorage.getItem("token"));
   const getData = async () => {
     try {
       const sever = JSON.parse(import.meta.env.VITE_MY_SERVER);

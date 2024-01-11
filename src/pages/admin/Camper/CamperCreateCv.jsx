@@ -10,7 +10,7 @@ import avatarMujer from "../../../assets/Img/AvatarMujer.png";
 //Componentes
 import CardTextCv from "../../../components/admin/admin/cv/CardTextCv.jsx";
 import HeaderCamper from "../../../components/admin/admin/cv/HeaderCamper.jsx";
-
+import CardSkills from "../../../components/admin/admin/cv/CardSkills.jsx";
 import Experience from "../../../components/admin/admin/cv/Experience.jsx";
 import Education from "../../../components/admin/admin/cv/Education.jsx";
 
@@ -42,6 +42,9 @@ export default function CamperView() {
     }
   });
 
+  const reloadPage = (data) =>{
+    setReloadData(data);
+  }
   const handleChange = (e, formName) => {
     setFormData({
         ...formData,
@@ -289,12 +292,16 @@ export default function CamperView() {
                       >
                         Skills
                       </Typography>
-                      <Box sx={{ display: "flex" }}>
+                      <Box sx={{ display: "flex", flexWrap:"wrap" }}>
                         {infoCamper.cv?.skills &&
                           infoCamper.cv.skills.map((item, index) => (
-                            <CardTextCv
+                            <CardSkills
                               data={item}
+                              arrayData={infoCamper.cv}
                               key={index}
+                              onDataReload={reloadPage}
+                              enableDelete={"true"}
+                              endpoint={"skills"}
                             />
                           ))}
                       </Box>
@@ -357,8 +364,11 @@ export default function CamperView() {
                         {infoCamper.skills &&
                           infoCamper.skills.map((item, index) => (
                             <CardTextCv
-                              data={item.competencia}
+                              data={item}
                               key={index}
+                              onDataReload={reloadPage}
+                              enableDelete={"true"}
+                              endpoint={"softSkills"}
                             />
                           ))}
                       </Box>
@@ -422,6 +432,8 @@ export default function CamperView() {
                           data={item}
                           color={colorTheme}
                           key={index}
+                          onDataReload={reloadPage}
+                          enableDelete={"true"}
                         />
                       ))}
                     <Box
@@ -523,6 +535,8 @@ export default function CamperView() {
                           data={item}
                           color={colorTheme}
                           key={index}
+                          onDataReload={reloadPage}
+                          enableDelete={"true"}
                         />
                       ))}
                     <Box
