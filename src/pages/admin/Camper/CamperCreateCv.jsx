@@ -456,6 +456,7 @@ export default function CamperView() {
                             name="cargo"
                             placeholder="Cargo"
                             onChange={(e) => handleChange(e, "experienceWork")}
+                            required
                           />
                         </Grid>
                         <Grid
@@ -469,6 +470,7 @@ export default function CamperView() {
                             name="fecha"
                             type="date"
                             onChange={(e) => handleChange(e, "experienceWork")}
+                            required
                           />
                         </Grid>
                         <Grid
@@ -482,6 +484,7 @@ export default function CamperView() {
                             name="empresa"
                             placeholder="Empresa"
                             onChange={(e) => handleChange(e, "experienceWork")}
+                            required
                           />
                         </Grid>
                         <Grid
@@ -495,6 +498,7 @@ export default function CamperView() {
                             sx={{ width: "100%" }}
                             placeholder="Descripción y logros"
                             onChange={(e) => handleChange(e, "experienceWork")}
+                            required
                           />
                         </Grid>
                         <Grid
@@ -557,10 +561,10 @@ export default function CamperView() {
                           <Input
                             fullWidth
                             sx={{ width: "100%" }}
-                            // value={formData.tipo}
                             name="tipo"
                             placeholder="Tipo"
                             onChange={(e) => handleChange(e, "education")}
+                            required
                           />
                         </Grid>
                         <Grid
@@ -572,10 +576,10 @@ export default function CamperView() {
                           <Input
                             fullWidth
                             sx={{ width: "100%" }}
-                            // value={formData.fecha}
                             name="fecha"
                             type="date"
                             onChange={(e) => handleChange(e, "education")}
+                            required
                           />
                         </Grid>
                         <Grid
@@ -587,10 +591,10 @@ export default function CamperView() {
                           <Input
                             fullWidth
                             sx={{ width: "100%" }}
-                            // value={formData.titulo}
                             name="titulo"
                             placeholder="Título"
                             onChange={(e) => handleChange(e, "education")}
+                            required
                           />
                         </Grid>
                         <Grid
@@ -602,10 +606,10 @@ export default function CamperView() {
                           <Input
                             fullWidth
                             sx={{ width: "100%" }}
-                            // value={formData.institucion}
                             name="institucion"
                             placeholder="Institución"
                             onChange={(e) => handleChange(e, "education")}
+                            required
                           />
                         </Grid>
                         <Grid
