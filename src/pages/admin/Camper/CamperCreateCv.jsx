@@ -1,7 +1,8 @@
 //Utilidades
 import { useEffect, useState } from "react";
-import { Box, Button, Container, Grid, Input, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Input, Typography,TextField } from "@mui/material";
 import { getDataCamper } from "../../../utils/apiCamper.js";
+import { TextareaAutosize } from '@mui/base';
 
 //Recursos
 import avatarHombre from "../../../assets/Img/Avatar.png";
@@ -20,6 +21,7 @@ export default function CamperView() {
   const [infoCamper, setInfoCamper] = useState({});
   const [loading, setLoading] = useState(false);
   const [reloadData, setReloadData] = useState(false);
+  const [cvStated, setCvStated] = useState(true);
 
   const [formData, setFormData] = useState({
     dataSkills: {
@@ -39,6 +41,10 @@ export default function CamperView() {
       fecha: "",
       titulo: "",
       institucion: ""
+    },
+    createCv:{
+      nombre:"",
+      acercaDeMi:""
     }
   });
 
@@ -61,6 +67,7 @@ export default function CamperView() {
       
       let endpoint = '';
       let peticion = 'POST';
+
       switch (formName) {
         case 'dataSkills':
           endpoint = `cv?id=${infoCamper.cv.id}`;
@@ -75,12 +82,19 @@ export default function CamperView() {
         case 'education':
           endpoint = 'educacion';
           break;
+        case 'createCv':
+          endpoint = `cv?id=${1}`;
+          peticion = 'PUT';
+          break;
       }
+
       
       const token = JSON.parse(localStorage.getItem("token"));
       const server = JSON.parse(import.meta.env.VITE_MY_SERVER);
 
       let formDataForEndpoint= formData[formName];
+      console.log("Siuuu",formData);
+      return
       let combinedSkills = [];
 
       if(formName==='dataSkills'){
@@ -104,7 +118,9 @@ export default function CamperView() {
       if (response.ok) {
         setReloadData(true);
       }
+
       e.target.reset();
+
     } catch (error) {
       console.error(`Error en la petición del formulario ${formName}`, error);
     }
@@ -114,6 +130,13 @@ export default function CamperView() {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
       const result = await getDataCamper(token);
+
+      if(result.length==0){
+        setCvStated(false);
+        return
+      }
+
+      setCvStated(true);
       setInfoCamper(result);
 
       if (result && result.cv && result.cv.skills) {
@@ -122,6 +145,7 @@ export default function CamperView() {
           skills: result.cv.skills.map(skill => skill),
         });
       }
+
     } catch (error) {
       alert(error.message);
     }
@@ -136,9 +160,11 @@ export default function CamperView() {
 
   return (
     <>
+      <HeaderCamper />
       {loading ? (
-        <>
-          <HeaderCamper />
+        cvStated ? (
+          <>
+          
           <Box sx={{ position: "relative" }}>
             <Box
               sx={{
@@ -639,6 +665,25 @@ export default function CamperView() {
             </Box>
           </Box>
         </>
+          ):(
+            <Box sx={{width:"100%", height:"600px", display:"flex", justifyContent:"center", alignItems:"center"}}>
+              <Box  component="form" onSubmit={(e) => handleSubmit(e, "createCv")} sx={{minHeight:"100px", display:"flex", flexDirection:"column"}} onSubmit={handleSubmit}>
+                  <TextField id="outlined-basic" name="nombre" label="Nombre" onChange={(e) => handleChange(e, "nombre")} variant="outlined" />
+                  <TextField
+                  sx={{margin:"20px 0"}}
+                    placeholder="Acerca de mi"
+                    multiline
+                    rows={2}
+                    maxRows={4}
+                    onChange={(e) => handleChange(e, "acercaDeMi")}
+                  />
+                  <Box sx={{width:"100%", display:"flex", justifyContent:"center"}}>
+                  <Button variant="contained" sx={{padding:"5px 10PX", background:"#2A4B9B"}} type="submit">Crear Cv</Button>
+                </Box>
+              </Box>
+            </Box>
+            
+          )
       ) : (
         <h2>Cargando ...</h2>
       )}

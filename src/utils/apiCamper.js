@@ -15,13 +15,14 @@ const getDataCamper = async (token) => {
       ).json();
 
       if (datasToken.status == 200) {
+
         const infoCv = await (
           await fetch(
             `http://${sever.host}:${sever.port}/cv/user?id=${datasToken.message.payload.idUsuario}`,
             option
           )
         ).json();
-
+        
         if (infoCv.status == 200) {
             return infoCv.message;
         }
