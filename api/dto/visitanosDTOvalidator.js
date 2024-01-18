@@ -28,7 +28,7 @@ export const validateVisitanosPost = [
     check("interes")
         .notEmpty().withMessage("la propiedad 'interes' es obligatoria")
         .isLength({min:1, max:20}).withMessage("la propiedad 'interes' no debe tener mas de 20 caracteres")
-        .isIn(['conocer', 'reportar', 'contratar']).withMessage("la propiedad 'interes' tiene data no valida")
+        .isIn(['Influencer', 'Visitar', 'Contratar']).withMessage("la propiedad 'interes' tiene data no valida")
         .isString().withMessage("la 'interes' debe ser un string"),
 
     check("tel")

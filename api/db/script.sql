@@ -161,7 +161,7 @@ INSERT INTO enfoque (nombre)
 VALUES ("Desarrollador Full-stack"), ("Desarrollador Backend");
 
 INSERT INTO visitanos (nombre, edad, interes,tel, cc, fecha_visita, empresa,vehiculo, estado)
-VALUES ("Carlos Villafrades", 21, "conocer", "3238884307", "123456789", '2024-02-12', "Campuslands", "Motocicleta", "en espera");
+VALUES ("Carlos Villafrades", 21, "Visitar", "3238884307", "123456789", '2024-02-12', "Campuslands", "Motocicleta", "en espera");
 
 INSERT INTO
     cv (
