@@ -71,13 +71,17 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    contacto(
+    visitanos(
         id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
         nombre VARCHAR(60) NOT NULL,
-        telefono VARCHAR(13) NOT NULL,
+        edad VARCHAR(3) NOT NULL,
+        interes VARCHAR(60) NOT NULL,
+        tel VARCHAR(10) NOT NULL,
+        cc VARCHAR(10) NOT NULL,
+        fecha_visita DATE NOT NULL,
         empresa VARCHAR(60) NOT NULL,
-        correo VARCHAR(80) NOT NULL,
-        descripcion VARCHAR(300) NOT NULL
+        vehiculo VARCHAR(20),
+        estado VARCHAR(20) NOT NULL
     );
 
 CREATE TABLE tokens(
@@ -155,6 +159,9 @@ VALUES (
 
 INSERT INTO enfoque (nombre)
 VALUES ("Desarrollador Full-stack"), ("Desarrollador Backend");
+
+INSERT INTO visitanos (nombre, edad, interes,tel, cc, fecha_visita, empresa,vehiculo, estado)
+VALUES ("Carlos Villafrades", 21, "conocer", "3238884307", "123456789", '2024-02-12', "Campuslands", "Motocicleta", "en espera");
 
 INSERT INTO
     cv (

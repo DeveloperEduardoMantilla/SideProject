@@ -1,12 +1,10 @@
 import mysql from "mysql2";
-import { loadEnv } from "vite";
-
-const env = loadEnv("development", process.cwd(), "VITE")
+import "dotenv/config"
 
 export async function myConexion(){
     try {
         let conexion = undefined;
-        const my_conexion = JSON.parse(env.VITE_MY_CONEXION)
+        const my_conexion = JSON.parse(process.env.VITE_MY_CONEXION)
         conexion = mysql.createPool(my_conexion)
         return conexion
     } catch (error) {

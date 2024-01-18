@@ -1,15 +1,13 @@
 import { SignJWT, jwtVerify } from "jose";
 import { myConexion } from "../db/conexion.js";
-import { loadEnv } from "vite";
+import "dotenv/config"
 // import cryto from 'node:crypto'
 import bcrypt from "bcrypt"
 const database = await myConexion();
 
-const env = loadEnv("development", process.cwd(), "VITE")
-
-
 const generateToken =  async(req,res,next) =>{
 
+  console.log(process.env.VITE_JWT_PRIVATE_KEY);
 /*   
 CREAR LLAVE HEXADECIMAL
 console.log(cryto.randomBytes(32).toString('hex'))
@@ -31,7 +29,7 @@ console.log(cryto.randomBytes(32).toString('hex'))
         .setProtectedHeader({alg:'HS256', typ:'JWT'})
         .setIssuedAt()
         .setExpirationTime('5h')
-        .sign(encoder.encode(env.VITE_JWT_PRIVATE_KEY))
+        .sign(encoder.encode(process.env.VITE_JWT_PRIVATE_KEY))
 
         database.query(
           "INSERT INTO tokens(token) VALUES (?)",
@@ -63,7 +61,7 @@ const verifyToken = () => async (req, res, next) => {
             const encoder = new TextEncoder();
             req.data = await jwtVerify(
               authorization,
-              encoder.encode(env.VITE_JWT_PRIVATE_KEY)
+              encoder.encode(process.env.VITE_JWT_PRIVATE_KEY)
             );
             next();
           }
